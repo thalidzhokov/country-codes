@@ -9,6 +9,25 @@
  */
 class CountryCodes
 {
+    /**
+     * @var array
+     *
+     * Language code => [
+     *     ISO-3166-1 alpha-2 => [
+     *         'alpha2'    => (string),
+     *         'alpha3'    => (string),
+     *         'numeric'   => (numeric),
+     *         'isd'       => (numeric),
+     *         'name'      => (string),
+     *         'fullName'  => (string),
+     *         'continent' => (string),
+     *         'location'  => (string)
+     *     ],
+     *     ...
+     * ],
+     * ...
+     */
+    private static $_countriesByLanguage = [];
 
     /**
      * @var string
@@ -5307,29 +5326,9 @@ class CountryCodes
     );
 
     /**
-     * @var array
-     *
-     * Language code => [
-     *     ISO-3166-1 alpha-2 => [
-     *         'alpha2'    => (string),
-     *         'alpha3'    => (string),
-     *         'numeric'   => (numeric),
-     *         'isd'       => (numeric),
-     *         'name'      => (string),
-     *         'fullName'  => (string),
-     *         'continent' => (string),
-     *         'location'  => (string)
-     *     ],
-     *     ...
-     * ],
-     * ...
-     */
-    protected static $countriesByLanguage = [];
-
-    /**
      * @return array
      */
-    protected static function supportedFields()
+    private static function _supportedFields()
     {
         $rtn = [
             'alpha2',
@@ -5348,7 +5347,7 @@ class CountryCodes
     /**
      * @return array
      */
-    protected static function supportedContinents()
+    private static function _supportedContinents()
     {
         $rtn = [
             'Africa',
@@ -5367,7 +5366,7 @@ class CountryCodes
      * @param string $language
      * @return array
      */
-    private static function countriesByLanguage($language = '')
+    private static function _countriesByLanguage($language = '')
     {
         $countriesByLanguage = [];
 
@@ -5394,9 +5393,9 @@ class CountryCodes
             $countriesByLanguage[$language][$countryKey] = $country;
         }
 
-        self::$countriesByLanguage = $countriesByLanguage;
+        self::$_countriesByLanguage = $countriesByLanguage;
 
-        return self::$countriesByLanguage;
+        return self::$_countriesByLanguage;
     }
 
     /**
@@ -5406,10 +5405,10 @@ class CountryCodes
      */
     public static function get($keyField = 'alpha2', $requestedField = 'name')
     {
-        $supportedFields = self::supportedFields();
-        $countries = empty(self::$countriesByLanguage[self::$language])
-            ? self::countriesByLanguage()
-            : self::$countriesByLanguage[self::$language];
+        $supportedFields = self::_supportedFields();
+        $countries = empty(self::$_countriesByLanguage[self::$language])
+            ? self::_countriesByLanguage()
+            : self::$_countriesByLanguage[self::$language];
 
         if (!in_array($keyField, $supportedFields)) {
             $keyField = Null;
@@ -5441,10 +5440,10 @@ class CountryCodes
      */
     public static function get2($keyField = 'alpha2', $requestedFields = [])
     {
-        $supportedFields = self::supportedFields();
-        $countries = empty(self::$countriesByLanguage[self::$language])
-            ? self::countriesByLanguage()
-            : self::$countriesByLanguage[self::$language];
+        $supportedFields = self::_supportedFields();
+        $countries = empty(self::$_countriesByLanguage[self::$language])
+            ? self::_countriesByLanguage()
+            : self::$_countriesByLanguage[self::$language];
 
         if (!in_array($keyField, $supportedFields)) {
             $keyField = Null;
@@ -5491,11 +5490,11 @@ class CountryCodes
      */
     public static function getByContinent($keyField = 'alpha2', $requestedField = 'name', $continent = Null)
     {
-        $supportedFields = self::supportedFields();
-        $supportedContinents = self::supportedContinents();
-        $countries = empty(self::$countriesByLanguage[self::$language])
-            ? self::countriesByLanguage()
-            : self::$countriesByLanguage[self::$language];
+        $supportedFields = self::_supportedFields();
+        $supportedContinents = self::_supportedContinents();
+        $countries = empty(self::$_countriesByLanguage[self::$language])
+            ? self::_countriesByLanguage()
+            : self::$_countriesByLanguage[self::$language];
 
         if (!in_array($keyField, $supportedFields)) {
             $keyField = Null;
