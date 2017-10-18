@@ -13,17 +13,17 @@ class CountryCodes
     /**
      * @var string
      */
-    public static $language = 'ru';
+    public static $language = 'en';
 
     /**
      * @var array
      *
-     * ISO-3166-1 alpha-2 (2 character) => [
-     *     'alpha2'  => ISO-3166-1 alpha-2  (2 characters)  https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-     *     'alpha3'  => ISO-3166-1 alpha-3  (3 characters)  https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
-     *     'numeric' => ISO-3166-1 numeric  (3 digits)      https://en.wikipedia.org/wiki/ISO_3166-1_numeric
-     *     'isd' => Internatiguonal Subscriber Dialing code https://en.wikipedia.org/wiki/List_of_country_calling_codes
-     *     Language code (2 characters) => [
+     * ISO-3166-1 alpha-2 (string, 2 character) => [
+     *     'alpha2'  => ISO-3166-1 alpha-2  (string, 2 characters),    https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+     *     'alpha3'  => ISO-3166-1 alpha-3  (string, 3 characters),    https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+     *     'numeric' => ISO-3166-1 numeric  (numeric, 3 digits),       https://en.wikipedia.org/wiki/ISO_3166-1_numeric
+     *     'isd' => Internatiguonal Subscriber Dialing code (numeric), https://en.wikipedia.org/wiki/List_of_country_calling_codes
+     *     Language code (string, 2 characters) => [
      *             'name'      => (string),
      *             'fullName'  => (string),
      *             'continent' => (string),
@@ -127,7 +127,7 @@ class CountryCodes
                     array(
                         'name' => 'Антигуа и Барбуда',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -148,7 +148,7 @@ class CountryCodes
                     array(
                         'name' => 'Ангилья',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -253,7 +253,7 @@ class CountryCodes
                     array(
                         'name' => 'Аргентина',
                         'fullName' => 'Аргентинская Республика',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -337,7 +337,7 @@ class CountryCodes
                     array(
                         'name' => 'Аруба',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -421,7 +421,7 @@ class CountryCodes
                     array(
                         'name' => 'Барбадос',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -589,7 +589,7 @@ class CountryCodes
                     array(
                         'name' => 'Сен-Бартельми',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -610,7 +610,7 @@ class CountryCodes
                     array(
                         'name' => 'Бермуды',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Северная Америка',
                     ),
                 'en' =>
@@ -652,7 +652,7 @@ class CountryCodes
                     array(
                         'name' => 'Боливия',
                         'fullName' => 'Многонациональное Государство Боливия',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -673,7 +673,7 @@ class CountryCodes
                     array(
                         'name' => 'Бонайре, Саба и Синт-Эстатиус',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -694,7 +694,7 @@ class CountryCodes
                     array(
                         'name' => 'Бразилия',
                         'fullName' => 'Федеративная Республика Бразилия',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -715,7 +715,7 @@ class CountryCodes
                     array(
                         'name' => 'Багамы',
                         'fullName' => 'Содружество Багамы',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -820,7 +820,7 @@ class CountryCodes
                     array(
                         'name' => 'Белиз',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -841,7 +841,7 @@ class CountryCodes
                     array(
                         'name' => 'Канада',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Северная Америка',
                     ),
                 'en' =>
@@ -1009,7 +1009,7 @@ class CountryCodes
                     array(
                         'name' => 'Чили',
                         'fullName' => 'Республика Чили',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -1072,7 +1072,7 @@ class CountryCodes
                     array(
                         'name' => 'Колумбия',
                         'fullName' => 'Республика Колумбия',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -1093,7 +1093,7 @@ class CountryCodes
                     array(
                         'name' => 'Коста-Рика',
                         'fullName' => 'Республика Коста-Рика',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Центральная Америка',
                     ),
                 'en' =>
@@ -1114,7 +1114,7 @@ class CountryCodes
                     array(
                         'name' => 'Куба',
                         'fullName' => 'Республика Куба',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -1156,7 +1156,7 @@ class CountryCodes
                     array(
                         'name' => 'Кюрасао',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -1303,7 +1303,7 @@ class CountryCodes
                     array(
                         'name' => 'Доминика',
                         'fullName' => 'Содружество Доминики',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -1324,7 +1324,7 @@ class CountryCodes
                     array(
                         'name' => 'Доминиканская Республика',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -1366,7 +1366,7 @@ class CountryCodes
                     array(
                         'name' => 'Эквадор',
                         'fullName' => 'Республика Эквадор',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -1555,7 +1555,7 @@ class CountryCodes
                     array(
                         'name' => 'Фолклендские острова (Мальвинские)',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -1681,7 +1681,7 @@ class CountryCodes
                     array(
                         'name' => 'Гренада',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -1723,7 +1723,7 @@ class CountryCodes
                     array(
                         'name' => 'Французская Гвиана',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -1807,7 +1807,7 @@ class CountryCodes
                     array(
                         'name' => 'Гренландия',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Северная Америка',
                     ),
                 'en' =>
@@ -1870,7 +1870,7 @@ class CountryCodes
                     array(
                         'name' => 'Гваделупа',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -1954,7 +1954,7 @@ class CountryCodes
                     array(
                         'name' => 'Гватемала',
                         'fullName' => 'Республика Гватемала',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Центральная Америка',
                     ),
                 'en' =>
@@ -2017,7 +2017,7 @@ class CountryCodes
                     array(
                         'name' => 'Гайана',
                         'fullName' => 'Республика Гайана',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -2080,7 +2080,7 @@ class CountryCodes
                     array(
                         'name' => 'Гондурас',
                         'fullName' => 'Республика Гондурас',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Центральная Америка',
                     ),
                 'en' =>
@@ -2122,7 +2122,7 @@ class CountryCodes
                     array(
                         'name' => 'Гаити',
                         'fullName' => 'Республика Гаити',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -2395,7 +2395,7 @@ class CountryCodes
                     array(
                         'name' => 'Ямайка',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -2563,7 +2563,7 @@ class CountryCodes
                     array(
                         'name' => 'Сент-Китс и Невис',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -2647,7 +2647,7 @@ class CountryCodes
                     array(
                         'name' => 'Острова Кайман',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -2731,7 +2731,7 @@ class CountryCodes
                     array(
                         'name' => 'Сент-Люсия',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -3004,7 +3004,7 @@ class CountryCodes
                     array(
                         'name' => 'Сен-Мартен',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -3193,7 +3193,7 @@ class CountryCodes
                     array(
                         'name' => 'Мартиника',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -3235,7 +3235,7 @@ class CountryCodes
                     array(
                         'name' => 'Монтсеррат',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -3340,7 +3340,7 @@ class CountryCodes
                     array(
                         'name' => 'Мексика',
                         'fullName' => 'Мексиканские Соединенные Штаты',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Центральная Америка',
                     ),
                 'en' =>
@@ -3508,7 +3508,7 @@ class CountryCodes
                     array(
                         'name' => 'Никарагуа',
                         'fullName' => 'Республика Никарагуа',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Центральная Америка',
                     ),
                 'en' =>
@@ -3697,7 +3697,7 @@ class CountryCodes
                     array(
                         'name' => 'Панама',
                         'fullName' => 'Республика Панама',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Центральная Америка',
                     ),
                 'en' =>
@@ -3718,7 +3718,7 @@ class CountryCodes
                     array(
                         'name' => 'Перу',
                         'fullName' => 'Республика Перу',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -3844,7 +3844,7 @@ class CountryCodes
                     array(
                         'name' => 'Сент-Пьер и Микелон',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Северная Америка',
                     ),
                 'en' =>
@@ -3886,7 +3886,7 @@ class CountryCodes
                     array(
                         'name' => 'Пуэрто-Рико',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -3970,7 +3970,7 @@ class CountryCodes
                     array(
                         'name' => 'Парагвай',
                         'fullName' => 'Республика Парагвай',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -4411,7 +4411,7 @@ class CountryCodes
                     array(
                         'name' => 'Суринам',
                         'fullName' => 'Республика Суринам',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -4474,7 +4474,7 @@ class CountryCodes
                     array(
                         'name' => 'Эль-Сальвадор',
                         'fullName' => 'Республика Эль-Сальвадор',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Центральная Америка',
                     ),
                 'en' =>
@@ -4495,7 +4495,7 @@ class CountryCodes
                     array(
                         'name' => 'Синт-Мартен',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -4558,7 +4558,7 @@ class CountryCodes
                     array(
                         'name' => 'Острова Теркс и Кайкос',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -4810,7 +4810,7 @@ class CountryCodes
                     array(
                         'name' => 'Тринидад и Тобаго',
                         'fullName' => 'Республика Тринидад и Тобаго',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -4957,7 +4957,7 @@ class CountryCodes
                     array(
                         'name' => 'США',
                         'fullName' => 'Соединенные Штаты Америки',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Северная Америка',
                     ),
                 'en' =>
@@ -4978,7 +4978,7 @@ class CountryCodes
                     array(
                         'name' => 'Уругвай',
                         'fullName' => 'Восточная Республика Уругвай',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -5041,7 +5041,7 @@ class CountryCodes
                     array(
                         'name' => 'Сент-Винсент и Гренадины',
                         'fullName' => Null,
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -5062,7 +5062,7 @@ class CountryCodes
                     array(
                         'name' => 'Венесуэла',
                         'fullName' => 'Боливарийская Республика Венесуэла',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Южная Америка',
                     ),
                 'en' =>
@@ -5083,7 +5083,7 @@ class CountryCodes
                     array(
                         'name' => 'Виргинские острова, Британские',
                         'fullName' => 'Британские Виргинские острова',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -5104,7 +5104,7 @@ class CountryCodes
                     array(
                         'name' => 'Виргинские острова, США',
                         'fullName' => 'Виргинские острова Соединенных Штатов',
-                        'continent' => 'Америка',
+                        'continent' => 'Северная Америка',
                         'location' => 'Карибский бассейн',
                     ),
                 'en' =>
@@ -5307,6 +5307,26 @@ class CountryCodes
     );
 
     /**
+     * @var array
+     *
+     * Language code => [
+     *     ISO-3166-1 alpha-2 => [
+     *         'alpha2'    => (string),
+     *         'alpha3'    => (string),
+     *         'numeric'   => (numeric),
+     *         'isd'       => (numeric),
+     *         'name'      => (string),
+     *         'fullName'  => (string),
+     *         'continent' => (string),
+     *         'location'  => (string)
+     *     ],
+     *     ...
+     * ],
+     * ...
+     */
+    protected static $countriesByLanguage = [];
+
+    /**
      * @return array
      */
     protected static function supportedFields()
@@ -5342,4 +5362,182 @@ class CountryCodes
 
         return $rtn;
     }
+
+    /**
+     * @param string $language
+     * @return array
+     */
+    private static function countriesByLanguage($language = '')
+    {
+        $countriesByLanguage = [];
+
+        if (empty($language) || !is_string($language)) {
+            $language = self::$language;
+        }
+
+        foreach (self::$countries as $countryKey => $country) {
+
+            foreach ($country as $fieldKey => $field) {
+
+                if (is_array($field) && $fieldKey === $language) {
+
+                    foreach ($field as $key => $value) {
+                        $country[$key] = $value;
+                    }
+                }
+
+                if (is_array($field)) {
+                    unset($country[$fieldKey]);
+                }
+            }
+
+            $countriesByLanguage[$language][$countryKey] = $country;
+        }
+
+        self::$countriesByLanguage = $countriesByLanguage;
+
+        return self::$countriesByLanguage;
+    }
+
+    /**
+     * @param string $keyField field for the array of countries, set it to null if you want array without named indices
+     * @param string $requestedField name of the field to be fetched in value part of array
+     * @return array contained key => value pairs of the requested key and field
+     */
+    public static function get($keyField = 'alpha2', $requestedField = 'name')
+    {
+        $supportedFields = self::supportedFields();
+        $countries = empty(self::$countriesByLanguage[self::$language])
+            ? self::countriesByLanguage()
+            : self::$countriesByLanguage[self::$language];
+
+        if (!in_array($keyField, $supportedFields)) {
+            $keyField = Null;
+        }
+
+        if (!in_array($requestedField, $supportedFields)) {
+            $requestedField = 'name';
+        }
+
+        $result = [];
+
+        foreach ($countries as $countryKey => $country) {
+
+            if ($keyField) {
+                $result[$country[$keyField]] = $country[$requestedField];
+            } else {
+                $result[] = $country[$requestedField];
+            }
+        }
+
+        return $result;
+    }
+
+
+    /**
+     * @param string $keyField field for the array of countries, set it to null if you want array without named indices
+     * @param array $requestedFields array of name of the fields to be fetched in value part of array
+     * @return array contained key => value pairs of the requested key and field
+     */
+    public static function get2($keyField = 'alpha2', $requestedFields = [])
+    {
+        $supportedFields = self::supportedFields();
+        $countries = empty(self::$countriesByLanguage[self::$language])
+            ? self::countriesByLanguage()
+            : self::$countriesByLanguage[self::$language];
+
+        if (!in_array($keyField, $supportedFields)) {
+            $keyField = Null;
+        }
+
+        if (is_array($requestedFields)) {
+
+            foreach ($requestedFields as $index => $field) {
+
+                if (!in_array($field, $supportedFields)) {
+                    unset($requestedFields[$index]);
+                }
+            }
+        } else {
+            $requestedFields = [];
+        }
+
+        $result = [];
+
+        foreach ($countries as $countryKey => $country) {
+            $tmp = [];
+
+            foreach ($requestedFields as $field) {
+                $tmp[$field] = $country[$field];
+            }
+
+            if ($keyField) {
+                $result[$country[$keyField]] = $tmp;
+            } else {
+                $result[] = $tmp;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param string $keyField field for the array of countries, set it to null if you want array without named indices
+     * @param string $requestedField name of the field to be fetched in value part of array
+     * @param null $continent name of continent to use as filter
+     * @return array contained key=>value pairs of the requested key and field
+     * Works exactly as get() above
+     * But takes an extra param to enable filtering by continent
+     */
+    public static function getByContinent($keyField = 'alpha2', $requestedField = 'name', $continent = Null)
+    {
+        $supportedFields = self::supportedFields();
+        $supportedContinents = self::supportedContinents();
+        $countries = empty(self::$countriesByLanguage[self::$language])
+            ? self::countriesByLanguage()
+            : self::$countriesByLanguage[self::$language];
+
+        if (!in_array($keyField, $supportedFields)) {
+            $keyField = Null;
+        }
+
+        if (!in_array($continent, $supportedContinents)) {
+            $continent = Null;
+        }
+
+        if (!in_array($requestedField, $supportedFields)) {
+            $requestedField = 'name';
+        }
+
+        $result = [];
+
+        foreach ($countries as $countryKey => $country) {
+
+            if ($keyField) {
+
+                if ($continent) {
+
+                    if ($country['continent'] == $continent) {
+                        $result[$country[$keyField]] = $country[$requestedField];
+                    }
+                } else {
+                    $result[$country[$keyField]] = $country[$requestedField];
+                }
+            } else {
+
+                if ($continent) {
+
+                    if ($country['continent'] == $continent) {
+                        $result[] = $country[$requestedField];
+                    }
+                } else {
+                    $result[] = $country[$requestedField];
+                }
+            }
+        }
+
+        return $result;
+    }
+
 }
+
