@@ -23,7 +23,7 @@ composer require thalidzhokov/country-codes
 
 OR include _CountryCodes.php_ in your PHP code
 ```
-include_once PATH_TO_CLASS . 'CountryCodes.php';
+require_once('CountryCodes.php');
 ```
 
 ## Usage
