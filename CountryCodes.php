@@ -5,7 +5,6 @@
  *
  * @author Albert Thalidzhokov
  * @link https://github.com/thalidzhokov/country-codes
- * @version 1.0
  */
 class CountryCodes
 {
