@@ -13,15 +13,29 @@ class CountryCodes
      * @var array
      *
      * Language code => [
+     *     Continent code => [
+     *         'continentCode' => (string),
+     *         'continent' => (string)
+     *     ],
+     *     ...
+     * ],
+     * ...
+     */
+    private static $_continentsByLanguage = [];
+
+    /**
+     * @var array
+     *
+     * Language code => [
      *     ISO-3166-1 alpha-2 => [
-     *         'alpha2'    => (string),
-     *         'alpha3'    => (string),
-     *         'numeric'   => (numeric),
-     *         'isd'       => (numeric),
-     *         'name'      => (string),
-     *         'fullName'  => (string),
-     *         'continent' => (string),
-     *         'location'  => (string)
+     *         'alpha2'        => (string),
+     *         'alpha3'        => (string),
+     *         'numeric'       => (numeric),
+     *         'isd'           => (numeric),
+     *         'continentCode' => (string),
+     *         'continent'     => (string),
+     *         'country'       => (string),
+     *         'countryFull'   => (string)
      *     ],
      *     ...
      * ],
@@ -43,10 +57,8 @@ class CountryCodes
      *     'numeric' => ISO-3166-1 numeric  (numeric, 3 digits),       https://en.wikipedia.org/wiki/ISO_3166-1_numeric
      *     'isd' => Internatiguonal Subscriber Dialing code (numeric), https://en.wikipedia.org/wiki/List_of_country_calling_codes
      *     Language code (string, 2 characters) => [
-     *             'name'      => (string),
-     *             'fullName'  => (string),
-     *             'continent' => (string),
-     *             'location'  => (string)
+     *             'country'      => (string),
+     *             'countryFull'  => (string)
      *         ]
      * ],
      * ...
@@ -57,20 +69,17 @@ class CountryCodes
                 'alpha2' => 'AB',
                 'alpha3' => 'ABH',
                 'numeric' => '895',
-                'isd' => Null,
+                'isd' => '7840',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Абхазия',
-                        'fullName' => 'Республика Абхазия',
-                        'continent' => 'Азия',
-                        'location' => 'Закавказье',
+                        'country' => 'Абхазия',
+                        'countryFull' => 'Республика Абхазия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Abkhazia',
-                        'fullName' => 'Abkhazia',
-                        'continent' => 'Asia',
-                        'location' => Null,
+                        'country' => 'Abkhazia',
+                        'countryFull' => 'Abkhazia',
                     ),
             ),
         'AD' =>
@@ -79,19 +88,16 @@ class CountryCodes
                 'alpha3' => 'AND',
                 'numeric' => '020',
                 'isd' => '376',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Андорра',
-                        'fullName' => 'Княжество Андорра',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Андорра',
+                        'countryFull' => 'Княжество Андорра',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Andorra',
-                        'fullName' => 'Andorra',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Andorra',
+                        'countryFull' => 'Andorra',
                     ),
             ),
         'AE' =>
@@ -100,19 +106,16 @@ class CountryCodes
                 'alpha3' => 'ARE',
                 'numeric' => '784',
                 'isd' => '971',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'ОАЭ',
-                        'fullName' => 'Объединенные Арабские Эмираты',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'ОАЭ',
+                        'countryFull' => 'Объединенные Арабские Эмираты',
                     ),
                 'en' =>
                     array(
-                        'name' => 'UAE',
-                        'fullName' => 'United Arab Emirates',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'UAE',
+                        'countryFull' => 'United Arab Emirates',
                     ),
             ),
         'AF' =>
@@ -121,19 +124,16 @@ class CountryCodes
                 'alpha3' => 'AFG',
                 'numeric' => '004',
                 'isd' => '93',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Афганистан',
-                        'fullName' => 'Переходное Исламское Государство Афганистан',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Афганистан',
+                        'countryFull' => 'Переходное Исламское Государство Афганистан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Afghanistan',
-                        'fullName' => 'Afghanistan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Afghanistan',
+                        'countryFull' => 'Afghanistan',
                     ),
             ),
         'AG' =>
@@ -142,19 +142,16 @@ class CountryCodes
                 'alpha3' => 'ATG',
                 'numeric' => '028',
                 'isd' => '1268',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Антигуа и Барбуда',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Антигуа и Барбуда',
+                        'countryFull' => 'Антигуа и Барбуда',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Antigua and Barbuda',
-                        'fullName' => 'Antigua and Barbuda',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Antigua and Barbuda',
+                        'countryFull' => 'Antigua and Barbuda',
                     ),
             ),
         'AI' =>
@@ -163,19 +160,16 @@ class CountryCodes
                 'alpha3' => 'AIA',
                 'numeric' => '660',
                 'isd' => '1264',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Ангилья',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Ангилья',
+                        'countryFull' => 'Ангилья',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Anguilla',
-                        'fullName' => 'Anguilla',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Anguilla',
+                        'countryFull' => 'Anguilla',
                     ),
             ),
         'AL' =>
@@ -184,19 +178,16 @@ class CountryCodes
                 'alpha3' => 'ALB',
                 'numeric' => '008',
                 'isd' => '355',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Албания',
-                        'fullName' => 'Республика Албания',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Албания',
+                        'countryFull' => 'Республика Албания',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Albania',
-                        'fullName' => 'Albania',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Albania',
+                        'countryFull' => 'Albania',
                     ),
             ),
         'AM' =>
@@ -205,19 +196,16 @@ class CountryCodes
                 'alpha3' => 'ARM',
                 'numeric' => '051',
                 'isd' => '374',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Армения',
-                        'fullName' => 'Республика Армения',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Армения',
+                        'countryFull' => 'Республика Армения',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Armenia',
-                        'fullName' => 'Armenia',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Armenia',
+                        'countryFull' => 'Armenia',
                     ),
             ),
         'AO' =>
@@ -226,19 +214,16 @@ class CountryCodes
                 'alpha3' => 'AGO',
                 'numeric' => '024',
                 'isd' => '244',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Ангола',
-                        'fullName' => 'Республика Ангола',
-                        'continent' => 'Африка',
-                        'location' => 'Центральная Африка',
+                        'country' => 'Ангола',
+                        'countryFull' => 'Республика Ангола',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Angola',
-                        'fullName' => 'Angola',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Angola',
+                        'countryFull' => 'Angola',
                     ),
             ),
         'AQ' =>
@@ -247,19 +232,16 @@ class CountryCodes
                 'alpha3' => 'ATA',
                 'numeric' => '010',
                 'isd' => '672',
+                'continentCode' => 'AN',
                 'ru' =>
                     array(
-                        'name' => 'Антарктида',
-                        'fullName' => Null,
-                        'continent' => 'Антарктика',
-                        'location' => Null,
+                        'country' => 'Антарктида',
+                        'countryFull' => 'Антарктида',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Antarctica',
-                        'fullName' => 'Antarctica',
-                        'continent' => 'Antarctica',
-                        'location' => 'Antarctica',
+                        'country' => 'Antarctica',
+                        'countryFull' => 'Antarctica',
                     ),
             ),
         'AR' =>
@@ -268,19 +250,16 @@ class CountryCodes
                 'alpha3' => 'ARG',
                 'numeric' => '032',
                 'isd' => '54',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Аргентина',
-                        'fullName' => 'Аргентинская Республика',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Аргентина',
+                        'countryFull' => 'Аргентинская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Argentina',
-                        'fullName' => 'Argentina',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Argentina',
+                        'countryFull' => 'Argentina',
                     ),
             ),
         'AS' =>
@@ -289,19 +268,16 @@ class CountryCodes
                 'alpha3' => 'ASM',
                 'numeric' => '016',
                 'isd' => '1684',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Американское Самоа',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Американское Самоа',
+                        'countryFull' => 'Американское Самоа',
                     ),
                 'en' =>
                     array(
-                        'name' => 'American Samoa',
-                        'fullName' => 'American Samoa',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'American Samoa',
+                        'countryFull' => 'American Samoa',
                     ),
             ),
         'AT' =>
@@ -310,19 +286,16 @@ class CountryCodes
                 'alpha3' => 'AUT',
                 'numeric' => '040',
                 'isd' => '43',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Австрия',
-                        'fullName' => 'Австрийская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Западная Европа',
+                        'country' => 'Австрия',
+                        'countryFull' => 'Австрийская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Austria',
-                        'fullName' => 'Austria',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Austria',
+                        'countryFull' => 'Austria',
                     ),
             ),
         'AU' =>
@@ -331,19 +304,16 @@ class CountryCodes
                 'alpha3' => 'AUS',
                 'numeric' => '036',
                 'isd' => '61',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Австралия',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Австралия и Новая Зеландия',
+                        'country' => 'Австралия',
+                        'countryFull' => 'Австралия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Australia',
-                        'fullName' => 'Australia',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Australia',
+                        'countryFull' => 'Australia',
                     ),
             ),
         'AW' =>
@@ -352,19 +322,16 @@ class CountryCodes
                 'alpha3' => 'ABW',
                 'numeric' => '533',
                 'isd' => '297',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Аруба',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Аруба',
+                        'countryFull' => 'Аруба',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Aruba',
-                        'fullName' => 'Aruba',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Aruba',
+                        'countryFull' => 'Aruba',
                     ),
             ),
         'AX' =>
@@ -373,19 +340,16 @@ class CountryCodes
                 'alpha3' => 'ALA',
                 'numeric' => '248',
                 'isd' => '358',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Эландские острова',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Эландские острова',
+                        'countryFull' => 'Эландские острова',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Åland Islands',
-                        'fullName' => 'Åland Islands',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Åland Islands',
+                        'countryFull' => 'Åland Islands',
                     ),
             ),
         'AZ' =>
@@ -394,19 +358,16 @@ class CountryCodes
                 'alpha3' => 'AZE',
                 'numeric' => '031',
                 'isd' => '994',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Азербайджан',
-                        'fullName' => 'Республика Азербайджан',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Азербайджан',
+                        'countryFull' => 'Республика Азербайджан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Azerbaijan',
-                        'fullName' => 'Azerbaijan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Azerbaijan',
+                        'countryFull' => 'Azerbaijan',
                     ),
             ),
         'BA' =>
@@ -415,19 +376,16 @@ class CountryCodes
                 'alpha3' => 'BIH',
                 'numeric' => '070',
                 'isd' => '387',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Босния и Герцеговина',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Босния и Герцеговина',
+                        'countryFull' => 'Босния и Герцеговина',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bosnia and Herzegovina',
-                        'fullName' => 'Bosnia and Herzegovina',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Bosnia and Herzegovina',
+                        'countryFull' => 'Bosnia and Herzegovina',
                     ),
             ),
         'BB' =>
@@ -436,19 +394,16 @@ class CountryCodes
                 'alpha3' => 'BRB',
                 'numeric' => '052',
                 'isd' => '1246',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Барбадос',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Барбадос',
+                        'countryFull' => 'Барбадос',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Barbados',
-                        'fullName' => 'Barbados',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Barbados',
+                        'countryFull' => 'Barbados',
                     ),
             ),
         'BD' =>
@@ -457,19 +412,16 @@ class CountryCodes
                 'alpha3' => 'BGD',
                 'numeric' => '050',
                 'isd' => '880',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Бангладеш',
-                        'fullName' => 'Народная Республика Бангладеш',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Бангладеш',
+                        'countryFull' => 'Народная Республика Бангладеш',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bangladesh',
-                        'fullName' => 'Bangladesh',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Bangladesh',
+                        'countryFull' => 'Bangladesh',
                     ),
             ),
         'BE' =>
@@ -478,19 +430,16 @@ class CountryCodes
                 'alpha3' => 'BEL',
                 'numeric' => '056',
                 'isd' => '32',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Бельгия',
-                        'fullName' => 'Королевство Бельгии',
-                        'continent' => 'Европа',
-                        'location' => 'Западная Европа',
+                        'country' => 'Бельгия',
+                        'countryFull' => 'Королевство Бельгии',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Belgium',
-                        'fullName' => 'Belgium',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Belgium',
+                        'countryFull' => 'Belgium',
                     ),
             ),
         'BF' =>
@@ -499,19 +448,16 @@ class CountryCodes
                 'alpha3' => 'BFA',
                 'numeric' => '854',
                 'isd' => '226',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Буркина-Фасо',
-                        'fullName' => Null,
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Буркина-Фасо',
+                        'countryFull' => 'Буркина-Фасо',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Burkina Faso',
-                        'fullName' => 'Burkina Faso',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Burkina Faso',
+                        'countryFull' => 'Burkina Faso',
                     ),
             ),
         'BG' =>
@@ -520,19 +466,16 @@ class CountryCodes
                 'alpha3' => 'BGR',
                 'numeric' => '100',
                 'isd' => '359',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Болгария',
-                        'fullName' => 'Республика Болгария',
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Болгария',
+                        'countryFull' => 'Республика Болгария',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bulgaria',
-                        'fullName' => 'Bulgaria',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Bulgaria',
+                        'countryFull' => 'Bulgaria',
                     ),
             ),
         'BH' =>
@@ -541,19 +484,16 @@ class CountryCodes
                 'alpha3' => 'BHR',
                 'numeric' => '048',
                 'isd' => '973',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Бахрейн',
-                        'fullName' => 'Королевство Бахрейн',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Бахрейн',
+                        'countryFull' => 'Королевство Бахрейн',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bahrain',
-                        'fullName' => 'Bahrain',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Bahrain',
+                        'countryFull' => 'Bahrain',
                     ),
             ),
         'BI' =>
@@ -562,19 +502,16 @@ class CountryCodes
                 'alpha3' => 'BDI',
                 'numeric' => '108',
                 'isd' => '257',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Бурунди',
-                        'fullName' => 'Республика Бурунди',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Бурунди',
+                        'countryFull' => 'Республика Бурунди',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Burundi',
-                        'fullName' => 'Burundi',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Burundi',
+                        'countryFull' => 'Burundi',
                     ),
             ),
         'BJ' =>
@@ -583,19 +520,16 @@ class CountryCodes
                 'alpha3' => 'BEN',
                 'numeric' => '204',
                 'isd' => '229',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Бенин',
-                        'fullName' => 'Республика Бенин',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Бенин',
+                        'countryFull' => 'Республика Бенин',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Benin',
-                        'fullName' => 'Benin',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Benin',
+                        'countryFull' => 'Benin',
                     ),
             ),
         'BL' =>
@@ -603,20 +537,17 @@ class CountryCodes
                 'alpha2' => 'BL',
                 'alpha3' => 'BLM',
                 'numeric' => '652',
-                'isd' => Null,
+                'isd' => '590',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Сен-Бартельми',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Сен-Бартельми',
+                        'countryFull' => 'Сен-Бартельми',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Saint Barthélemy',
-                        'fullName' => 'Saint Barthélemy',
-                        'continent' => Null,
-                        'location' => Null,
+                        'country' => 'Saint Barthélemy',
+                        'countryFull' => 'Saint Barthélemy',
                     ),
             ),
         'BM' =>
@@ -625,19 +556,16 @@ class CountryCodes
                 'alpha3' => 'BMU',
                 'numeric' => '060',
                 'isd' => '1441',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Бермуды',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Северная Америка',
+                        'country' => 'Бермуды',
+                        'countryFull' => 'Бермуды',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bermuda',
-                        'fullName' => 'Bermuda',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Bermuda',
+                        'countryFull' => 'Bermuda',
                     ),
             ),
         'BN' =>
@@ -646,19 +574,16 @@ class CountryCodes
                 'alpha3' => 'BRN',
                 'numeric' => '096',
                 'isd' => '672',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Бруней-Даруссалам',
-                        'fullName' => Null,
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Бруней-Даруссалам',
+                        'countryFull' => 'Бруней-Даруссалам',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Brunei Darussalam',
-                        'fullName' => 'Brunei Darussalam',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Brunei Darussalam',
+                        'countryFull' => 'Brunei Darussalam',
                     ),
             ),
         'BO' =>
@@ -667,19 +592,16 @@ class CountryCodes
                 'alpha3' => 'BOL',
                 'numeric' => '068',
                 'isd' => '591',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Боливия',
-                        'fullName' => 'Многонациональное Государство Боливия',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Боливия',
+                        'countryFull' => 'Многонациональное Государство Боливия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bolivia',
-                        'fullName' => 'Plurinational State of Bolivia',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Bolivia',
+                        'countryFull' => 'Plurinational State of Bolivia',
                     ),
             ),
         'BQ' =>
@@ -688,19 +610,16 @@ class CountryCodes
                 'alpha3' => 'BES',
                 'numeric' => '535',
                 'isd' => Null,
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Бонайре, Саба и Синт-Эстатиус',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Бонайре, Саба и Синт-Эстатиус',
+                        'countryFull' => 'Бонайре, Саба и Синт-Эстатиус',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bonaire, Sint Eustatius and Saba',
-                        'fullName' => 'Bonaire, Sint Eustatius and Saba',
-                        'continent' => Null,
-                        'location' => Null,
+                        'country' => 'Bonaire, Sint Eustatius and Saba',
+                        'countryFull' => 'Bonaire, Sint Eustatius and Saba',
                     ),
             ),
         'BR' =>
@@ -709,19 +628,16 @@ class CountryCodes
                 'alpha3' => 'BRA',
                 'numeric' => '076',
                 'isd' => '55',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Бразилия',
-                        'fullName' => 'Федеративная Республика Бразилия',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Бразилия',
+                        'countryFull' => 'Федеративная Республика Бразилия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Brazil',
-                        'fullName' => 'Brazil',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Brazil',
+                        'countryFull' => 'Brazil',
                     ),
             ),
         'BS' =>
@@ -730,19 +646,16 @@ class CountryCodes
                 'alpha3' => 'BHS',
                 'numeric' => '044',
                 'isd' => '1242',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Багамы',
-                        'fullName' => 'Содружество Багамы',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Багамы',
+                        'countryFull' => 'Содружество Багамы',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bahamas',
-                        'fullName' => 'Bahamas',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Bahamas',
+                        'countryFull' => 'Bahamas',
                     ),
             ),
         'BT' =>
@@ -751,19 +664,16 @@ class CountryCodes
                 'alpha3' => 'BTN',
                 'numeric' => '064',
                 'isd' => '975',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Бутан',
-                        'fullName' => 'Королевство Бутан',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Бутан',
+                        'countryFull' => 'Королевство Бутан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bhutan',
-                        'fullName' => 'Bhutan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Bhutan',
+                        'countryFull' => 'Bhutan',
                     ),
             ),
         'BV' =>
@@ -772,19 +682,16 @@ class CountryCodes
                 'alpha3' => 'BVT',
                 'numeric' => '074',
                 'isd' => '61',
+                'continentCode' => 'AN',
                 'ru' =>
                     array(
-                        'name' => 'Остров Буве',
-                        'fullName' => Null,
-                        'continent' => '',
-                        'location' => 'Южный океан',
+                        'country' => 'Остров Буве',
+                        'countryFull' => 'Остров Буве',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Bouvet Island',
-                        'fullName' => 'Bouvet Island',
-                        'continent' => 'Antarctica',
-                        'location' => 'Antarctica',
+                        'country' => 'Bouvet Island',
+                        'countryFull' => 'Bouvet Island',
                     ),
             ),
         'BW' =>
@@ -793,19 +700,16 @@ class CountryCodes
                 'alpha3' => 'BWA',
                 'numeric' => '072',
                 'isd' => '267',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Ботсвана',
-                        'fullName' => 'Республика Ботсвана',
-                        'continent' => 'Африка',
-                        'location' => 'Южная часть Африки',
+                        'country' => 'Ботсвана',
+                        'countryFull' => 'Республика Ботсвана',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Botswana',
-                        'fullName' => 'Botswana',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Botswana',
+                        'countryFull' => 'Botswana',
                     ),
             ),
         'BY' =>
@@ -814,19 +718,16 @@ class CountryCodes
                 'alpha3' => 'BLR',
                 'numeric' => '112',
                 'isd' => '375',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Беларусь',
-                        'fullName' => 'Республика Беларусь',
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Беларусь',
+                        'countryFull' => 'Республика Беларусь',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Belarus',
-                        'fullName' => 'Belarus',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Belarus',
+                        'countryFull' => 'Belarus',
                     ),
             ),
         'BZ' =>
@@ -835,19 +736,16 @@ class CountryCodes
                 'alpha3' => 'BLZ',
                 'numeric' => '084',
                 'isd' => '501',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Белиз',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Белиз',
+                        'countryFull' => 'Белиз',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Belize',
-                        'fullName' => 'Belize',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Belize',
+                        'countryFull' => 'Belize',
                     ),
             ),
         'CA' =>
@@ -856,19 +754,16 @@ class CountryCodes
                 'alpha3' => 'CAN',
                 'numeric' => '124',
                 'isd' => '1',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Канада',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Северная Америка',
+                        'country' => 'Канада',
+                        'countryFull' => 'Канада',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Canada',
-                        'fullName' => 'Canada',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Canada',
+                        'countryFull' => 'Canada',
                     ),
             ),
         'CC' =>
@@ -877,19 +772,16 @@ class CountryCodes
                 'alpha3' => 'CCK',
                 'numeric' => '166',
                 'isd' => '891',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Кокосовые острова',
-                        'fullName' => 'Кокосовые (Килинг) острова',
-                        'continent' => 'Океания',
-                        'location' => 'Индийский океан',
+                        'country' => 'Кокосовые острова',
+                        'countryFull' => 'Кокосовые (Килинг) острова',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Cocos Islands',
-                        'fullName' => 'Cocos (Keeling) Islands',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Cocos Islands',
+                        'countryFull' => 'Cocos (Keeling) Islands',
                     ),
             ),
         'CD' =>
@@ -898,19 +790,16 @@ class CountryCodes
                 'alpha3' => 'COD',
                 'numeric' => '180',
                 'isd' => '243',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Демократическая Республика Конго',
-                        'fullName' => 'Демократическая Республика Конго',
-                        'continent' => 'Африка',
-                        'location' => 'Центральная Африка',
+                        'country' => 'Демократическая Республика Конго',
+                        'countryFull' => 'Демократическая Республика Конго',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Democratic Republic of the Congo',
-                        'fullName' => 'Democratic Republic of the Congo',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Democratic Republic of the Congo',
+                        'countryFull' => 'Democratic Republic of the Congo',
                     ),
             ),
         'CF' =>
@@ -919,19 +808,16 @@ class CountryCodes
                 'alpha3' => 'CAF',
                 'numeric' => '140',
                 'isd' => '236',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'ЦАР',
-                        'fullName' => 'Центральноафриканская Респу́блика',
-                        'continent' => 'Африка',
-                        'location' => 'Центральная Африка',
+                        'country' => 'ЦАР',
+                        'countryFull' => 'Центральноафриканская Респу́блика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'CAR',
-                        'fullName' => 'Central African Republic',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'CAR',
+                        'countryFull' => 'Central African Republic',
                     ),
             ),
         'CG' =>
@@ -940,19 +826,16 @@ class CountryCodes
                 'alpha3' => 'COG',
                 'numeric' => '178',
                 'isd' => '242',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Конго',
-                        'fullName' => 'Республика Конго',
-                        'continent' => 'Африка',
-                        'location' => 'Центральная Африка',
+                        'country' => 'Конго',
+                        'countryFull' => 'Республика Конго',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Congo',
-                        'fullName' => 'Republic of the Congo',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Congo',
+                        'countryFull' => 'Republic of the Congo',
                     ),
             ),
         'CH' =>
@@ -961,19 +844,16 @@ class CountryCodes
                 'alpha3' => 'CHE',
                 'numeric' => '756',
                 'isd' => '41',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Швейцария',
-                        'fullName' => 'Швейцарская Конфедерация',
-                        'continent' => 'Европа',
-                        'location' => 'Западная Европа',
+                        'country' => 'Швейцария',
+                        'countryFull' => 'Швейцарская Конфедерация',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Switzerland',
-                        'fullName' => 'Swiss Confederation',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Switzerland',
+                        'countryFull' => 'Swiss Confederation',
                     ),
             ),
         'CI' =>
@@ -982,19 +862,16 @@ class CountryCodes
                 'alpha3' => 'CIV',
                 'numeric' => '384',
                 'isd' => '225',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Кот д\'Ивуар',
-                        'fullName' => 'Республика Кот д\'Ивуар',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Кот д\'Ивуар',
+                        'countryFull' => 'Республика Кот д\'Ивуар',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Cote d\'Ivoire',
-                        'fullName' => 'Cote d\'Ivoire',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Cote d\'Ivoire',
+                        'countryFull' => 'Cote d\'Ivoire',
                     ),
             ),
         'CK' =>
@@ -1003,19 +880,16 @@ class CountryCodes
                 'alpha3' => 'COK',
                 'numeric' => '184',
                 'isd' => '682',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Острова Кука',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Острова Кука',
+                        'countryFull' => 'Острова Кука',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Cook Islands',
-                        'fullName' => 'Cook Islands',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Cook Islands',
+                        'countryFull' => 'Cook Islands',
                     ),
             ),
         'CL' =>
@@ -1024,19 +898,16 @@ class CountryCodes
                 'alpha3' => 'CHL',
                 'numeric' => '152',
                 'isd' => '56',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Чили',
-                        'fullName' => 'Республика Чили',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Чили',
+                        'countryFull' => 'Республика Чили',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Chile',
-                        'fullName' => 'Chile',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Chile',
+                        'countryFull' => 'Chile',
                     ),
             ),
         'CM' =>
@@ -1045,19 +916,16 @@ class CountryCodes
                 'alpha3' => 'CMR',
                 'numeric' => '120',
                 'isd' => '231',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Камерун',
-                        'fullName' => 'Республика Камерун',
-                        'continent' => 'Африка',
-                        'location' => 'Центральная Африка',
+                        'country' => 'Камерун',
+                        'countryFull' => 'Республика Камерун',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Cameroon',
-                        'fullName' => 'Cameroon',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Cameroon',
+                        'countryFull' => 'Cameroon',
                     ),
             ),
         'CN' =>
@@ -1066,19 +934,16 @@ class CountryCodes
                 'alpha3' => 'CHN',
                 'numeric' => '156',
                 'isd' => '86',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Китай',
-                        'fullName' => 'Китайская Народная Республика',
-                        'continent' => 'Азия',
-                        'location' => 'Восточная Азия',
+                        'country' => 'Китай',
+                        'countryFull' => 'Китайская Народная Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'China',
-                        'fullName' => 'China',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'China',
+                        'countryFull' => 'China',
                     ),
             ),
         'CO' =>
@@ -1087,19 +952,16 @@ class CountryCodes
                 'alpha3' => 'COL',
                 'numeric' => '170',
                 'isd' => '57',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Колумбия',
-                        'fullName' => 'Республика Колумбия',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Колумбия',
+                        'countryFull' => 'Республика Колумбия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Colombia',
-                        'fullName' => 'Colombia',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Colombia',
+                        'countryFull' => 'Colombia',
                     ),
             ),
         'CR' =>
@@ -1108,19 +970,16 @@ class CountryCodes
                 'alpha3' => 'CRI',
                 'numeric' => '188',
                 'isd' => '506',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Коста-Рика',
-                        'fullName' => 'Республика Коста-Рика',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Центральная Америка',
+                        'country' => 'Коста-Рика',
+                        'countryFull' => 'Республика Коста-Рика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Costa Rica',
-                        'fullName' => 'Costa Rica',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Costa Rica',
+                        'countryFull' => 'Costa Rica',
                     ),
             ),
         'CU' =>
@@ -1129,19 +988,16 @@ class CountryCodes
                 'alpha3' => 'CUB',
                 'numeric' => '192',
                 'isd' => '53',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Куба',
-                        'fullName' => 'Республика Куба',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Куба',
+                        'countryFull' => 'Республика Куба',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Cuba',
-                        'fullName' => 'Cuba',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Cuba',
+                        'countryFull' => 'Cuba',
                     ),
             ),
         'CV' =>
@@ -1150,19 +1006,16 @@ class CountryCodes
                 'alpha3' => 'CPV',
                 'numeric' => '132',
                 'isd' => '238',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Кабо-Верде',
-                        'fullName' => 'Республика Кабо-Верде',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Кабо-Верде',
+                        'countryFull' => 'Республика Кабо-Верде',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Cape Verde',
-                        'fullName' => 'Cape Verde',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Cape Verde',
+                        'countryFull' => 'Cape Verde',
                     ),
             ),
         'CW' =>
@@ -1170,20 +1023,17 @@ class CountryCodes
                 'alpha2' => 'CW',
                 'alpha3' => 'CUW',
                 'numeric' => '531',
-                'isd' => Null,
+                'isd' => '599',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Кюрасао',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Кюрасао',
+                        'countryFull' => 'Кюрасао',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Curaçao',
-                        'fullName' => 'Curaçao',
-                        'continent' => Null,
-                        'location' => Null,
+                        'country' => 'Curaçao',
+                        'countryFull' => 'Curaçao',
                     ),
             ),
         'CX' =>
@@ -1192,19 +1042,16 @@ class CountryCodes
                 'alpha3' => 'CXR',
                 'numeric' => '162',
                 'isd' => '61',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Остров Рождества',
-                        'fullName' => Null,
-                        'continent' => 'Азия',
-                        'location' => 'Индийский океан',
+                        'country' => 'Остров Рождества',
+                        'countryFull' => 'Остров Рождества',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Christmas Island',
-                        'fullName' => 'Christmas Island',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Christmas Island',
+                        'countryFull' => 'Christmas Island',
                     ),
             ),
         'CY' =>
@@ -1213,19 +1060,16 @@ class CountryCodes
                 'alpha3' => 'CYP',
                 'numeric' => '196',
                 'isd' => '357',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Кипр',
-                        'fullName' => 'Республика Кипр',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Кипр',
+                        'countryFull' => 'Республика Кипр',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Cyprus',
-                        'fullName' => 'Cyprus',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Cyprus',
+                        'countryFull' => 'Cyprus',
                     ),
             ),
         'CZ' =>
@@ -1234,19 +1078,16 @@ class CountryCodes
                 'alpha3' => 'CZE',
                 'numeric' => '203',
                 'isd' => '420',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Чехия',
-                        'fullName' => 'Чешская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Чехия',
+                        'countryFull' => 'Чешская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Czech Republic',
-                        'fullName' => 'Czech Republic',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Czech Republic',
+                        'countryFull' => 'Czech Republic',
                     ),
             ),
         'DE' =>
@@ -1255,19 +1096,16 @@ class CountryCodes
                 'alpha3' => 'DEU',
                 'numeric' => '276',
                 'isd' => '49',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Германия',
-                        'fullName' => 'Федеративная Республика Германия',
-                        'continent' => 'Европа',
-                        'location' => 'Западная Европа',
+                        'country' => 'Германия',
+                        'countryFull' => 'Федеративная Республика Германия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Germany',
-                        'fullName' => 'Germany',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Germany',
+                        'countryFull' => 'Germany',
                     ),
             ),
         'DJ' =>
@@ -1276,19 +1114,16 @@ class CountryCodes
                 'alpha3' => 'DJI',
                 'numeric' => '262',
                 'isd' => '253',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Джибути',
-                        'fullName' => 'Республика Джибути',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Джибути',
+                        'countryFull' => 'Республика Джибути',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Djibouti',
-                        'fullName' => 'Djibouti',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Djibouti',
+                        'countryFull' => 'Djibouti',
                     ),
             ),
         'DK' =>
@@ -1297,19 +1132,16 @@ class CountryCodes
                 'alpha3' => 'DNK',
                 'numeric' => '208',
                 'isd' => '45',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Дания',
-                        'fullName' => 'Королевство Дания',
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Дания',
+                        'countryFull' => 'Королевство Дания',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Denmark',
-                        'fullName' => 'Denmark',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Denmark',
+                        'countryFull' => 'Denmark',
                     ),
             ),
         'DM' =>
@@ -1318,19 +1150,16 @@ class CountryCodes
                 'alpha3' => 'DMA',
                 'numeric' => '212',
                 'isd' => '1767',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Доминика',
-                        'fullName' => 'Содружество Доминики',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Доминика',
+                        'countryFull' => 'Содружество Доминики',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Dominica',
-                        'fullName' => 'Dominica',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Dominica',
+                        'countryFull' => 'Dominica',
                     ),
             ),
         'DO' =>
@@ -1339,19 +1168,16 @@ class CountryCodes
                 'alpha3' => 'DOM',
                 'numeric' => '214',
                 'isd' => '1809',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Доминиканская Республика',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Доминиканская Республика',
+                        'countryFull' => 'Доминиканская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Dominican Republic',
-                        'fullName' => 'Dominican Republic',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Dominican Republic',
+                        'countryFull' => 'Dominican Republic',
                     ),
             ),
         'DZ' =>
@@ -1360,19 +1186,16 @@ class CountryCodes
                 'alpha3' => 'DZA',
                 'numeric' => '012',
                 'isd' => '213',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Алжир',
-                        'fullName' => 'Алжирская Народная Демократическая Республика',
-                        'continent' => 'Африка',
-                        'location' => 'Северная Африка',
+                        'country' => 'Алжир',
+                        'countryFull' => 'Алжирская Народная Демократическая Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Algeria',
-                        'fullName' => 'Algeria',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Algeria',
+                        'countryFull' => 'Algeria',
                     ),
             ),
         'EC' =>
@@ -1381,19 +1204,16 @@ class CountryCodes
                 'alpha3' => 'ECU',
                 'numeric' => '218',
                 'isd' => '593',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Эквадор',
-                        'fullName' => 'Республика Эквадор',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Эквадор',
+                        'countryFull' => 'Республика Эквадор',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Ecuador',
-                        'fullName' => 'Ecuador',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Ecuador',
+                        'countryFull' => 'Ecuador',
                     ),
             ),
         'EE' =>
@@ -1402,19 +1222,16 @@ class CountryCodes
                 'alpha3' => 'EST',
                 'numeric' => '233',
                 'isd' => '372',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Эстония',
-                        'fullName' => 'Эстонская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Эстония',
+                        'countryFull' => 'Эстонская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Estonia',
-                        'fullName' => 'Estonia',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Estonia',
+                        'countryFull' => 'Estonia',
                     ),
             ),
         'EG' =>
@@ -1423,19 +1240,16 @@ class CountryCodes
                 'alpha3' => 'EGY',
                 'numeric' => '818',
                 'isd' => '20',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Египет',
-                        'fullName' => 'Арабская Республика Египет',
-                        'continent' => 'Африка',
-                        'location' => 'Северная Африка',
+                        'country' => 'Египет',
+                        'countryFull' => 'Арабская Республика Египет',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Egypt',
-                        'fullName' => 'Egypt',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Egypt',
+                        'countryFull' => 'Egypt',
                     ),
             ),
         'EH' =>
@@ -1444,19 +1258,16 @@ class CountryCodes
                 'alpha3' => 'ESH',
                 'numeric' => '732',
                 'isd' => '212',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Западная Сахара',
-                        'fullName' => Null,
-                        'continent' => 'Африка',
-                        'location' => 'Северная Африка',
+                        'country' => 'Западная Сахара',
+                        'countryFull' => 'Западная Сахара',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Western Sahara',
-                        'fullName' => 'Western Sahara',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Western Sahara',
+                        'countryFull' => 'Western Sahara',
                     ),
             ),
         'ER' =>
@@ -1465,19 +1276,16 @@ class CountryCodes
                 'alpha3' => 'ERI',
                 'numeric' => '232',
                 'isd' => '291',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Эритрея',
-                        'fullName' => Null,
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Эритрея',
+                        'countryFull' => 'Эритрея',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Eritrea',
-                        'fullName' => 'Eritrea',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Eritrea',
+                        'countryFull' => 'Eritrea',
                     ),
             ),
         'ES' =>
@@ -1486,19 +1294,16 @@ class CountryCodes
                 'alpha3' => 'ESP',
                 'numeric' => '724',
                 'isd' => '34',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Испания',
-                        'fullName' => 'Королевство Испания',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Испания',
+                        'countryFull' => 'Королевство Испания',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Spain',
-                        'fullName' => 'Spain',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Spain',
+                        'countryFull' => 'Spain',
                     ),
             ),
         'ET' =>
@@ -1507,19 +1312,16 @@ class CountryCodes
                 'alpha3' => 'ETH',
                 'numeric' => '231',
                 'isd' => '251',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Эфиопия',
-                        'fullName' => 'Федеративная Демократическая Республика Эфиопия',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Эфиопия',
+                        'countryFull' => 'Федеративная Демократическая Республика Эфиопия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Ethiopia',
-                        'fullName' => 'Ethiopia',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Ethiopia',
+                        'countryFull' => 'Ethiopia',
                     ),
             ),
         'FI' =>
@@ -1528,19 +1330,16 @@ class CountryCodes
                 'alpha3' => 'FIN',
                 'numeric' => '246',
                 'isd' => '238',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Финляндия',
-                        'fullName' => 'Финляндская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Финляндия',
+                        'countryFull' => 'Финляндская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Finland',
-                        'fullName' => 'Finland',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Finland',
+                        'countryFull' => 'Finland',
                     ),
             ),
         'FJ' =>
@@ -1549,19 +1348,16 @@ class CountryCodes
                 'alpha3' => 'FJI',
                 'numeric' => '242',
                 'isd' => '679',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Фиджи',
-                        'fullName' => 'Республика островов Фиджи',
-                        'continent' => 'Океания',
-                        'location' => 'Меланезия',
+                        'country' => 'Фиджи',
+                        'countryFull' => 'Республика островов Фиджи',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Fiji',
-                        'fullName' => 'Fiji',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Fiji',
+                        'countryFull' => 'Fiji',
                     ),
             ),
         'FK' =>
@@ -1570,19 +1366,16 @@ class CountryCodes
                 'alpha3' => 'FLK',
                 'numeric' => '238',
                 'isd' => '500',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Фолклендские острова (Мальвинские)',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Фолклендские острова',
+                        'countryFull' => 'Фолклендские острова (Мальвинские)',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Falkland Islands (Malvinas)',
-                        'fullName' => 'Falkland Islands (Malvinas)',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Falkland Islands',
+                        'countryFull' => 'Falkland Islands (Malvinas)',
                     ),
             ),
         'FM' =>
@@ -1591,19 +1384,16 @@ class CountryCodes
                 'alpha3' => 'FSM',
                 'numeric' => '583',
                 'isd' => '691',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Микронезия, Федеративные Штаты',
-                        'fullName' => 'Федеративные штаты Микронезии',
-                        'continent' => 'Океания',
-                        'location' => 'Микронезия',
+                        'country' => 'Микронезия, Федеративные Штаты',
+                        'countryFull' => 'Федеративные штаты Микронезии',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Micronesia, Federated States of',
-                        'fullName' => 'Micronesia, Federated States of',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Micronesia, Federated States of',
+                        'countryFull' => 'Micronesia, Federated States of',
                     ),
             ),
         'FO' =>
@@ -1612,19 +1402,16 @@ class CountryCodes
                 'alpha3' => 'FRO',
                 'numeric' => '234',
                 'isd' => '298',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Фарерские острова',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Фарерские острова',
+                        'countryFull' => 'Фарерские острова',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Faroe Islands',
-                        'fullName' => 'Faroe Islands',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Faroe Islands',
+                        'countryFull' => 'Faroe Islands',
                     ),
             ),
         'FR' =>
@@ -1633,19 +1420,16 @@ class CountryCodes
                 'alpha3' => 'FRA',
                 'numeric' => '250',
                 'isd' => '33',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Франция',
-                        'fullName' => 'Французская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Западная Европа',
+                        'country' => 'Франция',
+                        'countryFull' => 'Французская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'France',
-                        'fullName' => 'France',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'France',
+                        'countryFull' => 'France',
                     ),
             ),
         'GA' =>
@@ -1654,19 +1438,16 @@ class CountryCodes
                 'alpha3' => 'GAB',
                 'numeric' => '266',
                 'isd' => '241',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Габон',
-                        'fullName' => 'Габонская Республика',
-                        'continent' => 'Африка',
-                        'location' => 'Центральная Африка',
+                        'country' => 'Габон',
+                        'countryFull' => 'Габонская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Gabon',
-                        'fullName' => 'Gabon',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Gabon',
+                        'countryFull' => 'Gabon',
                     ),
             ),
         'GB' =>
@@ -1675,19 +1456,16 @@ class CountryCodes
                 'alpha3' => 'GBR',
                 'numeric' => '826',
                 'isd' => '44',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Соединенное Королевство',
-                        'fullName' => 'Соединенное Королевство Великобритании и Северной Ирландии',
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Соединенное Королевство',
+                        'countryFull' => 'Соединенное Королевство Великобритании и Северной Ирландии',
                     ),
                 'en' =>
                     array(
-                        'name' => 'United Kingdom',
-                        'fullName' => 'United Kingdom',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'United Kingdom',
+                        'countryFull' => 'United Kingdom',
                     ),
             ),
         'GD' =>
@@ -1696,19 +1474,16 @@ class CountryCodes
                 'alpha3' => 'GRD',
                 'numeric' => '308',
                 'isd' => '1473',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Гренада',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Гренада',
+                        'countryFull' => 'Гренада',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Grenada',
-                        'fullName' => 'Grenada',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Grenada',
+                        'countryFull' => 'Grenada',
                     ),
             ),
         'GE' =>
@@ -1717,19 +1492,16 @@ class CountryCodes
                 'alpha3' => 'GEO',
                 'numeric' => '268',
                 'isd' => '995',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Грузия',
-                        'fullName' => Null,
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Грузия',
+                        'countryFull' => 'Грузия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Georgia',
-                        'fullName' => 'Georgia',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Georgia',
+                        'countryFull' => 'Georgia',
                     ),
             ),
         'GF' =>
@@ -1738,19 +1510,16 @@ class CountryCodes
                 'alpha3' => 'GUF',
                 'numeric' => '254',
                 'isd' => '594',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Французская Гвиана',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Французская Гвиана',
+                        'countryFull' => 'Французская Гвиана',
                     ),
                 'en' =>
                     array(
-                        'name' => 'French Guiana',
-                        'fullName' => 'French Guiana',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'French Guiana',
+                        'countryFull' => 'French Guiana',
                     ),
             ),
         'GG' =>
@@ -1759,19 +1528,16 @@ class CountryCodes
                 'alpha3' => 'GGY',
                 'numeric' => '831',
                 'isd' => '44',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Гернси',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Гернси',
+                        'countryFull' => 'Гернси',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Guernsey',
-                        'fullName' => 'Guernsey',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Guernsey',
+                        'countryFull' => 'Guernsey',
                     ),
             ),
         'GH' =>
@@ -1780,19 +1546,16 @@ class CountryCodes
                 'alpha3' => 'GHA',
                 'numeric' => '288',
                 'isd' => '233',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Гана',
-                        'fullName' => 'Республика Гана',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Гана',
+                        'countryFull' => 'Республика Гана',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Ghana',
-                        'fullName' => 'Ghana',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Ghana',
+                        'countryFull' => 'Ghana',
                     ),
             ),
         'GI' =>
@@ -1801,19 +1564,16 @@ class CountryCodes
                 'alpha3' => 'GIB',
                 'numeric' => '292',
                 'isd' => '350',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Гибралтар',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Гибралтар',
+                        'countryFull' => 'Гибралтар',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Gibraltar',
-                        'fullName' => 'Gibraltar',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Gibraltar',
+                        'countryFull' => 'Gibraltar',
                     ),
             ),
         'GL' =>
@@ -1822,19 +1582,16 @@ class CountryCodes
                 'alpha3' => 'GRL',
                 'numeric' => '304',
                 'isd' => '299',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Гренландия',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Северная Америка',
+                        'country' => 'Гренландия',
+                        'countryFull' => 'Гренландия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Greenland',
-                        'fullName' => 'Greenland',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Greenland',
+                        'countryFull' => 'Greenland',
                     ),
             ),
         'GM' =>
@@ -1843,19 +1600,16 @@ class CountryCodes
                 'alpha3' => 'GMB',
                 'numeric' => '270',
                 'isd' => '220',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Гамбия',
-                        'fullName' => 'Республика Гамбия',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Гамбия',
+                        'countryFull' => 'Республика Гамбия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Gambia',
-                        'fullName' => 'Gambia',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Gambia',
+                        'countryFull' => 'Gambia',
                     ),
             ),
         'GN' =>
@@ -1864,19 +1618,16 @@ class CountryCodes
                 'alpha3' => 'GIN',
                 'numeric' => '324',
                 'isd' => '224',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Гвинея',
-                        'fullName' => 'Гвинейская Республика',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Гвинея',
+                        'countryFull' => 'Гвинейская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Guinea',
-                        'fullName' => 'Guinea',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Guinea',
+                        'countryFull' => 'Guinea',
                     ),
             ),
         'GP' =>
@@ -1885,19 +1636,16 @@ class CountryCodes
                 'alpha3' => 'GLP',
                 'numeric' => '312',
                 'isd' => '590',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Гваделупа',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Гваделупа',
+                        'countryFull' => 'Гваделупа',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Guadeloupe',
-                        'fullName' => 'Guadeloupe',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Guadeloupe',
+                        'countryFull' => 'Guadeloupe',
                     ),
             ),
         'GQ' =>
@@ -1906,19 +1654,16 @@ class CountryCodes
                 'alpha3' => 'GNQ',
                 'numeric' => '226',
                 'isd' => '240',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Экваториальная Гвинея',
-                        'fullName' => 'Республика Экваториальная Гвинея',
-                        'continent' => 'Африка',
-                        'location' => 'Центральная Африка',
+                        'country' => 'Экваториальная Гвинея',
+                        'countryFull' => 'Республика Экваториальная Гвинея',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Equatorial Guinea',
-                        'fullName' => 'Equatorial Guinea',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Equatorial Guinea',
+                        'countryFull' => 'Equatorial Guinea',
                     ),
             ),
         'GR' =>
@@ -1927,19 +1672,16 @@ class CountryCodes
                 'alpha3' => 'GRC',
                 'numeric' => '300',
                 'isd' => '30',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Греция',
-                        'fullName' => 'Греческая Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Греция',
+                        'countryFull' => 'Греческая Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Greece',
-                        'fullName' => 'Greece',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Greece',
+                        'countryFull' => 'Greece',
                     ),
             ),
         'GS' =>
@@ -1948,19 +1690,16 @@ class CountryCodes
                 'alpha3' => 'SGS',
                 'numeric' => '239',
                 'isd' => '500',
+                'continentCode' => 'AN',
                 'ru' =>
                     array(
-                        'name' => 'Южная Джорджия и Южные Сандвичевы острова',
-                        'fullName' => Null,
-                        'continent' => 'Антарктика',
-                        'location' => 'Южный океан',
+                        'country' => 'Южная Джорджия и Южные Сандвичевы острова',
+                        'countryFull' => 'Южная Джорджия и Южные Сандвичевы острова',
                     ),
                 'en' =>
                     array(
-                        'name' => 'South Georgia and the South Sandwich Islands',
-                        'fullName' => 'South Georgia and the South Sandwich Islands',
-                        'continent' => 'Antarctica',
-                        'location' => 'Antarctica',
+                        'country' => 'South Georgia and the South Sandwich Islands',
+                        'countryFull' => 'South Georgia and the South Sandwich Islands',
                     ),
             ),
         'GT' =>
@@ -1969,19 +1708,16 @@ class CountryCodes
                 'alpha3' => 'GTM',
                 'numeric' => '320',
                 'isd' => '502',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Гватемала',
-                        'fullName' => 'Республика Гватемала',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Центральная Америка',
+                        'country' => 'Гватемала',
+                        'countryFull' => 'Республика Гватемала',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Guatemala',
-                        'fullName' => 'Guatemala',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Guatemala',
+                        'countryFull' => 'Guatemala',
                     ),
             ),
         'GU' =>
@@ -1990,19 +1726,16 @@ class CountryCodes
                 'alpha3' => 'GUM',
                 'numeric' => '316',
                 'isd' => '1871',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Гуам',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Микронезия',
+                        'country' => 'Гуам',
+                        'countryFull' => 'Гуам',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Guam',
-                        'fullName' => 'Guam',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Guam',
+                        'countryFull' => 'Guam',
                     ),
             ),
         'GW' =>
@@ -2011,19 +1744,16 @@ class CountryCodes
                 'alpha3' => 'GNB',
                 'numeric' => '624',
                 'isd' => '245',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Гвинея-Бисау',
-                        'fullName' => 'Республика Гвинея-Бисау',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Гвинея-Бисау',
+                        'countryFull' => 'Республика Гвинея-Бисау',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Guinea-Bissau',
-                        'fullName' => 'Guinea-Bissau',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Guinea-Bissau',
+                        'countryFull' => 'Guinea-Bissau',
                     ),
             ),
         'GY' =>
@@ -2032,19 +1762,16 @@ class CountryCodes
                 'alpha3' => 'GUY',
                 'numeric' => '328',
                 'isd' => '592',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Гайана',
-                        'fullName' => 'Республика Гайана',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Гайана',
+                        'countryFull' => 'Республика Гайана',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Guyana',
-                        'fullName' => 'Guyana',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Guyana',
+                        'countryFull' => 'Guyana',
                     ),
             ),
         'HK' =>
@@ -2053,19 +1780,16 @@ class CountryCodes
                 'alpha3' => 'HKG',
                 'numeric' => '344',
                 'isd' => '852',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Гонконг',
-                        'fullName' => 'Специальный административный регион Китая Гонконг',
-                        'continent' => 'Азия',
-                        'location' => 'Восточная Азия',
+                        'country' => 'Гонконг',
+                        'countryFull' => 'Специальный административный регион Китая Гонконг',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Hong Kong',
-                        'fullName' => 'Hong Kong',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Hong Kong',
+                        'countryFull' => 'Hong Kong',
                     ),
             ),
         'HM' =>
@@ -2074,19 +1798,16 @@ class CountryCodes
                 'alpha3' => 'HMD',
                 'numeric' => '334',
                 'isd' => '672',
+                'continentCode' => 'AN',
                 'ru' =>
                     array(
-                        'name' => 'Остров Херд и острова Макдональд',
-                        'fullName' => Null,
-                        'continent' => 'Антарктика',
-                        'location' => 'Индийский океан',
+                        'country' => 'Остров Херд и острова Макдональд',
+                        'countryFull' => 'Остров Херд и острова Макдональд',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Heard Island and McDonald Islands',
-                        'fullName' => 'Heard Island and McDonald Islands',
-                        'continent' => 'Antarctica',
-                        'location' => 'Antarctica',
+                        'country' => 'Heard Island and McDonald Islands',
+                        'countryFull' => 'Heard Island and McDonald Islands',
                     ),
             ),
         'HN' =>
@@ -2095,19 +1816,16 @@ class CountryCodes
                 'alpha3' => 'HND',
                 'numeric' => '340',
                 'isd' => '504',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Гондурас',
-                        'fullName' => 'Республика Гондурас',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Центральная Америка',
+                        'country' => 'Гондурас',
+                        'countryFull' => 'Республика Гондурас',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Honduras',
-                        'fullName' => 'Honduras',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Honduras',
+                        'countryFull' => 'Honduras',
                     ),
             ),
         'HR' =>
@@ -2116,19 +1834,16 @@ class CountryCodes
                 'alpha3' => 'HRV',
                 'numeric' => '191',
                 'isd' => '385',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Хорватия',
-                        'fullName' => 'Республика Хорватия',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Хорватия',
+                        'countryFull' => 'Республика Хорватия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Croatia',
-                        'fullName' => 'Croatia',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Croatia',
+                        'countryFull' => 'Croatia',
                     ),
             ),
         'HT' =>
@@ -2137,19 +1852,16 @@ class CountryCodes
                 'alpha3' => 'HTI',
                 'numeric' => '332',
                 'isd' => '509',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Гаити',
-                        'fullName' => 'Республика Гаити',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Гаити',
+                        'countryFull' => 'Республика Гаити',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Haiti',
-                        'fullName' => 'Haiti',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Haiti',
+                        'countryFull' => 'Haiti',
                     ),
             ),
         'HU' =>
@@ -2158,19 +1870,16 @@ class CountryCodes
                 'alpha3' => 'HUN',
                 'numeric' => '348',
                 'isd' => '36',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Венгрия',
-                        'fullName' => 'Венгерская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Венгрия',
+                        'countryFull' => 'Венгерская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Hungary',
-                        'fullName' => 'Hungary',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Hungary',
+                        'countryFull' => 'Hungary',
                     ),
             ),
         'ID' =>
@@ -2179,19 +1888,16 @@ class CountryCodes
                 'alpha3' => 'IDN',
                 'numeric' => '360',
                 'isd' => '62',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Индонезия',
-                        'fullName' => 'Республика Индонезия',
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Индонезия',
+                        'countryFull' => 'Республика Индонезия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Indonesia',
-                        'fullName' => 'Indonesia',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Indonesia',
+                        'countryFull' => 'Indonesia',
                     ),
             ),
         'IE' =>
@@ -2200,19 +1906,16 @@ class CountryCodes
                 'alpha3' => 'IRL',
                 'numeric' => '372',
                 'isd' => '353',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Ирландия',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Ирландия',
+                        'countryFull' => 'Ирландия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Ireland',
-                        'fullName' => 'Ireland',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Ireland',
+                        'countryFull' => 'Ireland',
                     ),
             ),
         'IL' =>
@@ -2221,19 +1924,16 @@ class CountryCodes
                 'alpha3' => 'ISR',
                 'numeric' => '376',
                 'isd' => '972',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Израиль',
-                        'fullName' => 'Государство Израиль',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Израиль',
+                        'countryFull' => 'Государство Израиль',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Israel',
-                        'fullName' => 'Israel',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Israel',
+                        'countryFull' => 'Israel',
                     ),
             ),
         'IM' =>
@@ -2242,19 +1942,16 @@ class CountryCodes
                 'alpha3' => 'IMN',
                 'numeric' => '833',
                 'isd' => '44',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Остров Мэн',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Остров Мэн',
+                        'countryFull' => 'Остров Мэн',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Isle of Man',
-                        'fullName' => 'Isle of Man',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Isle of Man',
+                        'countryFull' => 'Isle of Man',
                     ),
             ),
         'IN' =>
@@ -2263,19 +1960,16 @@ class CountryCodes
                 'alpha3' => 'IND',
                 'numeric' => '356',
                 'isd' => '91',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Индия',
-                        'fullName' => 'Республика Индия',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Индия',
+                        'countryFull' => 'Республика Индия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'India',
-                        'fullName' => 'India',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'India',
+                        'countryFull' => 'India',
                     ),
             ),
         'IO' =>
@@ -2284,19 +1978,16 @@ class CountryCodes
                 'alpha3' => 'IOT',
                 'numeric' => '086',
                 'isd' => '246',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Британская территория в Индийском океане',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Индийский океан',
+                        'country' => 'Британская территория в Индийском океане',
+                        'countryFull' => 'Британская территория в Индийском океане',
                     ),
                 'en' =>
                     array(
-                        'name' => 'British Indian Ocean Territory',
-                        'fullName' => 'British Indian Ocean Territory',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'British Indian Ocean Territory',
+                        'countryFull' => 'British Indian Ocean Territory',
                     ),
             ),
         'IQ' =>
@@ -2305,19 +1996,16 @@ class CountryCodes
                 'alpha3' => 'IRQ',
                 'numeric' => '368',
                 'isd' => '964',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Ирак',
-                        'fullName' => 'Республика Ирак',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Ирак',
+                        'countryFull' => 'Республика Ирак',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Iraq',
-                        'fullName' => 'Iraq',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Iraq',
+                        'countryFull' => 'Iraq',
                     ),
             ),
         'IR' =>
@@ -2326,19 +2014,16 @@ class CountryCodes
                 'alpha3' => 'IRN',
                 'numeric' => '364',
                 'isd' => '98',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Иран',
-                        'fullName' => 'Исламская Республика Иран',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Иран',
+                        'countryFull' => 'Исламская Республика Иран',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Iran',
-                        'fullName' => 'Islamic Republic of Iran',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Iran',
+                        'countryFull' => 'Islamic Republic of Iran',
                     ),
             ),
         'IS' =>
@@ -2347,19 +2032,16 @@ class CountryCodes
                 'alpha3' => 'ISL',
                 'numeric' => '352',
                 'isd' => '354',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Исландия',
-                        'fullName' => 'Республика Исландия',
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Исландия',
+                        'countryFull' => 'Республика Исландия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Iceland',
-                        'fullName' => 'Iceland',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Iceland',
+                        'countryFull' => 'Iceland',
                     ),
             ),
         'IT' =>
@@ -2368,19 +2050,16 @@ class CountryCodes
                 'alpha3' => 'ITA',
                 'numeric' => '380',
                 'isd' => '39',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Италия',
-                        'fullName' => 'Итальянская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Италия',
+                        'countryFull' => 'Итальянская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Italy',
-                        'fullName' => 'Italy',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Italy',
+                        'countryFull' => 'Italy',
                     ),
             ),
         'JE' =>
@@ -2389,19 +2068,16 @@ class CountryCodes
                 'alpha3' => 'JEY',
                 'numeric' => '832',
                 'isd' => '44',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Джерси',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Джерси',
+                        'countryFull' => 'Джерси',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Jersey',
-                        'fullName' => 'Jersey',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Jersey',
+                        'countryFull' => 'Jersey',
                     ),
             ),
         'JM' =>
@@ -2410,19 +2086,16 @@ class CountryCodes
                 'alpha3' => 'JAM',
                 'numeric' => '388',
                 'isd' => '1876',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Ямайка',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Ямайка',
+                        'countryFull' => 'Ямайка',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Jamaica',
-                        'fullName' => 'Jamaica',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Jamaica',
+                        'countryFull' => 'Jamaica',
                     ),
             ),
         'JO' =>
@@ -2431,19 +2104,16 @@ class CountryCodes
                 'alpha3' => 'JOR',
                 'numeric' => '400',
                 'isd' => '962',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Иордания',
-                        'fullName' => 'Иорданское Хашимитское Королевство',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Иордания',
+                        'countryFull' => 'Иорданское Хашимитское Королевство',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Jordan',
-                        'fullName' => 'Jordan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Jordan',
+                        'countryFull' => 'Jordan',
                     ),
             ),
         'JP' =>
@@ -2452,19 +2122,16 @@ class CountryCodes
                 'alpha3' => 'JPN',
                 'numeric' => '392',
                 'isd' => '81',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Япония',
-                        'fullName' => Null,
-                        'continent' => 'Азия',
-                        'location' => 'Восточная Азия',
+                        'country' => 'Япония',
+                        'countryFull' => 'Япония',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Japan',
-                        'fullName' => 'Japan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Japan',
+                        'countryFull' => 'Japan',
                     ),
             ),
         'KE' =>
@@ -2473,19 +2140,16 @@ class CountryCodes
                 'alpha3' => 'KEN',
                 'numeric' => '404',
                 'isd' => '254',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Кения',
-                        'fullName' => 'Республика Кения',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Кения',
+                        'countryFull' => 'Республика Кения',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Kenya',
-                        'fullName' => 'Kenya',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Kenya',
+                        'countryFull' => 'Kenya',
                     ),
             ),
         'KG' =>
@@ -2494,19 +2158,16 @@ class CountryCodes
                 'alpha3' => 'KGZ',
                 'numeric' => '417',
                 'isd' => '996',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Киргизия',
-                        'fullName' => 'Киргизская Республика',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Киргизия',
+                        'countryFull' => 'Киргизская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Kyrgyzstan',
-                        'fullName' => 'Kyrgyzstan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Kyrgyzstan',
+                        'countryFull' => 'Kyrgyzstan',
                     ),
             ),
         'KH' =>
@@ -2515,19 +2176,16 @@ class CountryCodes
                 'alpha3' => 'KHM',
                 'numeric' => '116',
                 'isd' => '855',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Камбоджа',
-                        'fullName' => 'Королевство Камбоджа',
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Камбоджа',
+                        'countryFull' => 'Королевство Камбоджа',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Cambodia',
-                        'fullName' => 'Cambodia',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Cambodia',
+                        'countryFull' => 'Cambodia',
                     ),
             ),
         'KI' =>
@@ -2536,19 +2194,16 @@ class CountryCodes
                 'alpha3' => 'KIR',
                 'numeric' => '296',
                 'isd' => '686',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Кирибати',
-                        'fullName' => 'Республика Кирибати',
-                        'continent' => 'Океания',
-                        'location' => 'Микронезия',
+                        'country' => 'Кирибати',
+                        'countryFull' => 'Республика Кирибати',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Kiribati',
-                        'fullName' => 'Kiribati',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Kiribati',
+                        'countryFull' => 'Kiribati',
                     ),
             ),
         'KM' =>
@@ -2557,19 +2212,16 @@ class CountryCodes
                 'alpha3' => 'COM',
                 'numeric' => '174',
                 'isd' => '269',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Коморы',
-                        'fullName' => 'Союз Коморы',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Коморы',
+                        'countryFull' => 'Союз Коморы',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Comoros',
-                        'fullName' => 'Comoros',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Comoros',
+                        'countryFull' => 'Comoros',
                     ),
             ),
         'KN' =>
@@ -2578,19 +2230,16 @@ class CountryCodes
                 'alpha3' => 'KNA',
                 'numeric' => '659',
                 'isd' => '1869',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Сент-Китс и Невис',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Сент-Китс и Невис',
+                        'countryFull' => 'Сент-Китс и Невис',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Saint Kitts and Nevis',
-                        'fullName' => 'Saint Kitts and Nevis',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Saint Kitts and Nevis',
+                        'countryFull' => 'Saint Kitts and Nevis',
                     ),
             ),
         'KP' =>
@@ -2599,19 +2248,16 @@ class CountryCodes
                 'alpha3' => 'PRK',
                 'numeric' => '408',
                 'isd' => '850',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Северная Корея',
-                        'fullName' => 'Корейская Народно-Демократическая Республика',
-                        'continent' => 'Азия',
-                        'location' => 'Восточная Азия',
+                        'country' => 'Северная Корея',
+                        'countryFull' => 'Корейская Народно-Демократическая Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'North Korea',
-                        'fullName' => 'Democratic People\'s Republic of Korea',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'North Korea',
+                        'countryFull' => 'Democratic People\'s Republic of Korea',
                     ),
             ),
         'KR' =>
@@ -2620,19 +2266,16 @@ class CountryCodes
                 'alpha3' => 'KOR',
                 'numeric' => '410',
                 'isd' => '82',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Корея',
-                        'fullName' => 'Республика Корея',
-                        'continent' => 'Азия',
-                        'location' => 'Восточная Азия',
+                        'country' => 'Корея',
+                        'countryFull' => 'Республика Корея',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Korea',
-                        'fullName' => 'Republic of Korea',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Korea',
+                        'countryFull' => 'Republic of Korea',
                     ),
             ),
         'KW' =>
@@ -2641,19 +2284,16 @@ class CountryCodes
                 'alpha3' => 'KWT',
                 'numeric' => '414',
                 'isd' => '965',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Кувейт',
-                        'fullName' => 'Государство Кувейт',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Кувейт',
+                        'countryFull' => 'Государство Кувейт',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Kuwait',
-                        'fullName' => 'Kuwait',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Kuwait',
+                        'countryFull' => 'Kuwait',
                     ),
             ),
         'KY' =>
@@ -2662,19 +2302,16 @@ class CountryCodes
                 'alpha3' => 'CYM',
                 'numeric' => '136',
                 'isd' => '1345',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Острова Кайман',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Острова Кайман',
+                        'countryFull' => 'Острова Кайман',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Cayman Islands',
-                        'fullName' => 'Cayman Islands',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Cayman Islands',
+                        'countryFull' => 'Cayman Islands',
                     ),
             ),
         'KZ' =>
@@ -2683,19 +2320,16 @@ class CountryCodes
                 'alpha3' => 'KAZ',
                 'numeric' => '398',
                 'isd' => '7',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Казахстан',
-                        'fullName' => 'Республика Казахстан',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Казахстан',
+                        'countryFull' => 'Республика Казахстан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Kazakhstan',
-                        'fullName' => 'Kazakhstan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Kazakhstan',
+                        'countryFull' => 'Kazakhstan',
                     ),
             ),
         'LA' =>
@@ -2704,19 +2338,16 @@ class CountryCodes
                 'alpha3' => 'LAO',
                 'numeric' => '418',
                 'isd' => '856',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Лаос',
-                        'fullName' => 'Лаосская Народно-Демократическая Республика',
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Лаос',
+                        'countryFull' => 'Лаосская Народно-Демократическая Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Laos',
-                        'fullName' => 'Lao People\'s Democratic Republic',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Laos',
+                        'countryFull' => 'Lao People\'s Democratic Republic',
                     ),
             ),
         'LB' =>
@@ -2725,19 +2356,16 @@ class CountryCodes
                 'alpha3' => 'LBN',
                 'numeric' => '422',
                 'isd' => '961',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Ливан',
-                        'fullName' => 'Ливанская Республика',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Ливан',
+                        'countryFull' => 'Ливанская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Lebanon',
-                        'fullName' => 'Lebanon',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Lebanon',
+                        'countryFull' => 'Lebanon',
                     ),
             ),
         'LC' =>
@@ -2746,19 +2374,16 @@ class CountryCodes
                 'alpha3' => 'LCA',
                 'numeric' => '662',
                 'isd' => '1758',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Сент-Люсия',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Сент-Люсия',
+                        'countryFull' => 'Сент-Люсия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Saint Lucia',
-                        'fullName' => 'Saint Lucia',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Saint Lucia',
+                        'countryFull' => 'Saint Lucia',
                     ),
             ),
         'LI' =>
@@ -2767,19 +2392,16 @@ class CountryCodes
                 'alpha3' => 'LIE',
                 'numeric' => '438',
                 'isd' => '423',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Лихтенштейн',
-                        'fullName' => 'Княжество Лихтенштейн',
-                        'continent' => 'Европа',
-                        'location' => 'Западная Европа',
+                        'country' => 'Лихтенштейн',
+                        'countryFull' => 'Княжество Лихтенштейн',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Liechtenstein',
-                        'fullName' => 'Liechtenstein',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Liechtenstein',
+                        'countryFull' => 'Liechtenstein',
                     ),
             ),
         'LK' =>
@@ -2788,19 +2410,16 @@ class CountryCodes
                 'alpha3' => 'LKA',
                 'numeric' => '144',
                 'isd' => '94',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Шри-Ланка',
-                        'fullName' => 'Демократическая Социалистическая Республика Шри-Ланка',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Шри-Ланка',
+                        'countryFull' => 'Демократическая Социалистическая Республика Шри-Ланка',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Sri Lanka',
-                        'fullName' => 'Sri Lanka',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Sri Lanka',
+                        'countryFull' => 'Sri Lanka',
                     ),
             ),
         'LR' =>
@@ -2809,19 +2428,16 @@ class CountryCodes
                 'alpha3' => 'LBR',
                 'numeric' => '430',
                 'isd' => '231',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Либерия',
-                        'fullName' => 'Республика Либерия',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Либерия',
+                        'countryFull' => 'Республика Либерия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Liberia',
-                        'fullName' => 'Liberia',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Liberia',
+                        'countryFull' => 'Liberia',
                     ),
             ),
         'LS' =>
@@ -2830,19 +2446,16 @@ class CountryCodes
                 'alpha3' => 'LSO',
                 'numeric' => '426',
                 'isd' => '266',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Лесото',
-                        'fullName' => 'Королевство Лесото',
-                        'continent' => 'Африка',
-                        'location' => 'Южная часть Африки',
+                        'country' => 'Лесото',
+                        'countryFull' => 'Королевство Лесото',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Lesotho',
-                        'fullName' => 'Lesotho',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Lesotho',
+                        'countryFull' => 'Lesotho',
                     ),
             ),
         'LT' =>
@@ -2851,19 +2464,16 @@ class CountryCodes
                 'alpha3' => 'LTU',
                 'numeric' => '440',
                 'isd' => '370',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Литва',
-                        'fullName' => 'Литовская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Литва',
+                        'countryFull' => 'Литовская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Lithuania',
-                        'fullName' => 'Lithuania',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Lithuania',
+                        'countryFull' => 'Lithuania',
                     ),
             ),
         'LU' =>
@@ -2872,19 +2482,16 @@ class CountryCodes
                 'alpha3' => 'LUX',
                 'numeric' => '442',
                 'isd' => '352',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Люксембург',
-                        'fullName' => 'Великое Герцогство Люксембург',
-                        'continent' => 'Европа',
-                        'location' => 'Западная Европа',
+                        'country' => 'Люксембург',
+                        'countryFull' => 'Великое Герцогство Люксембург',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Luxembourg',
-                        'fullName' => 'Luxembourg',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Luxembourg',
+                        'countryFull' => 'Luxembourg',
                     ),
             ),
         'LV' =>
@@ -2893,19 +2500,16 @@ class CountryCodes
                 'alpha3' => 'LVA',
                 'numeric' => '428',
                 'isd' => '371',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Латвия',
-                        'fullName' => 'Латвийская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Латвия',
+                        'countryFull' => 'Латвийская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Latvia',
-                        'fullName' => 'Latvia',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Latvia',
+                        'countryFull' => 'Latvia',
                     ),
             ),
         'LY' =>
@@ -2914,19 +2518,16 @@ class CountryCodes
                 'alpha3' => 'LBY',
                 'numeric' => '434',
                 'isd' => '218',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Ливийская Арабская Джамахирия',
-                        'fullName' => 'Социалистическая Народная Ливийская Арабская Джамахирия',
-                        'continent' => 'Африка',
-                        'location' => 'Северная Африка',
+                        'country' => 'Ливийская Арабская Джамахирия',
+                        'countryFull' => 'Социалистическая Народная Ливийская Арабская Джамахирия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Libyan Arab Jamahiriya',
-                        'fullName' => 'Libyan Arab Jamahiriya',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Libyan Arab Jamahiriya',
+                        'countryFull' => 'Libyan Arab Jamahiriya',
                     ),
             ),
         'MA' =>
@@ -2935,19 +2536,16 @@ class CountryCodes
                 'alpha3' => 'MAR',
                 'numeric' => '504',
                 'isd' => '212',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Марокко',
-                        'fullName' => 'Королевство Марокко',
-                        'continent' => 'Африка',
-                        'location' => 'Северная Африка',
+                        'country' => 'Марокко',
+                        'countryFull' => 'Королевство Марокко',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Morocco',
-                        'fullName' => 'Morocco',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Morocco',
+                        'countryFull' => 'Morocco',
                     ),
             ),
         'MC' =>
@@ -2956,19 +2554,16 @@ class CountryCodes
                 'alpha3' => 'MCO',
                 'numeric' => '492',
                 'isd' => '377',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Монако',
-                        'fullName' => 'Княжество Монако',
-                        'continent' => 'Европа',
-                        'location' => 'Западная Европа',
+                        'country' => 'Монако',
+                        'countryFull' => 'Княжество Монако',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Monaco',
-                        'fullName' => 'Monaco',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Monaco',
+                        'countryFull' => 'Monaco',
                     ),
             ),
         'MD' =>
@@ -2977,19 +2572,16 @@ class CountryCodes
                 'alpha3' => 'MDA',
                 'numeric' => '498',
                 'isd' => '373',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Молдова',
-                        'fullName' => 'Республика Молдова',
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Молдова',
+                        'countryFull' => 'Республика Молдова',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Moldova',
-                        'fullName' => 'Moldova',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Moldova',
+                        'countryFull' => 'Moldova',
                     ),
             ),
         'ME' =>
@@ -2998,19 +2590,16 @@ class CountryCodes
                 'alpha3' => 'MNE',
                 'numeric' => '499',
                 'isd' => '382',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Черногория',
-                        'fullName' => 'Республика Черногория',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Черногория',
+                        'countryFull' => 'Республика Черногория',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Montenegro',
-                        'fullName' => 'Montenegro',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Montenegro',
+                        'countryFull' => 'Montenegro',
                     ),
             ),
         'MF' =>
@@ -3018,20 +2607,17 @@ class CountryCodes
                 'alpha2' => 'MF',
                 'alpha3' => 'MAF',
                 'numeric' => '663',
-                'isd' => Null,
+                'isd' => '590',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Сен-Мартен',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Сен-Мартен',
+                        'countryFull' => 'Сен-Мартен',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Saint Martin',
-                        'fullName' => 'Saint Martin (French Part)',
-                        'continent' => Null,
-                        'location' => Null,
+                        'country' => 'Saint Martin',
+                        'countryFull' => 'Saint Martin (French Part)',
                     ),
             ),
         'MG' =>
@@ -3040,19 +2626,16 @@ class CountryCodes
                 'alpha3' => 'MDG',
                 'numeric' => '450',
                 'isd' => '261',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Мадагаскар',
-                        'fullName' => 'Республика Мадагаскар',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Мадагаскар',
+                        'countryFull' => 'Республика Мадагаскар',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Madagascar',
-                        'fullName' => 'Madagascar',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Madagascar',
+                        'countryFull' => 'Madagascar',
                     ),
             ),
         'MH' =>
@@ -3061,19 +2644,16 @@ class CountryCodes
                 'alpha3' => 'MHL',
                 'numeric' => '584',
                 'isd' => '692',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Маршалловы острова',
-                        'fullName' => 'Республика Маршалловы острова',
-                        'continent' => 'Океания',
-                        'location' => 'Микронезия',
+                        'country' => 'Маршалловы острова',
+                        'countryFull' => 'Республика Маршалловы острова',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Marshall Islands',
-                        'fullName' => 'Marshall Islands',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Marshall Islands',
+                        'countryFull' => 'Marshall Islands',
                     ),
             ),
         'MK' =>
@@ -3082,19 +2662,16 @@ class CountryCodes
                 'alpha3' => 'MKD',
                 'numeric' => '807',
                 'isd' => '389',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Македония',
-                        'fullName' => 'Республика Македония',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Македония',
+                        'countryFull' => 'Республика Македония',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Macedonia',
-                        'fullName' => 'The Former Yugoslav Republic Of Macedonia',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Macedonia',
+                        'countryFull' => 'The Former Yugoslav Republic Of Macedonia',
                     ),
             ),
         'ML' =>
@@ -3103,19 +2680,16 @@ class CountryCodes
                 'alpha3' => 'MLI',
                 'numeric' => '466',
                 'isd' => '223',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Мали',
-                        'fullName' => 'Республика Мали',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Мали',
+                        'countryFull' => 'Республика Мали',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Mali',
-                        'fullName' => 'Mali',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Mali',
+                        'countryFull' => 'Mali',
                     ),
             ),
         'MM' =>
@@ -3124,19 +2698,16 @@ class CountryCodes
                 'alpha3' => 'MMR',
                 'numeric' => '104',
                 'isd' => '95',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Мьянма',
-                        'fullName' => 'Союз Мьянма',
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Мьянма',
+                        'countryFull' => 'Союз Мьянма',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Burma',
-                        'fullName' => 'Burma',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Burma',
+                        'countryFull' => 'Burma',
                     ),
             ),
         'MN' =>
@@ -3145,19 +2716,16 @@ class CountryCodes
                 'alpha3' => 'MNG',
                 'numeric' => '496',
                 'isd' => '976',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Монголия',
-                        'fullName' => Null,
-                        'continent' => 'Азия',
-                        'location' => 'Восточная Азия',
+                        'country' => 'Монголия',
+                        'countryFull' => 'Монголия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Mongolia',
-                        'fullName' => 'Mongolia',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Mongolia',
+                        'countryFull' => 'Mongolia',
                     ),
             ),
         'MO' =>
@@ -3166,19 +2734,16 @@ class CountryCodes
                 'alpha3' => 'MAC',
                 'numeric' => '446',
                 'isd' => '853',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Макао',
-                        'fullName' => 'Специальный административный регион Китая Макао',
-                        'continent' => 'Азия',
-                        'location' => 'Восточная Азия',
+                        'country' => 'Макао',
+                        'countryFull' => 'Специальный административный регион Китая Макао',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Macao',
-                        'fullName' => 'Macao',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Macao',
+                        'countryFull' => 'Macao',
                     ),
             ),
         'MP' =>
@@ -3187,19 +2752,16 @@ class CountryCodes
                 'alpha3' => 'MNP',
                 'numeric' => '580',
                 'isd' => '1670',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Северные Марианские острова',
-                        'fullName' => 'Содружество Северных Марианских островов',
-                        'continent' => 'Океания',
-                        'location' => 'Микронезия',
+                        'country' => 'Северные Марианские острова',
+                        'countryFull' => 'Содружество Северных Марианских островов',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Northern Mariana Islands',
-                        'fullName' => 'Northern Mariana Islands',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Northern Mariana Islands',
+                        'countryFull' => 'Northern Mariana Islands',
                     ),
             ),
         'MQ' =>
@@ -3208,19 +2770,16 @@ class CountryCodes
                 'alpha3' => 'MTQ',
                 'numeric' => '474',
                 'isd' => '596',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Мартиника',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Мартиника',
+                        'countryFull' => 'Мартиника',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Martinique',
-                        'fullName' => 'Martinique',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Martinique',
+                        'countryFull' => 'Martinique',
                     ),
             ),
         'MR' =>
@@ -3229,19 +2788,16 @@ class CountryCodes
                 'alpha3' => 'MRT',
                 'numeric' => '478',
                 'isd' => '222',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Мавритания',
-                        'fullName' => 'Исламская Республика Мавритания',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Мавритания',
+                        'countryFull' => 'Исламская Республика Мавритания',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Mauritania',
-                        'fullName' => 'Mauritania',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Mauritania',
+                        'countryFull' => 'Mauritania',
                     ),
             ),
         'MS' =>
@@ -3250,19 +2806,16 @@ class CountryCodes
                 'alpha3' => 'MSR',
                 'numeric' => '500',
                 'isd' => '1664',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Монтсеррат',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Монтсеррат',
+                        'countryFull' => 'Монтсеррат',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Montserrat',
-                        'fullName' => 'Montserrat',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Montserrat',
+                        'countryFull' => 'Montserrat',
                     ),
             ),
         'MT' =>
@@ -3271,19 +2824,16 @@ class CountryCodes
                 'alpha3' => 'MLT',
                 'numeric' => '470',
                 'isd' => '356',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Мальта',
-                        'fullName' => 'Республика Мальта',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Мальта',
+                        'countryFull' => 'Республика Мальта',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Malta',
-                        'fullName' => 'Malta',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Malta',
+                        'countryFull' => 'Malta',
                     ),
             ),
         'MU' =>
@@ -3292,19 +2842,16 @@ class CountryCodes
                 'alpha3' => 'MUS',
                 'numeric' => '480',
                 'isd' => '230',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Маврикий',
-                        'fullName' => 'Республика Маврикий',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Маврикий',
+                        'countryFull' => 'Республика Маврикий',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Mauritius',
-                        'fullName' => 'Mauritius',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Mauritius',
+                        'countryFull' => 'Mauritius',
                     ),
             ),
         'MV' =>
@@ -3313,19 +2860,16 @@ class CountryCodes
                 'alpha3' => 'MDV',
                 'numeric' => '462',
                 'isd' => '960',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Мальдивы',
-                        'fullName' => 'Мальдивская Республика',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Мальдивы',
+                        'countryFull' => 'Мальдивская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Maldives',
-                        'fullName' => 'Maldives',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Maldives',
+                        'countryFull' => 'Maldives',
                     ),
             ),
         'MW' =>
@@ -3334,19 +2878,16 @@ class CountryCodes
                 'alpha3' => 'MWI',
                 'numeric' => '454',
                 'isd' => '265',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Малави',
-                        'fullName' => 'Республика Малави',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Малави',
+                        'countryFull' => 'Республика Малави',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Malawi',
-                        'fullName' => 'Malawi',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Malawi',
+                        'countryFull' => 'Malawi',
                     ),
             ),
         'MX' =>
@@ -3355,19 +2896,16 @@ class CountryCodes
                 'alpha3' => 'MEX',
                 'numeric' => '484',
                 'isd' => '52',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Мексика',
-                        'fullName' => 'Мексиканские Соединенные Штаты',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Центральная Америка',
+                        'country' => 'Мексика',
+                        'countryFull' => 'Мексиканские Соединенные Штаты',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Mexico',
-                        'fullName' => 'Mexico',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Mexico',
+                        'countryFull' => 'Mexico',
                     ),
             ),
         'MY' =>
@@ -3376,19 +2914,16 @@ class CountryCodes
                 'alpha3' => 'MYS',
                 'numeric' => '458',
                 'isd' => '60',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Малайзия',
-                        'fullName' => Null,
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Малайзия',
+                        'countryFull' => 'Малайзия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Malaysia',
-                        'fullName' => 'Malaysia',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Malaysia',
+                        'countryFull' => 'Malaysia',
                     ),
             ),
         'MZ' =>
@@ -3397,19 +2932,16 @@ class CountryCodes
                 'alpha3' => 'MOZ',
                 'numeric' => '508',
                 'isd' => '258',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Мозамбик',
-                        'fullName' => 'Республика Мозамбик',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Мозамбик',
+                        'countryFull' => 'Республика Мозамбик',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Mozambique',
-                        'fullName' => 'Mozambique',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Mozambique',
+                        'countryFull' => 'Mozambique',
                     ),
             ),
         'NA' =>
@@ -3418,19 +2950,16 @@ class CountryCodes
                 'alpha3' => 'NAM',
                 'numeric' => '516',
                 'isd' => '264',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Намибия',
-                        'fullName' => 'Республика Намибия',
-                        'continent' => 'Африка',
-                        'location' => 'Южная часть Африки',
+                        'country' => 'Намибия',
+                        'countryFull' => 'Республика Намибия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Namibia',
-                        'fullName' => 'Namibia',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Namibia',
+                        'countryFull' => 'Namibia',
                     ),
             ),
         'NC' =>
@@ -3439,19 +2968,16 @@ class CountryCodes
                 'alpha3' => 'NCL',
                 'numeric' => '540',
                 'isd' => '687',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Новая Каледония',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Меланезия',
+                        'country' => 'Новая Каледония',
+                        'countryFull' => 'Новая Каледония',
                     ),
                 'en' =>
                     array(
-                        'name' => 'New Caledonia',
-                        'fullName' => 'New Caledonia',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'New Caledonia',
+                        'countryFull' => 'New Caledonia',
                     ),
             ),
         'NE' =>
@@ -3460,19 +2986,16 @@ class CountryCodes
                 'alpha3' => 'NER',
                 'numeric' => '562',
                 'isd' => '227',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Нигер',
-                        'fullName' => 'Республика Нигер',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Нигер',
+                        'countryFull' => 'Республика Нигер',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Niger',
-                        'fullName' => 'Niger',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Niger',
+                        'countryFull' => 'Niger',
                     ),
             ),
         'NF' =>
@@ -3481,19 +3004,16 @@ class CountryCodes
                 'alpha3' => 'NFK',
                 'numeric' => '574',
                 'isd' => '672',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Остров Норфолк',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Австралия и Новая Зеландия',
+                        'country' => 'Остров Норфолк',
+                        'countryFull' => 'Остров Норфолк',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Norfolk Island',
-                        'fullName' => 'Norfolk Island',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Norfolk Island',
+                        'countryFull' => 'Norfolk Island',
                     ),
             ),
         'NG' =>
@@ -3502,19 +3022,16 @@ class CountryCodes
                 'alpha3' => 'NGA',
                 'numeric' => '566',
                 'isd' => '234',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Нигерия',
-                        'fullName' => 'Федеративная Республика Нигерия',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Нигерия',
+                        'countryFull' => 'Федеративная Республика Нигерия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Nigeria',
-                        'fullName' => 'Nigeria',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Nigeria',
+                        'countryFull' => 'Nigeria',
                     ),
             ),
         'NI' =>
@@ -3523,19 +3040,16 @@ class CountryCodes
                 'alpha3' => 'NIC',
                 'numeric' => '558',
                 'isd' => '505',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Никарагуа',
-                        'fullName' => 'Республика Никарагуа',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Центральная Америка',
+                        'country' => 'Никарагуа',
+                        'countryFull' => 'Республика Никарагуа',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Nicaragua',
-                        'fullName' => 'Nicaragua',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Nicaragua',
+                        'countryFull' => 'Nicaragua',
                     ),
             ),
         'NL' =>
@@ -3544,19 +3058,16 @@ class CountryCodes
                 'alpha3' => 'NLD',
                 'numeric' => '528',
                 'isd' => '31',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Нидерланды',
-                        'fullName' => 'Королевство Нидерландов',
-                        'continent' => 'Европа',
-                        'location' => 'Западная Европа',
+                        'country' => 'Нидерланды',
+                        'countryFull' => 'Королевство Нидерландов',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Netherlands',
-                        'fullName' => 'Netherlands',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Netherlands',
+                        'countryFull' => 'Netherlands',
                     ),
             ),
         'NO' =>
@@ -3565,19 +3076,16 @@ class CountryCodes
                 'alpha3' => 'NOR',
                 'numeric' => '578',
                 'isd' => '47',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Норвегия',
-                        'fullName' => 'Королевство Норвегия',
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Норвегия',
+                        'countryFull' => 'Королевство Норвегия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Norway',
-                        'fullName' => 'Norway',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Norway',
+                        'countryFull' => 'Norway',
                     ),
             ),
         'NP' =>
@@ -3586,19 +3094,16 @@ class CountryCodes
                 'alpha3' => 'NPL',
                 'numeric' => '524',
                 'isd' => '977',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Непал',
-                        'fullName' => 'Королевство Непал',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Непал',
+                        'countryFull' => 'Королевство Непал',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Nepal',
-                        'fullName' => 'Nepal',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Nepal',
+                        'countryFull' => 'Nepal',
                     ),
             ),
         'NR' =>
@@ -3607,19 +3112,16 @@ class CountryCodes
                 'alpha3' => 'NRU',
                 'numeric' => '520',
                 'isd' => '674',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Науру',
-                        'fullName' => 'Республика Науру',
-                        'continent' => 'Океания',
-                        'location' => 'Микронезия',
+                        'country' => 'Науру',
+                        'countryFull' => 'Республика Науру',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Nauru',
-                        'fullName' => 'Nauru',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Nauru',
+                        'countryFull' => 'Nauru',
                     ),
             ),
         'NU' =>
@@ -3628,19 +3130,16 @@ class CountryCodes
                 'alpha3' => 'NIU',
                 'numeric' => '570',
                 'isd' => '683',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Ниуэ',
-                        'fullName' => 'Республика Ниуэ',
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Ниуэ',
+                        'countryFull' => 'Республика Ниуэ',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Niue',
-                        'fullName' => 'Niue',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Niue',
+                        'countryFull' => 'Niue',
                     ),
             ),
         'NZ' =>
@@ -3649,19 +3148,16 @@ class CountryCodes
                 'alpha3' => 'NZL',
                 'numeric' => '554',
                 'isd' => '64',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Новая Зеландия',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Австралия и Новая Зеландия',
+                        'country' => 'Новая Зеландия',
+                        'countryFull' => 'Новая Зеландия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'New Zealand',
-                        'fullName' => 'New Zealand',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'New Zealand',
+                        'countryFull' => 'New Zealand',
                     ),
             ),
         'OM' =>
@@ -3670,19 +3166,16 @@ class CountryCodes
                 'alpha3' => 'OMN',
                 'numeric' => '512',
                 'isd' => '968',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Оман',
-                        'fullName' => 'Султанат Оман',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Оман',
+                        'countryFull' => 'Султанат Оман',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Oman',
-                        'fullName' => 'Oman',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Oman',
+                        'countryFull' => 'Oman',
                     ),
             ),
         'OS' =>
@@ -3691,19 +3184,16 @@ class CountryCodes
                 'alpha3' => 'OST',
                 'numeric' => '896',
                 'isd' => Null,
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Южная Осетия',
-                        'fullName' => 'Республика Южная Осетия',
-                        'continent' => 'Азия',
-                        'location' => 'Закавказье',
+                        'country' => 'Южная Осетия',
+                        'countryFull' => 'Республика Южная Осетия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'South Ossetia',
-                        'fullName' => 'South Ossetia',
-                        'continent' => 'Asia',
-                        'location' => Null,
+                        'country' => 'South Ossetia',
+                        'countryFull' => 'South Ossetia',
                     ),
             ),
         'PA' =>
@@ -3712,19 +3202,16 @@ class CountryCodes
                 'alpha3' => 'PAN',
                 'numeric' => '591',
                 'isd' => '507',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Панама',
-                        'fullName' => 'Республика Панама',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Центральная Америка',
+                        'country' => 'Панама',
+                        'countryFull' => 'Республика Панама',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Panama',
-                        'fullName' => 'Panama',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Panama',
+                        'countryFull' => 'Panama',
                     ),
             ),
         'PE' =>
@@ -3733,19 +3220,16 @@ class CountryCodes
                 'alpha3' => 'PER',
                 'numeric' => '604',
                 'isd' => '51',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Перу',
-                        'fullName' => 'Республика Перу',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Перу',
+                        'countryFull' => 'Республика Перу',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Peru',
-                        'fullName' => 'Peru',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Peru',
+                        'countryFull' => 'Peru',
                     ),
             ),
         'PF' =>
@@ -3754,19 +3238,16 @@ class CountryCodes
                 'alpha3' => 'PYF',
                 'numeric' => '258',
                 'isd' => '689',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Французская Полинезия',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Французская Полинезия',
+                        'countryFull' => 'Французская Полинезия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'French Polynesia',
-                        'fullName' => 'French Polynesia',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'French Polynesia',
+                        'countryFull' => 'French Polynesia',
                     ),
             ),
         'PG' =>
@@ -3775,19 +3256,16 @@ class CountryCodes
                 'alpha3' => 'PNG',
                 'numeric' => '598',
                 'isd' => '675',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Папуа-Новая Гвинея',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Меланезия',
+                        'country' => 'Папуа-Новая Гвинея',
+                        'countryFull' => 'Папуа-Новая Гвинея',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Papua New Guinea',
-                        'fullName' => 'Papua New Guinea',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Papua New Guinea',
+                        'countryFull' => 'Papua New Guinea',
                     ),
             ),
         'PH' =>
@@ -3796,19 +3274,16 @@ class CountryCodes
                 'alpha3' => 'PHL',
                 'numeric' => '608',
                 'isd' => '63',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Филиппины',
-                        'fullName' => 'Республика Филиппины',
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Филиппины',
+                        'countryFull' => 'Республика Филиппины',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Philippines',
-                        'fullName' => 'Philippines',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Philippines',
+                        'countryFull' => 'Philippines',
                     ),
             ),
         'PK' =>
@@ -3817,19 +3292,16 @@ class CountryCodes
                 'alpha3' => 'PAK',
                 'numeric' => '586',
                 'isd' => '92',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Пакистан',
-                        'fullName' => 'Исламская Республика Пакистан',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Пакистан',
+                        'countryFull' => 'Исламская Республика Пакистан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Pakistan',
-                        'fullName' => 'Pakistan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Pakistan',
+                        'countryFull' => 'Pakistan',
                     ),
             ),
         'PL' =>
@@ -3838,19 +3310,16 @@ class CountryCodes
                 'alpha3' => 'POL',
                 'numeric' => '616',
                 'isd' => '48',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Польша',
-                        'fullName' => 'Республика Польша',
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Польша',
+                        'countryFull' => 'Республика Польша',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Poland',
-                        'fullName' => 'Poland',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Poland',
+                        'countryFull' => 'Poland',
                     ),
             ),
         'PM' =>
@@ -3859,19 +3328,16 @@ class CountryCodes
                 'alpha3' => 'SPM',
                 'numeric' => '666',
                 'isd' => '508',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Сент-Пьер и Микелон',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Северная Америка',
+                        'country' => 'Сент-Пьер и Микелон',
+                        'countryFull' => 'Сент-Пьер и Микелон',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Saint Pierre and Miquelon',
-                        'fullName' => 'Saint Pierre and Miquelon',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Saint Pierre and Miquelon',
+                        'countryFull' => 'Saint Pierre and Miquelon',
                     ),
             ),
         'PN' =>
@@ -3880,19 +3346,16 @@ class CountryCodes
                 'alpha3' => 'PCN',
                 'numeric' => '612',
                 'isd' => '870',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Питкерн',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Питкерн',
+                        'countryFull' => 'Питкерн',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Pitcairn',
-                        'fullName' => 'Pitcairn',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Pitcairn',
+                        'countryFull' => 'Pitcairn',
                     ),
             ),
         'PR' =>
@@ -3901,19 +3364,16 @@ class CountryCodes
                 'alpha3' => 'PRI',
                 'numeric' => '630',
                 'isd' => '1',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Пуэрто-Рико',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Пуэрто-Рико',
+                        'countryFull' => 'Пуэрто-Рико',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Puerto Rico',
-                        'fullName' => 'Puerto Rico',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Puerto Rico',
+                        'countryFull' => 'Puerto Rico',
                     ),
             ),
         'PS' =>
@@ -3922,19 +3382,16 @@ class CountryCodes
                 'alpha3' => 'PSE',
                 'numeric' => '275',
                 'isd' => '970',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Палестинская территория',
-                        'fullName' => 'Оккупированная Палестинская территория',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Палестинская территория',
+                        'countryFull' => 'Оккупированная Палестинская территория',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Palestinian Territory',
-                        'fullName' => 'Occupied Palestinian Territory',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Palestinian Territory',
+                        'countryFull' => 'Occupied Palestinian Territory',
                     ),
             ),
         'PT' =>
@@ -3943,19 +3400,16 @@ class CountryCodes
                 'alpha3' => 'PRT',
                 'numeric' => '620',
                 'isd' => '351',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Португалия',
-                        'fullName' => 'Португальская Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Португалия',
+                        'countryFull' => 'Португальская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Portugal',
-                        'fullName' => 'Portugal',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Portugal',
+                        'countryFull' => 'Portugal',
                     ),
             ),
         'PW' =>
@@ -3964,19 +3418,16 @@ class CountryCodes
                 'alpha3' => 'PLW',
                 'numeric' => '585',
                 'isd' => '680',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Палау',
-                        'fullName' => 'Республика Палау',
-                        'continent' => 'Океания',
-                        'location' => 'Микронезия',
+                        'country' => 'Палау',
+                        'countryFull' => 'Республика Палау',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Palau',
-                        'fullName' => 'Palau',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Palau',
+                        'countryFull' => 'Palau',
                     ),
             ),
         'PY' =>
@@ -3985,19 +3436,16 @@ class CountryCodes
                 'alpha3' => 'PRY',
                 'numeric' => '600',
                 'isd' => '595',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Парагвай',
-                        'fullName' => 'Республика Парагвай',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Парагвай',
+                        'countryFull' => 'Республика Парагвай',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Paraguay',
-                        'fullName' => 'Paraguay',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Paraguay',
+                        'countryFull' => 'Paraguay',
                     ),
             ),
         'QA' =>
@@ -4006,19 +3454,16 @@ class CountryCodes
                 'alpha3' => 'QAT',
                 'numeric' => '634',
                 'isd' => '974',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Катар',
-                        'fullName' => 'Государство Катар',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Катар',
+                        'countryFull' => 'Государство Катар',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Qatar',
-                        'fullName' => 'Qatar',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Qatar',
+                        'countryFull' => 'Qatar',
                     ),
             ),
         'RE' =>
@@ -4027,19 +3472,16 @@ class CountryCodes
                 'alpha3' => 'REU',
                 'numeric' => '638',
                 'isd' => '262',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Реюньон',
-                        'fullName' => Null,
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Реюньон',
+                        'countryFull' => 'Реюньон',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Reunion',
-                        'fullName' => 'Reunion',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Reunion',
+                        'countryFull' => 'Reunion',
                     ),
             ),
         'RO' =>
@@ -4048,19 +3490,16 @@ class CountryCodes
                 'alpha3' => 'ROU',
                 'numeric' => '642',
                 'isd' => '40',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Румыния',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Румыния',
+                        'countryFull' => 'Румыния',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Romania',
-                        'fullName' => 'Romania',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Romania',
+                        'countryFull' => 'Romania',
                     ),
             ),
         'RS' =>
@@ -4069,19 +3508,16 @@ class CountryCodes
                 'alpha3' => 'SRB',
                 'numeric' => '688',
                 'isd' => '381',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Сербия',
-                        'fullName' => 'Республика Сербия',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Сербия',
+                        'countryFull' => 'Республика Сербия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Serbia',
-                        'fullName' => 'Serbia',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Serbia',
+                        'countryFull' => 'Serbia',
                     ),
             ),
         'RU' =>
@@ -4090,19 +3526,16 @@ class CountryCodes
                 'alpha3' => 'RUS',
                 'numeric' => '643',
                 'isd' => '7',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Россия',
-                        'fullName' => 'Российская Федерация',
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Россия',
+                        'countryFull' => 'Российская Федерация',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Russia',
-                        'fullName' => 'Russian Federation',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Russia',
+                        'countryFull' => 'Russian Federation',
                     ),
             ),
         'RW' =>
@@ -4111,19 +3544,16 @@ class CountryCodes
                 'alpha3' => 'RWA',
                 'numeric' => '646',
                 'isd' => '250',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Руанда',
-                        'fullName' => 'Руандийская Республика',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Руанда',
+                        'countryFull' => 'Руандийская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Rwanda',
-                        'fullName' => 'Rwanda',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Rwanda',
+                        'countryFull' => 'Rwanda',
                     ),
             ),
         'SA' =>
@@ -4132,19 +3562,16 @@ class CountryCodes
                 'alpha3' => 'SAU',
                 'numeric' => '682',
                 'isd' => '966',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Саудовская Аравия',
-                        'fullName' => 'Королевство Саудовская Аравия',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Саудовская Аравия',
+                        'countryFull' => 'Королевство Саудовская Аравия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Saudi Arabia',
-                        'fullName' => 'Saudi Arabia',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Saudi Arabia',
+                        'countryFull' => 'Saudi Arabia',
                     ),
             ),
         'SB' =>
@@ -4153,19 +3580,16 @@ class CountryCodes
                 'alpha3' => 'SLB',
                 'numeric' => '090',
                 'isd' => '677',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Соломоновы острова',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Меланезия',
+                        'country' => 'Соломоновы острова',
+                        'countryFull' => 'Соломоновы острова',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Solomon Islands',
-                        'fullName' => 'Solomon Islands',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Solomon Islands',
+                        'countryFull' => 'Solomon Islands',
                     ),
             ),
         'SC' =>
@@ -4174,19 +3598,16 @@ class CountryCodes
                 'alpha3' => 'SYC',
                 'numeric' => '690',
                 'isd' => '248',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Сейшелы',
-                        'fullName' => 'Республика Сейшелы',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Сейшелы',
+                        'countryFull' => 'Республика Сейшелы',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Seychelles',
-                        'fullName' => 'Seychelles',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Seychelles',
+                        'countryFull' => 'Seychelles',
                     ),
             ),
         'SD' =>
@@ -4195,19 +3616,16 @@ class CountryCodes
                 'alpha3' => 'SDN',
                 'numeric' => '736',
                 'isd' => '249',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Судан',
-                        'fullName' => 'Республика Судан',
-                        'continent' => 'Африка',
-                        'location' => 'Северная Африка',
+                        'country' => 'Судан',
+                        'countryFull' => 'Республика Судан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Sudan',
-                        'fullName' => 'Sudan',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Sudan',
+                        'countryFull' => 'Sudan',
                     ),
             ),
         'SE' =>
@@ -4216,19 +3634,16 @@ class CountryCodes
                 'alpha3' => 'SWE',
                 'numeric' => '752',
                 'isd' => '46',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Швеция',
-                        'fullName' => 'Королевство Швеция',
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Швеция',
+                        'countryFull' => 'Королевство Швеция',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Sweden',
-                        'fullName' => 'Sweden',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Sweden',
+                        'countryFull' => 'Sweden',
                     ),
             ),
         'SG' =>
@@ -4237,19 +3652,16 @@ class CountryCodes
                 'alpha3' => 'SGP',
                 'numeric' => '702',
                 'isd' => '65',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Сингапур',
-                        'fullName' => 'Республика Сингапур',
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Сингапур',
+                        'countryFull' => 'Республика Сингапур',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Singapore',
-                        'fullName' => 'Singapore',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Singapore',
+                        'countryFull' => 'Singapore',
                     ),
             ),
         'SH' =>
@@ -4258,19 +3670,16 @@ class CountryCodes
                 'alpha3' => 'SHN',
                 'numeric' => '654',
                 'isd' => '290',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Святая Елена, Остров вознесения, Тристан-да-Кунья',
-                        'fullName' => Null,
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Святая Елена, Остров вознесения, Тристан-да-Кунья',
+                        'countryFull' => 'Святая Елена, Остров вознесения, Тристан-да-Кунья',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Saint Helena, Ascension And Tristan Da Cunha',
-                        'fullName' => 'Saint Helena, Ascension And Tristan Da Cunha',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Saint Helena, Ascension And Tristan Da Cunha',
+                        'countryFull' => 'Saint Helena, Ascension And Tristan Da Cunha',
                     ),
             ),
         'SI' =>
@@ -4279,19 +3688,16 @@ class CountryCodes
                 'alpha3' => 'SVN',
                 'numeric' => '705',
                 'isd' => '386',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Словения',
-                        'fullName' => 'Республика Словения',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Словения',
+                        'countryFull' => 'Республика Словения',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Slovenia',
-                        'fullName' => 'Slovenia',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Slovenia',
+                        'countryFull' => 'Slovenia',
                     ),
             ),
         'SJ' =>
@@ -4300,19 +3706,16 @@ class CountryCodes
                 'alpha3' => 'SJM',
                 'numeric' => '744',
                 'isd' => '47',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Шпицберген и Ян Майен',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Северная Европа',
+                        'country' => 'Шпицберген и Ян Майен',
+                        'countryFull' => 'Шпицберген и Ян Майен',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Svalbard and Jan Mayen',
-                        'fullName' => 'Svalbard and Jan Mayen',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Svalbard and Jan Mayen',
+                        'countryFull' => 'Svalbard and Jan Mayen',
                     ),
             ),
         'SK' =>
@@ -4321,19 +3724,16 @@ class CountryCodes
                 'alpha3' => 'SVK',
                 'numeric' => '703',
                 'isd' => '421',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Словакия',
-                        'fullName' => 'Словацкая Республика',
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Словакия',
+                        'countryFull' => 'Словацкая Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Slovakia',
-                        'fullName' => 'Slovakia',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Slovakia',
+                        'countryFull' => 'Slovakia',
                     ),
             ),
         'SL' =>
@@ -4342,19 +3742,16 @@ class CountryCodes
                 'alpha3' => 'SLE',
                 'numeric' => '694',
                 'isd' => '232',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Сьерра-Леоне',
-                        'fullName' => 'Республика Сьерра-Леоне',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Сьерра-Леоне',
+                        'countryFull' => 'Республика Сьерра-Леоне',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Sierra Leone',
-                        'fullName' => 'Sierra Leone',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Sierra Leone',
+                        'countryFull' => 'Sierra Leone',
                     ),
             ),
         'SM' =>
@@ -4363,19 +3760,16 @@ class CountryCodes
                 'alpha3' => 'SMR',
                 'numeric' => '674',
                 'isd' => '378',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Сан-Марино',
-                        'fullName' => 'Республика Сан-Марино',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Сан-Марино',
+                        'countryFull' => 'Республика Сан-Марино',
                     ),
                 'en' =>
                     array(
-                        'name' => 'San Marino',
-                        'fullName' => 'San Marino',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'San Marino',
+                        'countryFull' => 'San Marino',
                     ),
             ),
         'SN' =>
@@ -4384,19 +3778,16 @@ class CountryCodes
                 'alpha3' => 'SEN',
                 'numeric' => '686',
                 'isd' => '221',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Сенегал',
-                        'fullName' => 'Республика Сенегал',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Сенегал',
+                        'countryFull' => 'Республика Сенегал',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Senegal',
-                        'fullName' => 'Senegal',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Senegal',
+                        'countryFull' => 'Senegal',
                     ),
             ),
         'SO' =>
@@ -4405,19 +3796,16 @@ class CountryCodes
                 'alpha3' => 'SOM',
                 'numeric' => '706',
                 'isd' => '252',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Сомали',
-                        'fullName' => 'Сомалийская Республика',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Сомали',
+                        'countryFull' => 'Сомалийская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Somalia',
-                        'fullName' => 'Somalia',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Somalia',
+                        'countryFull' => 'Somalia',
                     ),
             ),
         'SR' =>
@@ -4426,19 +3814,16 @@ class CountryCodes
                 'alpha3' => 'SUR',
                 'numeric' => '740',
                 'isd' => '597',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Суринам',
-                        'fullName' => 'Республика Суринам',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Суринам',
+                        'countryFull' => 'Республика Суринам',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Suriname',
-                        'fullName' => 'Suriname',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Suriname',
+                        'countryFull' => 'Suriname',
                     ),
             ),
         'SS' =>
@@ -4447,19 +3832,16 @@ class CountryCodes
                 'alpha3' => 'SSD',
                 'numeric' => '728',
                 'isd' => '211',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Южный Судан',
-                        'fullName' => Null,
-                        'continent' => 'Африка',
-                        'location' => 'Северная Африка',
+                        'country' => 'Южный Судан',
+                        'countryFull' => 'Южный Судан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'South Sudan',
-                        'fullName' => 'South Sudan',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'South Sudan',
+                        'countryFull' => 'South Sudan',
                     ),
             ),
         'ST' =>
@@ -4468,19 +3850,16 @@ class CountryCodes
                 'alpha3' => 'STP',
                 'numeric' => '678',
                 'isd' => '239',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Сан-Томе и Принсипи',
-                        'fullName' => 'Демократическая Республика Сан-Томе и Принсипи',
-                        'continent' => 'Африка',
-                        'location' => 'Центральная Африка',
+                        'country' => 'Сан-Томе и Принсипи',
+                        'countryFull' => 'Демократическая Республика Сан-Томе и Принсипи',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Sao Tome and Principe',
-                        'fullName' => 'Sao Tome and Principe',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Sao Tome and Principe',
+                        'countryFull' => 'Sao Tome and Principe',
                     ),
             ),
         'SV' =>
@@ -4489,19 +3868,16 @@ class CountryCodes
                 'alpha3' => 'SLV',
                 'numeric' => '222',
                 'isd' => '503',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Эль-Сальвадор',
-                        'fullName' => 'Республика Эль-Сальвадор',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Центральная Америка',
+                        'country' => 'Эль-Сальвадор',
+                        'countryFull' => 'Республика Эль-Сальвадор',
                     ),
                 'en' =>
                     array(
-                        'name' => 'El Salvador',
-                        'fullName' => 'El Salvador',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'El Salvador',
+                        'countryFull' => 'El Salvador',
                     ),
             ),
         'SX' =>
@@ -4509,20 +3885,17 @@ class CountryCodes
                 'alpha2' => 'SX',
                 'alpha3' => 'SXM',
                 'numeric' => '534',
-                'isd' => Null,
+                'isd' => '1721',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Синт-Мартен',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Синт-Мартен',
+                        'countryFull' => 'Синт-Мартен',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Sint Maarten',
-                        'fullName' => 'Sint Maarten',
-                        'continent' => Null,
-                        'location' => Null,
+                        'country' => 'Sint Maarten',
+                        'countryFull' => 'Sint Maarten',
                     ),
             ),
         'SY' =>
@@ -4531,19 +3904,16 @@ class CountryCodes
                 'alpha3' => 'SYR',
                 'numeric' => '760',
                 'isd' => '963',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Сирия',
-                        'fullName' => 'Сирийская Арабская Республика',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Сирия',
+                        'countryFull' => 'Сирийская Арабская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Syria',
-                        'fullName' => 'Syrian Arab Republic',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Syria',
+                        'countryFull' => 'Syrian Arab Republic',
                     ),
             ),
         'SZ' =>
@@ -4552,19 +3922,16 @@ class CountryCodes
                 'alpha3' => 'SWZ',
                 'numeric' => '748',
                 'isd' => '268',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Свазиленд',
-                        'fullName' => 'Королевство Свазиленд',
-                        'continent' => 'Африка',
-                        'location' => 'Южная часть Африки',
+                        'country' => 'Свазиленд',
+                        'countryFull' => 'Королевство Свазиленд',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Swaziland',
-                        'fullName' => 'Swaziland',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Swaziland',
+                        'countryFull' => 'Swaziland',
                     ),
             ),
         'TC' =>
@@ -4573,19 +3940,16 @@ class CountryCodes
                 'alpha3' => 'TCA',
                 'numeric' => '796',
                 'isd' => '1649',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Острова Теркс и Кайкос',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Острова Теркс и Кайкос',
+                        'countryFull' => 'Острова Теркс и Кайкос',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Turks and Caicos Islands',
-                        'fullName' => 'Turks and Caicos Islands',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Turks and Caicos Islands',
+                        'countryFull' => 'Turks and Caicos Islands',
                     ),
             ),
         'TD' =>
@@ -4594,19 +3958,16 @@ class CountryCodes
                 'alpha3' => 'TCD',
                 'numeric' => '148',
                 'isd' => '235',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Чад',
-                        'fullName' => 'Республика Чад',
-                        'continent' => 'Африка',
-                        'location' => 'Центральная Африка',
+                        'country' => 'Чад',
+                        'countryFull' => 'Республика Чад',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Chad',
-                        'fullName' => 'Chad',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Chad',
+                        'countryFull' => 'Chad',
                     ),
             ),
         'TF' =>
@@ -4615,19 +3976,16 @@ class CountryCodes
                 'alpha3' => 'ATF',
                 'numeric' => '260',
                 'isd' => '262',
+                'continentCode' => 'AN',
                 'ru' =>
                     array(
-                        'name' => 'Французские Южные территории',
-                        'fullName' => Null,
-                        'continent' => 'Антарктика',
-                        'location' => 'Индийский океан',
+                        'country' => 'Французские Южные территории',
+                        'countryFull' => 'Французские Южные территории',
                     ),
                 'en' =>
                     array(
-                        'name' => 'French Southern Territories',
-                        'fullName' => 'French Southern Territories',
-                        'continent' => 'Antarctica',
-                        'location' => 'Antarctica',
+                        'country' => 'French Southern Territories',
+                        'countryFull' => 'French Southern Territories',
                     ),
             ),
         'TG' =>
@@ -4636,19 +3994,16 @@ class CountryCodes
                 'alpha3' => 'TGO',
                 'numeric' => '768',
                 'isd' => '228',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Того',
-                        'fullName' => 'Тоголезская Республика',
-                        'continent' => 'Африка',
-                        'location' => 'Западная Африка',
+                        'country' => 'Того',
+                        'countryFull' => 'Тоголезская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Togo',
-                        'fullName' => 'Togo',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Togo',
+                        'countryFull' => 'Togo',
                     ),
             ),
         'TH' =>
@@ -4657,19 +4012,16 @@ class CountryCodes
                 'alpha3' => 'THA',
                 'numeric' => '764',
                 'isd' => '66',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Таиланд',
-                        'fullName' => 'Королевство Таиланд',
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Таиланд',
+                        'countryFull' => 'Королевство Таиланд',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Thailand',
-                        'fullName' => 'Thailand',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Thailand',
+                        'countryFull' => 'Thailand',
                     ),
             ),
         'TJ' =>
@@ -4678,19 +4030,16 @@ class CountryCodes
                 'alpha3' => 'TJK',
                 'numeric' => '762',
                 'isd' => '992',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Таджикистан',
-                        'fullName' => 'Республика Таджикистан',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Таджикистан',
+                        'countryFull' => 'Республика Таджикистан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Tajikistan',
-                        'fullName' => 'Tajikistan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Tajikistan',
+                        'countryFull' => 'Tajikistan',
                     ),
             ),
         'TK' =>
@@ -4699,19 +4048,16 @@ class CountryCodes
                 'alpha3' => 'TKL',
                 'numeric' => '772',
                 'isd' => '690',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Токелау',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Токелау',
+                        'countryFull' => 'Токелау',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Tokelau',
-                        'fullName' => 'Tokelau',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Tokelau',
+                        'countryFull' => 'Tokelau',
                     ),
             ),
         'TL' =>
@@ -4720,19 +4066,16 @@ class CountryCodes
                 'alpha3' => 'TLS',
                 'numeric' => '626',
                 'isd' => '670',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Тимор-Лесте',
-                        'fullName' => 'Демократическая Республика Тимор-Лесте',
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Тимор-Лесте',
+                        'countryFull' => 'Демократическая Республика Тимор-Лесте',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Timor-Leste',
-                        'fullName' => 'Timor-Leste',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Timor-Leste',
+                        'countryFull' => 'Timor-Leste',
                     ),
             ),
         'TM' =>
@@ -4741,19 +4084,16 @@ class CountryCodes
                 'alpha3' => 'TKM',
                 'numeric' => '795',
                 'isd' => '993',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Туркмения',
-                        'fullName' => 'Туркменистан',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Туркмения',
+                        'countryFull' => 'Туркменистан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Turkmenistan',
-                        'fullName' => 'Turkmenistan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Turkmenistan',
+                        'countryFull' => 'Turkmenistan',
                     ),
             ),
         'TN' =>
@@ -4762,19 +4102,16 @@ class CountryCodes
                 'alpha3' => 'TUN',
                 'numeric' => '788',
                 'isd' => '216',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Тунис',
-                        'fullName' => 'Тунисская Республика',
-                        'continent' => 'Африка',
-                        'location' => 'Северная Африка',
+                        'country' => 'Тунис',
+                        'countryFull' => 'Тунисская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Tunisia',
-                        'fullName' => 'Tunisia',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Tunisia',
+                        'countryFull' => 'Tunisia',
                     ),
             ),
         'TO' =>
@@ -4783,19 +4120,16 @@ class CountryCodes
                 'alpha3' => 'TON',
                 'numeric' => '776',
                 'isd' => '676',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Тонга',
-                        'fullName' => 'Королевство Тонга',
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Тонга',
+                        'countryFull' => 'Королевство Тонга',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Tonga',
-                        'fullName' => 'Tonga',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Tonga',
+                        'countryFull' => 'Tonga',
                     ),
             ),
         'TR' =>
@@ -4804,19 +4138,16 @@ class CountryCodes
                 'alpha3' => 'TUR',
                 'numeric' => '792',
                 'isd' => '90',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Турция',
-                        'fullName' => 'Турецкая Республика',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Турция',
+                        'countryFull' => 'Турецкая Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Turkey',
-                        'fullName' => 'Turkey',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Turkey',
+                        'countryFull' => 'Turkey',
                     ),
             ),
         'TT' =>
@@ -4825,19 +4156,16 @@ class CountryCodes
                 'alpha3' => 'TTO',
                 'numeric' => '780',
                 'isd' => '1868',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Тринидад и Тобаго',
-                        'fullName' => 'Республика Тринидад и Тобаго',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Тринидад и Тобаго',
+                        'countryFull' => 'Республика Тринидад и Тобаго',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Trinidad and Tobago',
-                        'fullName' => 'Trinidad and Tobago',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Trinidad and Tobago',
+                        'countryFull' => 'Trinidad and Tobago',
                     ),
             ),
         'TV' =>
@@ -4846,19 +4174,16 @@ class CountryCodes
                 'alpha3' => 'TUV',
                 'numeric' => '798',
                 'isd' => '688',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Тувалу',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Тувалу',
+                        'countryFull' => 'Тувалу',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Tuvalu',
-                        'fullName' => 'Tuvalu',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Tuvalu',
+                        'countryFull' => 'Tuvalu',
                     ),
             ),
         'TW' =>
@@ -4867,19 +4192,16 @@ class CountryCodes
                 'alpha3' => 'TWN',
                 'numeric' => '158',
                 'isd' => '886',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Тайвань',
-                        'fullName' => 'Китайская Респу́блика',
-                        'continent' => 'Азия',
-                        'location' => 'Восточная Азия',
+                        'country' => 'Тайвань',
+                        'countryFull' => 'Китайская Респу́блика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Taiwan',
-                        'fullName' => 'Republic of China',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Taiwan',
+                        'countryFull' => 'Republic of China',
                     ),
             ),
         'TZ' =>
@@ -4888,19 +4210,16 @@ class CountryCodes
                 'alpha3' => 'TZA',
                 'numeric' => '834',
                 'isd' => '255',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Танзания',
-                        'fullName' => 'Объединенная Республика Танзания',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Танзания',
+                        'countryFull' => 'Объединенная Республика Танзания',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Tanzania',
-                        'fullName' => 'United Republic Of Tanzania',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Tanzania',
+                        'countryFull' => 'United Republic Of Tanzania',
                     ),
             ),
         'UA' =>
@@ -4909,19 +4228,16 @@ class CountryCodes
                 'alpha3' => 'UKR',
                 'numeric' => '804',
                 'isd' => '380',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Украина',
-                        'fullName' => Null,
-                        'continent' => 'Европа',
-                        'location' => 'Восточная Европа',
+                        'country' => 'Украина',
+                        'countryFull' => 'Украина',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Ukraine',
-                        'fullName' => 'Ukraine',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Ukraine',
+                        'countryFull' => 'Ukraine',
                     ),
             ),
         'UG' =>
@@ -4930,19 +4246,16 @@ class CountryCodes
                 'alpha3' => 'UGA',
                 'numeric' => '800',
                 'isd' => '256',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Уганда',
-                        'fullName' => 'Республика Уганда',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Уганда',
+                        'countryFull' => 'Республика Уганда',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Uganda',
-                        'fullName' => 'Uganda',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Uganda',
+                        'countryFull' => 'Uganda',
                     ),
             ),
         'UM' =>
@@ -4951,19 +4264,16 @@ class CountryCodes
                 'alpha3' => 'UMI',
                 'numeric' => '581',
                 'isd' => '1',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Малые Тихоокеанские отдаленные острова Соединенных Штатов',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Индийский океан',
+                        'country' => 'Малые Тихоокеанские отдаленные острова Соединенных Штатов',
+                        'countryFull' => 'Малые Тихоокеанские отдаленные острова Соединенных Штатов',
                     ),
                 'en' =>
                     array(
-                        'name' => 'United States Minor Outlying Islands',
-                        'fullName' => 'United States Minor Outlying Islands',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'United States Minor Outlying Islands',
+                        'countryFull' => 'United States Minor Outlying Islands',
                     ),
             ),
         'US' =>
@@ -4972,19 +4282,16 @@ class CountryCodes
                 'alpha3' => 'USA',
                 'numeric' => '840',
                 'isd' => '1',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'США',
-                        'fullName' => 'Соединенные Штаты Америки',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Северная Америка',
+                        'country' => 'США',
+                        'countryFull' => 'Соединенные Штаты Америки',
                     ),
                 'en' =>
                     array(
-                        'name' => 'USA',
-                        'fullName' => 'United States of America',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'USA',
+                        'countryFull' => 'United States of America',
                     ),
             ),
         'UY' =>
@@ -4993,19 +4300,16 @@ class CountryCodes
                 'alpha3' => 'URY',
                 'numeric' => '858',
                 'isd' => '598',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Уругвай',
-                        'fullName' => 'Восточная Республика Уругвай',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Уругвай',
+                        'countryFull' => 'Восточная Республика Уругвай',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Uruguay',
-                        'fullName' => 'Uruguay',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Uruguay',
+                        'countryFull' => 'Uruguay',
                     ),
             ),
         'UZ' =>
@@ -5014,19 +4318,16 @@ class CountryCodes
                 'alpha3' => 'UZB',
                 'numeric' => '860',
                 'isd' => '998',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Узбекистан',
-                        'fullName' => 'Республика Узбекистан',
-                        'continent' => 'Азия',
-                        'location' => 'Южная часть Центральной Азии',
+                        'country' => 'Узбекистан',
+                        'countryFull' => 'Республика Узбекистан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Uzbekistan',
-                        'fullName' => 'Uzbekistan',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Uzbekistan',
+                        'countryFull' => 'Uzbekistan',
                     ),
             ),
         'VA' =>
@@ -5035,19 +4336,16 @@ class CountryCodes
                 'alpha3' => 'VAT',
                 'numeric' => '336',
                 'isd' => '379',
+                'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'name' => 'Ватикан',
-                        'fullName' => 'Государство-город Ватикан',
-                        'continent' => 'Европа',
-                        'location' => 'Южная Европа',
+                        'country' => 'Ватикан',
+                        'countryFull' => 'Государство-город Ватикан',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Vatican City',
-                        'fullName' => 'Vatican City State',
-                        'continent' => 'Europe',
-                        'location' => 'Europe',
+                        'country' => 'Vatican City',
+                        'countryFull' => 'Vatican City State',
                     ),
             ),
         'VC' =>
@@ -5056,19 +4354,16 @@ class CountryCodes
                 'alpha3' => 'VCT',
                 'numeric' => '670',
                 'isd' => '1784',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Сент-Винсент и Гренадины',
-                        'fullName' => Null,
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Сент-Винсент и Гренадины',
+                        'countryFull' => 'Сент-Винсент и Гренадины',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Saint Vincent and the Grenadines',
-                        'fullName' => 'Saint Vincent and the Grenadines',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Saint Vincent and the Grenadines',
+                        'countryFull' => 'Saint Vincent and the Grenadines',
                     ),
             ),
         'VE' =>
@@ -5077,19 +4372,16 @@ class CountryCodes
                 'alpha3' => 'VEN',
                 'numeric' => '862',
                 'isd' => '58',
+                'continentCode' => 'SA',
                 'ru' =>
                     array(
-                        'name' => 'Венесуэла',
-                        'fullName' => 'Боливарийская Республика Венесуэла',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Южная Америка',
+                        'country' => 'Венесуэла',
+                        'countryFull' => 'Боливарийская Республика Венесуэла',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Venezuela',
-                        'fullName' => 'Venezuela',
-                        'continent' => 'South America',
-                        'location' => 'South America',
+                        'country' => 'Venezuela',
+                        'countryFull' => 'Venezuela',
                     ),
             ),
         'VG' =>
@@ -5098,19 +4390,16 @@ class CountryCodes
                 'alpha3' => 'VGB',
                 'numeric' => '092',
                 'isd' => '1284',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Виргинские острова, Британские',
-                        'fullName' => 'Британские Виргинские острова',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Виргинские острова, Британские',
+                        'countryFull' => 'Британские Виргинские острова',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Virgin Islands, British',
-                        'fullName' => 'Virgin Islands, British',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Virgin Islands, British',
+                        'countryFull' => 'Virgin Islands, British',
                     ),
             ),
         'VI' =>
@@ -5119,19 +4408,16 @@ class CountryCodes
                 'alpha3' => 'VIR',
                 'numeric' => '850',
                 'isd' => '1430',
+                'continentCode' => 'NA',
                 'ru' =>
                     array(
-                        'name' => 'Виргинские острова, США',
-                        'fullName' => 'Виргинские острова Соединенных Штатов',
-                        'continent' => 'Северная Америка',
-                        'location' => 'Карибский бассейн',
+                        'country' => 'Виргинские острова, США',
+                        'countryFull' => 'Виргинские острова Соединенных Штатов',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Virgin Islands, U.S.',
-                        'fullName' => 'Virgin Islands, U.S.',
-                        'continent' => 'North America',
-                        'location' => 'North America',
+                        'country' => 'Virgin Islands, U.S.',
+                        'countryFull' => 'Virgin Islands, U.S.',
                     ),
             ),
         'VN' =>
@@ -5140,19 +4426,16 @@ class CountryCodes
                 'alpha3' => 'VNM',
                 'numeric' => '704',
                 'isd' => '84',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Вьетнам',
-                        'fullName' => 'Социалистическая Республика Вьетнам',
-                        'continent' => 'Азия',
-                        'location' => 'Юго-Восточная Азия',
+                        'country' => 'Вьетнам',
+                        'countryFull' => 'Социалистическая Республика Вьетнам',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Vietnam',
-                        'fullName' => 'Vietnam',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Vietnam',
+                        'countryFull' => 'Vietnam',
                     ),
             ),
         'VU' =>
@@ -5161,19 +4444,16 @@ class CountryCodes
                 'alpha3' => 'VUT',
                 'numeric' => '548',
                 'isd' => '678',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Вануату',
-                        'fullName' => 'Республика Вануату',
-                        'continent' => 'Океания',
-                        'location' => 'Меланезия',
+                        'country' => 'Вануату',
+                        'countryFull' => 'Республика Вануату',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Vanuatu',
-                        'fullName' => 'Vanuatu',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Vanuatu',
+                        'countryFull' => 'Vanuatu',
                     ),
             ),
         'WF' =>
@@ -5182,19 +4462,16 @@ class CountryCodes
                 'alpha3' => 'WLF',
                 'numeric' => '876',
                 'isd' => '681',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Уоллис и Футуна',
-                        'fullName' => Null,
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Уоллис и Футуна',
+                        'countryFull' => 'Уоллис и Футуна',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Wallis and Futuna',
-                        'fullName' => 'Wallis and Futuna',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Wallis and Futuna',
+                        'countryFull' => 'Wallis and Futuna',
                     ),
             ),
         'WS' =>
@@ -5203,19 +4480,16 @@ class CountryCodes
                 'alpha3' => 'WSM',
                 'numeric' => '882',
                 'isd' => '685',
+                'continentCode' => 'OC',
                 'ru' =>
                     array(
-                        'name' => 'Самоа',
-                        'fullName' => 'Независимое Государство Самоа',
-                        'continent' => 'Океания',
-                        'location' => 'Полинезия',
+                        'country' => 'Самоа',
+                        'countryFull' => 'Независимое Государство Самоа',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Samoa',
-                        'fullName' => 'Samoa',
-                        'continent' => 'Oceania',
-                        'location' => 'Oceania',
+                        'country' => 'Samoa',
+                        'countryFull' => 'Samoa',
                     ),
             ),
         'YE' =>
@@ -5224,19 +4498,16 @@ class CountryCodes
                 'alpha3' => 'YEM',
                 'numeric' => '887',
                 'isd' => '967',
+                'continentCode' => 'AS',
                 'ru' =>
                     array(
-                        'name' => 'Йемен',
-                        'fullName' => 'Йеменская Республика',
-                        'continent' => 'Азия',
-                        'location' => 'Западная Азия',
+                        'country' => 'Йемен',
+                        'countryFull' => 'Йеменская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Yemen',
-                        'fullName' => 'Yemen',
-                        'continent' => 'Asia',
-                        'location' => 'Asia',
+                        'country' => 'Yemen',
+                        'countryFull' => 'Yemen',
                     ),
             ),
         'YT' =>
@@ -5245,19 +4516,16 @@ class CountryCodes
                 'alpha3' => 'MYT',
                 'numeric' => '175',
                 'isd' => '262',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Майотта',
-                        'fullName' => Null,
-                        'continent' => 'Африка',
-                        'location' => 'Южная часть Африки',
+                        'country' => 'Майотта',
+                        'countryFull' => 'Майотта',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Mayotte',
-                        'fullName' => 'Mayotte',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Mayotte',
+                        'countryFull' => 'Mayotte',
                     ),
             ),
         'ZA' =>
@@ -5266,19 +4534,16 @@ class CountryCodes
                 'alpha3' => 'ZAF',
                 'numeric' => '710',
                 'isd' => '27',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'ЮАР',
-                        'fullName' => 'Южно-Африканская Республика',
-                        'continent' => 'Африка',
-                        'location' => 'Южная часть Африки',
+                        'country' => 'ЮАР',
+                        'countryFull' => 'Южно-Африканская Республика',
                     ),
                 'en' =>
                     array(
-                        'name' => 'South Africa',
-                        'fullName' => 'Republic of South Africa',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'South Africa',
+                        'countryFull' => 'Republic of South Africa',
                     ),
             ),
         'ZM' =>
@@ -5287,19 +4552,16 @@ class CountryCodes
                 'alpha3' => 'ZMB',
                 'numeric' => '894',
                 'isd' => '260',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Замбия',
-                        'fullName' => 'Республика Замбия',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Замбия',
+                        'countryFull' => 'Республика Замбия',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Zambia',
-                        'fullName' => 'Zambia',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Zambia',
+                        'countryFull' => 'Zambia',
                     ),
             ),
         'ZW' =>
@@ -5308,22 +4570,65 @@ class CountryCodes
                 'alpha3' => 'ZWE',
                 'numeric' => '716',
                 'isd' => '263',
+                'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'name' => 'Зимбабве',
-                        'fullName' => 'Республика Зимбабве',
-                        'continent' => 'Африка',
-                        'location' => 'Восточная Африка',
+                        'country' => 'Зимбабве',
+                        'countryFull' => 'Республика Зимбабве',
                     ),
                 'en' =>
                     array(
-                        'name' => 'Zimbabwe',
-                        'fullName' => 'Zimbabwe',
-                        'continent' => 'Africa',
-                        'location' => 'Africa',
+                        'country' => 'Zimbabwe',
+                        'countryFull' => 'Zimbabwe',
                     ),
             ),
     );
+
+    /**
+     * @var array
+     */
+    public static $continents = array(
+        'AF' => [
+            'continentCode' => 'AF',
+            'ru' => ['continent' => 'Африка'],
+            'en' => ['continent' => 'Africa']
+        ],
+        'AN' => [
+            'continentCode' => 'AN',
+            'ru' => ['continent' => 'Антаркатика'],
+            'en' => ['continent' => 'Antarctica']
+        ],
+        'AS' => [
+            'continentCode' => 'AS',
+            'ru' => ['continent' => 'Азия'],
+            'en' => ['continent' => 'Asia']
+        ],
+        'EU' => [
+            'continentCode' => 'EU',
+            'ru' => ['continent' => 'Европа'],
+            'en' => ['continent' => 'Europe']
+        ],
+        'NA' => [
+            'continentCode' => 'NA',
+            'ru' => ['continent' => 'Северная Америка'],
+            'en' => ['continent' => 'North America']
+        ],
+        'OC' => [
+            'continentCode' => 'OC',
+            'ru' => ['continent' => 'Океания'],
+            'en' => ['continent' => 'Oceania']
+        ],
+        'SA' => [
+            'code' => 'SA',
+            'ru' => ['continent' => 'Южная Америка'],
+            'en' => ['continent' => 'South America']
+        ]
+    );
+
+    /**
+     * @var array
+     */
+    public static $locations = array();
 
     /**
      * @return array
@@ -5335,10 +4640,10 @@ class CountryCodes
             'alpha3',
             'numeric',
             'isd',
-            'name',
-            'fullName',
+            'continentCode',
             'continent',
-            'location'
+            'country',
+            'countryFull'
         ];
 
         return $rtn;
@@ -5350,13 +4655,13 @@ class CountryCodes
     private static function _supportedContinents()
     {
         $rtn = [
-            'Africa',
-            'Antarctica',
-            'Asia',
-            'Europe',
-            'North America',
-            'Oceania',
-            'South America'
+            'AF',
+            'AN',
+            'AS',
+            'EU',
+            'NA',
+            'OC',
+            'SA'
         ];
 
         return $rtn;
@@ -5366,13 +4671,51 @@ class CountryCodes
      * @param string $language
      * @return array
      */
-    private static function _countriesByLanguage($language = '')
+    private static function _continentsByLanguage($language = '')
     {
-        $countriesByLanguage = [];
+        $continentsByLanguage = [];
 
         if (empty($language) || !is_string($language)) {
             $language = self::$language;
         }
+
+        foreach (self::$continents as $continentKey => $continent) {
+
+            foreach ($continent as $fieldKey => $field) {
+
+                if (is_array($field) && $fieldKey === $language) {
+
+                    foreach ($field as $key => $value) {
+                        $continent[$key] = $value;
+                    }
+                }
+
+                if (is_array($field)) {
+                    unset($continent[$fieldKey]);
+                }
+            }
+
+            $continentsByLanguage[$language][$continentKey] = $continent;
+        }
+
+        self::$_continentsByLanguage = $continentsByLanguage;
+
+        return self::$_continentsByLanguage;
+    }
+
+    /**
+     * @param string $language
+     * @return array
+     */
+    private static function _countriesByLanguage($language = '')
+    {
+        $countriesByLanguage = [];
+        $language = empty($language) || !is_string($language)
+            ? self::$language
+            : $language;
+        $continentsByLanguage = empty(self::$_continentsByLanguage[$language])
+            ? self::_continentsByLanguage($language)
+            : self::$_continentsByLanguage;
 
         foreach (self::$countries as $countryKey => $country) {
 
@@ -5383,6 +4726,11 @@ class CountryCodes
                     foreach ($field as $key => $value) {
                         $country[$key] = $value;
                     }
+                }
+
+                if ($fieldKey === 'continentCode') {
+                    $continentCode = $field;
+                    $country = $country + $continentsByLanguage[$language][$continentCode];
                 }
 
                 if (is_array($field)) {
@@ -5401,21 +4749,28 @@ class CountryCodes
     /**
      * @param string $keyField field for the array of countries, set it to null if you want array without named indices
      * @param string $requestedField name of the field to be fetched in value part of array
+     * @param string $language
      * @return array contained key => value pairs of the requested key and field
      */
-    public static function get($keyField = 'alpha2', $requestedField = 'name')
+    public static function get($keyField = 'alpha2', $requestedField = 'country', $language = '')
     {
+        $language = !empty($language) && is_string($language)
+            ? $language
+            : self::$language;
+        $countriesByLanguage = !empty(self::$_countriesByLanguage[$language]) && is_array(self::$_countriesByLanguage[$language])
+            ? self::$_countriesByLanguage[$language]
+            : self::_countriesByLanguage();
+        $countries = !empty($countriesByLanguage[$language]) && is_array($countriesByLanguage[$language])
+            ? $countriesByLanguage[$language]
+            : [];
         $supportedFields = self::_supportedFields();
-        $countries = empty(self::$_countriesByLanguage[self::$language])
-            ? self::_countriesByLanguage()
-            : self::$_countriesByLanguage[self::$language];
 
         if (!in_array($keyField, $supportedFields)) {
             $keyField = Null;
         }
 
         if (!in_array($requestedField, $supportedFields)) {
-            $requestedField = 'name';
+            $requestedField = 'country';
         }
 
         $result = [];
@@ -5432,24 +4787,29 @@ class CountryCodes
         return $result;
     }
 
-
     /**
      * @param string $keyField field for the array of countries, set it to null if you want array without named indices
      * @param array $requestedFields array of name of the fields to be fetched in value part of array
      * @return array contained key => value pairs of the requested key and field
      */
-    public static function get2($keyField = 'alpha2', $requestedFields = [])
+    public static function get2($keyField = 'alpha2', $requestedFields = ['alpha3', 'country'])
     {
+        $language = !empty($language) && is_string($language)
+            ? $language
+            : self::$language;
+        $countriesByLanguage = !empty(self::$_countriesByLanguage[$language]) && is_array(self::$_countriesByLanguage[$language])
+            ? self::$_countriesByLanguage[$language]
+            : self::_countriesByLanguage();
+        $countries = !empty($countriesByLanguage[$language]) && is_array($countriesByLanguage[$language])
+            ? $countriesByLanguage[$language]
+            : [];
         $supportedFields = self::_supportedFields();
-        $countries = empty(self::$_countriesByLanguage[self::$language])
-            ? self::_countriesByLanguage()
-            : self::$_countriesByLanguage[self::$language];
 
         if (!in_array($keyField, $supportedFields)) {
             $keyField = Null;
         }
 
-        if (is_array($requestedFields)) {
+        if (!empty($requestedFields) && is_array($requestedFields)) {
 
             foreach ($requestedFields as $index => $field) {
 
@@ -5458,7 +4818,7 @@ class CountryCodes
                 }
             }
         } else {
-            $requestedFields = [];
+            $requestedFields = ['alpha3', 'country'];
         }
 
         $result = [];
@@ -5483,29 +4843,35 @@ class CountryCodes
     /**
      * @param string $keyField field for the array of countries, set it to null if you want array without named indices
      * @param string $requestedField name of the field to be fetched in value part of array
-     * @param null $continent name of continent to use as filter
-     * @return array contained key=>value pairs of the requested key and field
+     * @param string $continentCode code of continent to use as filter
+     * @return array contained key => value pairs of the requested key and field
      * Works exactly as get() above
      * But takes an extra param to enable filtering by continent
      */
-    public static function getByContinent($keyField = 'alpha2', $requestedField = 'name', $continent = Null)
+    public static function getByContinent($keyField = 'alpha2', $requestedField = 'country', $continentCode = '')
     {
+        $language = !empty($language) && is_string($language)
+            ? $language
+            : self::$language;
+        $countriesByLanguage = !empty(self::$_countriesByLanguage[$language]) && is_array(self::$_countriesByLanguage[$language])
+            ? self::$_countriesByLanguage[$language]
+            : self::_countriesByLanguage();
+        $countries = !empty($countriesByLanguage[$language]) && is_array($countriesByLanguage[$language])
+            ? $countriesByLanguage[$language]
+            : [];
         $supportedFields = self::_supportedFields();
         $supportedContinents = self::_supportedContinents();
-        $countries = empty(self::$_countriesByLanguage[self::$language])
-            ? self::_countriesByLanguage()
-            : self::$_countriesByLanguage[self::$language];
 
         if (!in_array($keyField, $supportedFields)) {
             $keyField = Null;
         }
 
-        if (!in_array($continent, $supportedContinents)) {
-            $continent = Null;
+        if (!in_array($requestedField, $supportedFields)) {
+            $requestedField = 'country';
         }
 
-        if (!in_array($requestedField, $supportedFields)) {
-            $requestedField = 'name';
+        if (!in_array($continentCode, $supportedContinents)) {
+            $continentCode = Null;
         }
 
         $result = [];
@@ -5514,9 +4880,9 @@ class CountryCodes
 
             if ($keyField) {
 
-                if ($continent) {
+                if ($continentCode) {
 
-                    if ($country['continent'] == $continent) {
+                    if ($country['continentCode'] === $continentCode) {
                         $result[$country[$keyField]] = $country[$requestedField];
                     }
                 } else {
@@ -5524,9 +4890,9 @@ class CountryCodes
                 }
             } else {
 
-                if ($continent) {
+                if ($continentCode) {
 
-                    if ($country['continent'] == $continent) {
+                    if ($country['continentCode'] == $continentCode) {
                         $result[] = $country[$requestedField];
                     }
                 } else {
@@ -5537,6 +4903,4 @@ class CountryCodes
 
         return $result;
     }
-
 }
-
