@@ -1,0 +1,34 @@
+{
+  "name": "thalidzhokov/country-codes",
+  "description": "CountryCodes PHP Class to get array of countries with ISO 3166-1 alpha-2, ISO 3166-1 alpha-3, ISO 3166-1 numeric and ISD codes it can provide following information related to country",
+  "keywords": [
+    "country codes",
+    "iso",
+    "international organization for standardization",
+    "3166",
+    "iso-3166-1",
+    "alpha-2",
+    "alpha-3",
+    "numeric",
+    "isd",
+    "internatiguonal subscriber dialing",
+    "idd",
+    "international direct dialing",
+    "country calling codes",
+    "country dial in codes"
+  ],
+  "require": {
+    "php": "^5.6 || ^7.0"
+  },
+  "autoload": {
+    "classmap": [
+      "CountryCodes.php"
+    ]
+  },
+  "license": "GNU General Public License v3.0",
+  "authors": [
+    {
+      "name": "Albert Thalidzhokov"
+    }
+  ]
+}
