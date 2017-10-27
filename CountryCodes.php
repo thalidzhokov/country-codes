@@ -9,40 +9,6 @@
 class CountryCodes
 {
     /**
-     * @var array
-     *
-     * Language code => [
-     *     Continent code => [
-     *         'continentCode' => (string),
-     *         'continent' => (string)
-     *     ],
-     *     ...
-     * ],
-     * ...
-     */
-    private static $_continentsByLanguage = [];
-
-    /**
-     * @var array
-     *
-     * Language code => [
-     *     ISO-3166-1 alpha-2 => [
-     *         'alpha2'        => (string),
-     *         'alpha3'        => (string),
-     *         'numeric'       => (numeric),
-     *         'isd'           => (numeric),
-     *         'continentCode' => (string),
-     *         'continent'     => (string),
-     *         'country'       => (string),
-     *         'countryFull'   => (string)
-     *     ],
-     *     ...
-     * ],
-     * ...
-     */
-    private static $_countriesByLanguage = [];
-
-    /**
      * @var string
      */
     public static $language = 'en';
@@ -4585,94 +4551,113 @@ class CountryCodes
 
     /**
      * @var array
+     *
+     * Language code => [
+     *     ISO-3166-1 alpha-2 => [
+     *         'alpha2'        => (string),
+     *         'alpha3'        => (string),
+     *         'numeric'       => (numeric),
+     *         'isd'           => (numeric),
+     *         'continentCode' => (string),
+     *         'continent'     => (string),
+     *         'country'       => (string),
+     *         'countryFull'   => (string)
+     *     ],
+     *     ...
+     * ],
+     * ...
      */
-    public static $continents = array(
-        'AF' => [
-            'continentCode' => 'AF',
-            'ru' => ['continent' => 'Африка'],
-            'en' => ['continent' => 'Africa']
-        ],
-        'AN' => [
-            'continentCode' => 'AN',
-            'ru' => ['continent' => 'Антаркатика'],
-            'en' => ['continent' => 'Antarctica']
-        ],
-        'AS' => [
-            'continentCode' => 'AS',
-            'ru' => ['continent' => 'Азия'],
-            'en' => ['continent' => 'Asia']
-        ],
-        'EU' => [
-            'continentCode' => 'EU',
-            'ru' => ['continent' => 'Европа'],
-            'en' => ['continent' => 'Europe']
-        ],
-        'NA' => [
-            'continentCode' => 'NA',
-            'ru' => ['continent' => 'Северная Америка'],
-            'en' => ['continent' => 'North America']
-        ],
-        'OC' => [
-            'continentCode' => 'OC',
-            'ru' => ['continent' => 'Океания'],
-            'en' => ['continent' => 'Oceania']
-        ],
-        'SA' => [
-            'code' => 'SA',
-            'ru' => ['continent' => 'Южная Америка'],
-            'en' => ['continent' => 'South America']
-        ]
+    private static $_countriesByLanguages = array();
+
+    /**
+     * @var array
+     */
+    private static $_supportedFields = array(
+        'alpha2',
+        'alpha3',
+        'numeric',
+        'isd',
+        'continentCode',
+        'continent',
+        'country',
+        'countryFull'
     );
 
     /**
      * @var array
      */
-    public static $locations = array();
+    public static $continents = array(
+        'AF' => array(
+            'continentCode' => 'AF',
+            'ru' => ['continent' => 'Африка'],
+            'en' => ['continent' => 'Africa']
+        ),
+        'AN' => array(
+            'continentCode' => 'AN',
+            'ru' => ['continent' => 'Антаркатика'],
+            'en' => ['continent' => 'Antarctica']
+        ),
+        'AS' => array(
+            'continentCode' => 'AS',
+            'ru' => ['continent' => 'Азия'],
+            'en' => ['continent' => 'Asia']
+        ),
+        'EU' => array(
+            'continentCode' => 'EU',
+            'ru' => ['continent' => 'Европа'],
+            'en' => ['continent' => 'Europe']
+        ),
+        'NA' => array(
+            'continentCode' => 'NA',
+            'ru' => ['continent' => 'Северная Америка'],
+            'en' => ['continent' => 'North America']
+        ),
+        'OC' => array(
+            'continentCode' => 'OC',
+            'ru' => ['continent' => 'Океания'],
+            'en' => ['continent' => 'Oceania']
+        ),
+        'SA' => array(
+            'code' => 'SA',
+            'ru' => ['continent' => 'Южная Америка'],
+            'en' => ['continent' => 'South America']
+        )
+    );
 
     /**
-     * @return array
+     * @var array
+     *
+     * Language code => [
+     *     Continent code => [
+     *         'continentCode' => (string),
+     *         'continent' => (string)
+     *     ],
+     *     ...
+     * ],
+     * ...
      */
-    private static function _supportedFields()
-    {
-        $rtn = [
-            'alpha2',
-            'alpha3',
-            'numeric',
-            'isd',
-            'continentCode',
-            'continent',
-            'country',
-            'countryFull'
-        ];
-
-        return $rtn;
-    }
+    private static $_continentsByLanguages = array();
 
     /**
-     * @return array
+     * @var array
      */
-    private static function _supportedContinents()
-    {
-        $rtn = [
-            'AF',
-            'AN',
-            'AS',
-            'EU',
-            'NA',
-            'OC',
-            'SA'
-        ];
-
-        return $rtn;
-    }
+    private static $_supportedContinents = array(
+        'AF',
+        'AN',
+        'AS',
+        'EU',
+        'NA',
+        'OC',
+        'SA'
+    );
 
     /**
      * @param string $language
      * @return array
      */
-    private static function _continentsByLanguage($language = '')
+    static function _continentsByLanguage($language = '')
     {
-        $continentsByLanguage = [];
+        $continentsByLanguage = array();
 
         if (empty($language) || !is_string($language)) {
             $language = self::$language;
@@ -4697,24 +4682,24 @@ class CountryCodes
             $continentsByLanguage[$language][$continentKey] = $continent;
         }
 
-        self::$_continentsByLanguage = $continentsByLanguage;
+        self::$_continentsByLanguages = $continentsByLanguage;
 
-        return self::$_continentsByLanguage;
+        return self::$_continentsByLanguages[$language];
     }
 
     /**
      * @param string $language
      * @return array
      */
-    private static function _countriesByLanguage($language = '')
+    static function _countriesByLanguage($language = '')
     {
-        $countriesByLanguage = [];
-        $language = empty($language) || !is_string($language)
-            ? self::$language
-            : $language;
-        $continentsByLanguage = empty(self::$_continentsByLanguage[$language])
-            ? self::_continentsByLanguage($language)
-            : self::$_continentsByLanguage;
+        $language = !empty($language) && is_string($language)
+            ? $language
+            : self::$language;
+        $continentsByLanguage = !empty(self::$_continentsByLanguages[$language])
+            ? self::$_continentsByLanguages[$language]
+            : self::_continentsByLanguage($language);
+        $countriesByLanguage = array();
 
         foreach (self::$countries as $countryKey => $country) {
 
@@ -4727,9 +4712,9 @@ class CountryCodes
                     }
                 }
 
-                if ($fieldKey === 'continentCode') {
+                if (is_string($field) && $fieldKey === 'continentCode') {
                     $continentCode = $field;
-                    $country = $country + $continentsByLanguage[$language][$continentCode];
+                    $country = $country + $continentsByLanguage[$continentCode];
                 }
 
                 if (is_array($field)) {
@@ -4740,9 +4725,9 @@ class CountryCodes
             $countriesByLanguage[$language][$countryKey] = $country;
         }
 
-        self::$_countriesByLanguage = $countriesByLanguage;
+        self::$_countriesByLanguages = $countriesByLanguage;
 
-        return self::$_countriesByLanguage;
+        return self::$_countriesByLanguages[$language];
     }
 
     /**
@@ -4756,23 +4741,19 @@ class CountryCodes
         $language = !empty($language) && is_string($language)
             ? $language
             : self::$language;
-        $countriesByLanguage = !empty(self::$_countriesByLanguage[$language]) && is_array(self::$_countriesByLanguage[$language])
-            ? self::$_countriesByLanguage[$language]
-            : self::_countriesByLanguage();
-        $countries = !empty($countriesByLanguage[$language]) && is_array($countriesByLanguage[$language])
-            ? $countriesByLanguage[$language]
-            : [];
-        $supportedFields = self::_supportedFields();
+        $countries = !empty(self::$_countriesByLanguages[$language]) && is_array(self::$_countriesByLanguages[$language])
+            ? self::$_countriesByLanguages[$language]
+            : self::_countriesByLanguage($language);
 
-        if (!in_array($keyField, $supportedFields)) {
+        if (!in_array($keyField, self::$_supportedFields)) {
             $keyField = Null;
         }
 
-        if (!in_array($requestedField, $supportedFields)) {
+        if (!in_array($requestedField, self::$_supportedFields)) {
             $requestedField = 'country';
         }
 
-        $result = [];
+        $result = array();
 
         foreach ($countries as $countryKey => $country) {
 
@@ -4796,15 +4777,11 @@ class CountryCodes
         $language = !empty($language) && is_string($language)
             ? $language
             : self::$language;
-        $countriesByLanguage = !empty(self::$_countriesByLanguage[$language]) && is_array(self::$_countriesByLanguage[$language])
-            ? self::$_countriesByLanguage[$language]
-            : self::_countriesByLanguage();
-        $countries = !empty($countriesByLanguage[$language]) && is_array($countriesByLanguage[$language])
-            ? $countriesByLanguage[$language]
-            : [];
-        $supportedFields = self::_supportedFields();
+        $countries = !empty(self::$_countriesByLanguages[$language]) && is_array(self::$_countriesByLanguages[$language])
+            ? self::$_countriesByLanguages[$language]
+            : self::_countriesByLanguage($language);
 
-        if (!in_array($keyField, $supportedFields)) {
+        if (!in_array($keyField, self::$_supportedFields)) {
             $keyField = Null;
         }
 
@@ -4812,7 +4789,7 @@ class CountryCodes
 
             foreach ($requestedFields as $index => $field) {
 
-                if (!in_array($field, $supportedFields)) {
+                if (!in_array($field, self::$_supportedFields)) {
                     unset($requestedFields[$index]);
                 }
             }
@@ -4820,10 +4797,10 @@ class CountryCodes
             $requestedFields = ['alpha3', 'country'];
         }
 
-        $result = [];
+        $result = array();
 
         foreach ($countries as $countryKey => $country) {
-            $tmp = [];
+            $tmp = array();
 
             foreach ($requestedFields as $field) {
                 $tmp[$field] = $country[$field];
@@ -4852,24 +4829,19 @@ class CountryCodes
         $language = !empty($language) && is_string($language)
             ? $language
             : self::$language;
-        $countriesByLanguage = !empty(self::$_countriesByLanguage[$language]) && is_array(self::$_countriesByLanguage[$language])
-            ? self::$_countriesByLanguage[$language]
-            : self::_countriesByLanguage();
-        $countries = !empty($countriesByLanguage[$language]) && is_array($countriesByLanguage[$language])
-            ? $countriesByLanguage[$language]
-            : [];
-        $supportedFields = self::_supportedFields();
-        $supportedContinents = self::_supportedContinents();
+        $countries = !empty(self::$_countriesByLanguages[$language]) && is_array(self::$_countriesByLanguages[$language])
+            ? self::$_countriesByLanguages[$language]
+            : self::_countriesByLanguage($language);
 
-        if (!in_array($keyField, $supportedFields)) {
+        if (!in_array($keyField, self::$_supportedFields)) {
             $keyField = Null;
         }
 
-        if (!in_array($requestedField, $supportedFields)) {
+        if (!in_array($requestedField, self::$_supportedFields)) {
             $requestedField = 'country';
         }
 
-        if (!in_array($continentCode, $supportedContinents)) {
+        if (!in_array($continentCode, self::$_supportedContinents)) {
             $continentCode = Null;
         }
 
