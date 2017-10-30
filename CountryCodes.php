@@ -4589,38 +4589,38 @@ class CountryCodes
     public static $continents = array(
         'AF' => array(
             'continentCode' => 'AF',
-            'ru' => ['continent' => 'Африка'],
-            'en' => ['continent' => 'Africa']
+            'ru' => array('continent' => 'Африка'),
+            'en' => array('continent' => 'Africa'),
         ),
         'AN' => array(
             'continentCode' => 'AN',
-            'ru' => ['continent' => 'Антаркатика'],
-            'en' => ['continent' => 'Antarctica']
+            'ru' => array('continent' => 'Антарктика'),
+            'en' => array('continent' => 'Antarctica'),
         ),
         'AS' => array(
             'continentCode' => 'AS',
-            'ru' => ['continent' => 'Азия'],
-            'en' => ['continent' => 'Asia']
+            'ru' => array('continent' => 'Азия'),
+            'en' => array('continent' => 'Asia'),
         ),
         'EU' => array(
             'continentCode' => 'EU',
-            'ru' => ['continent' => 'Европа'],
-            'en' => ['continent' => 'Europe']
+            'ru' => array('continent' => 'Европа'),
+            'en' => array('continent' => 'Europe'),
         ),
         'NA' => array(
             'continentCode' => 'NA',
-            'ru' => ['continent' => 'Северная Америка'],
-            'en' => ['continent' => 'North America']
+            'ru' => array('continent' => 'Северная Америка'),
+            'en' => array('continent' => 'North America'),
         ),
         'OC' => array(
             'continentCode' => 'OC',
-            'ru' => ['continent' => 'Океания'],
-            'en' => ['continent' => 'Oceania']
+            'ru' => array('continent' => 'Океания'),
+            'en' => array('continent' => 'Oceania'),
         ),
         'SA' => array(
             'code' => 'SA',
-            'ru' => ['continent' => 'Южная Америка'],
-            'en' => ['continent' => 'South America']
+            'ru' => array('continent' => 'Южная Америка'),
+            'en' => array('continent' => 'South America'),
         )
     );
 
