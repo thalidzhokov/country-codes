@@ -4580,7 +4580,8 @@ class CountryCodes
         'continentCode',
         'continent',
         'country',
-        'countryFull'
+        'countryFull',
+        'emoji',
     );
 
     /**
@@ -4621,8 +4622,40 @@ class CountryCodes
             'code' => 'SA',
             'ru' => array('continent' => 'Южная Америка'),
             'en' => array('continent' => 'South America'),
-        )
+        ),
     );
+
+    /**
+     * @var array
+     */
+    public static $emojiMapping = [
+        'A' => '&#x1F1E6;',
+        'B' => '&#x1F1E7;',
+        'C' => '&#x1F1E8;',
+        'D' => '&#x1F1E9;',
+        'E' => '&#x1F1EA;',
+        'F' => '&#x1F1EB;',
+        'G' => '&#x1F1EC;',
+        'H' => '&#x1F1ED;',
+        'I' => '&#x1F1EE;',
+        'J' => '&#x1F1EF;',
+        'K' => '&#x1F1F0;',
+        'L' => '&#x1F1F1;',
+        'M' => '&#x1F1F2;',
+        'N' => '&#x1F1F3;',
+        'O' => '&#x1F1F4;',
+        'P' => '&#x1F1F5;',
+        'Q' => '&#x1F1F6;',
+        'R' => '&#x1F1F7;',
+        'S' => '&#x1F1F8;',
+        'T' => '&#x1F1F9;',
+        'U' => '&#x1F1FA;',
+        'V' => '&#x1F1FB;',
+        'W' => '&#x1F1FC;',
+        'X' => '&#x1F1FD;',
+        'Y' => '&#x1F1FE;',
+        'Z' => '&#x1F1FF;',
+    ];
 
     /**
      * @var array
@@ -4648,7 +4681,7 @@ class CountryCodes
         'EU',
         'NA',
         'OC',
-        'SA'
+        'SA',
     );
 
     /**
@@ -4722,12 +4755,73 @@ class CountryCodes
                 }
             }
 
+            // Add emoji
+            $country['emoji'] = self::getEmojiByAlpha2($country['alpha2']);
+
             $countriesByLanguage[$language][$countryKey] = $country;
         }
 
         self::$_countriesByLanguages = $countriesByLanguage;
 
         return self::$_countriesByLanguages[$language];
+    }
+
+    /**
+     * @param string $alpha2
+     * @return string
+     */
+    public static function getEmojiByAlpha2($alpha2 = '')
+    {
+        $rtn = '';
+        $excludedAlpha2 = [
+            'AB',
+            'OS'
+        ];
+
+        if (!empty($alpha2) && is_string($alpha2) && strlen($alpha2) === 2 && !empty(self::$countries[$alpha2]) && !in_array($alpha2, $excludedAlpha2)) {
+            $rtn = strtr($alpha2, self::$emojiMapping);
+        }
+
+        return $rtn;
+    }
+
+    /**
+     * @param string $alpha3
+     * @return string
+     */
+    public static function getEmojiByAlpha3($alpha3 = '')
+    {
+        $rtn = '';
+
+        if (!empty($alpha3) && is_string($alpha3) && strlen($alpha3) === 3) {
+
+            switch ($alpha3) {
+                case 'ENG':
+                    $rtn = '&#x1F3F4;&#xE0067;&#xE0062;&#xE0065;&#xE006E;&#xE0067;&#xE007F;';
+                    break;
+                case 'WLS':
+                case 'WAL':
+                    $rtn = '&#x1F3F4;&#xE0067;&#xE0062;&#xE0077;&#xE006C;&#xE0073;&#xE007F;';
+                    break;
+                case 'SCT':
+                case 'SCO':
+                    $rtn = '&#x1F3F4;&#xE0067;&#xE0062;&#xE0073;&#xE0063;&#xE0074;&#xE007F󠁢;󠁳󠁣󠁴󠁿';
+                    break;
+                case 'NIR':
+                    $rtn = '';
+                    break;
+                default:
+                    $countriesArray = self::get('alpha3', 'alpha2');
+
+                    if (isset($countriesArray[$alpha3])) {
+                        $rtn = self::getEmojiByAlpha2($countriesArray[$alpha3]);
+                    }
+
+                    break;
+            }
+        }
+
+        return $rtn;
     }
 
     /**

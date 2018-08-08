@@ -13,6 +13,7 @@ https://en.wikipedia.org/wiki/List_of_country_calling_codes
 6. __continent__ Continent Name
 7. __country__ Country Name
 8. __countryFull__ Country Full Name
+9. __emoji__ Emoji Flag http://unicode.org/emoji/charts/emoji-ordering.html#country-flag
 
 ## Installation
 
@@ -57,7 +58,7 @@ array (
 #### Method __get2()__
 Get array with multiple values __key => \[value1, value2, ...]__ 
 ```
-\CountryCodes::get2('alpha3', ['alpha2', 'continentCode']);
+\CountryCodes::get2('alpha3', ['alpha2', 'continentCode', 'emoji']);
 ```
 
 Return
@@ -67,16 +68,19 @@ array (
   array (
     'alpha2' => 'AB',
     'continentCode' => 'AS',
+    'emoji' => '',
   ),
   'AND' => 
   array (
     'alpha2' => 'AD',
     'continentCode' => 'EU',
+    'emoji' => '&#x1F1E6;&#x1F1E9;',
   ),
   'ARE' => 
   array (
     'alpha2' => 'AE',
     'continentCode' => 'AS',
+    'emoji' => '&#x1F1E6;&#x1F1EA;',
   ),
   ...
 )
@@ -100,4 +104,24 @@ array (
   'DEU' => 'Germany',
   ...
 )
+```
+
+#### Method __getEmojiByAlpha2()__
+Get emoji flag code by alpha3
+```
+\CountryCodes::getEmojiByAlpha2('ZW');
+```
+Return
+```
+&#x1F1FF;&#x1F1FC;
+```
+
+#### Method __getEmojiByAlpha3()__
+Get emoji flag code by aplha3
+```
+\CountryCodes::getEmojiByAlpha2('ZMB');
+```
+Return
+```
+&#x1F1FF;&#x1F1F2;
 ```
