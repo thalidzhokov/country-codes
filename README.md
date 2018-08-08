@@ -107,7 +107,7 @@ array (
 ```
 
 #### Method __getEmojiByAlpha2()__
-Get emoji flag code by alpha3
+Get emoji flag code by alpha2
 ```
 \CountryCodes::getEmojiByAlpha2('ZW');
 ```
@@ -119,7 +119,7 @@ Return
 #### Method __getEmojiByAlpha3()__
 Get emoji flag code by aplha3
 ```
-\CountryCodes::getEmojiByAlpha2('ZMB');
+\CountryCodes::getEmojiByAlpha3('ZMB');
 ```
 Return
 ```
