@@ -4805,7 +4805,7 @@ class CountryCodes
                     break;
                 case 'SCT':
                 case 'SCO':
-                    $rtn = '&#x1F3F4;&#xE0067;&#xE0062;&#xE0073;&#xE0063;&#xE0074;&#xE007F󠁢;󠁳󠁣󠁴󠁿';
+                    $rtn = '&#x1F3F4;&#xE0067;&#xE0062;&#xE0073;&#xE0063;&#xE0074;&#xE007F;';
                     break;
                 case 'NIR':
                     $rtn = '';
