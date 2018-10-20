@@ -18,25 +18,25 @@ https://en.wikipedia.org/wiki/List_of_country_calling_codes
 ## Installation
 
 Install via Composer
-```
+```bash
 composer require thalidzhokov/country-codes
 ```
 
 OR include _CountryCodes.php_ in your PHP code
-```
+```php
 require_once('CountryCodes.php');
 ```
 
 ## Usage
 
 #### Change default language
-```
+```php
 \CountryCodes::$language = 'ru';
 ```
 
 #### Method __get()__
 Get array __key => value__
-```
+```php
 \CountryCodes::get('alpha2', 'country');
 ```
 
@@ -57,7 +57,7 @@ array (
 
 #### Method __get2()__
 Get array with multiple values __key => \[value1, value2, ...]__ 
-```
+```php
 \CountryCodes::get2('alpha3', ['alpha2', 'continentCode', 'emoji']);
 ```
 
@@ -88,7 +88,7 @@ array (
 
 #### Method __getByContinent()__
 Get array __key => value__ by continent
-```
+```php
 \CountryCodes::getByContinent('alpha3', 'countryFull', 'EU');
 ```
 
@@ -108,7 +108,7 @@ array (
 
 #### Method __getEmojiByAlpha2()__
 Get emoji flag code by alpha2
-```
+```php
 \CountryCodes::getEmojiByAlpha2('ZW');
 ```
 Return
@@ -118,7 +118,7 @@ Return
 
 #### Method __getEmojiByAlpha3()__
 Get emoji flag code by aplha3
-```
+```php
 \CountryCodes::getEmojiByAlpha3('ZMB');
 ```
 Return
