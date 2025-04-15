@@ -1132,7 +1132,7 @@ class CountryCodes
                 'alpha2' => 'DO',
                 'alpha3' => 'DOM',
                 'numeric' => '214',
-                'isd' => '1809',
+                'isd' => '1809', # 1829, 1849
                 'continentCode' => 'NA',
                 'ru' =>
                     array(
@@ -3890,13 +3890,14 @@ class CountryCodes
                 'continentCode' => 'AF',
                 'ru' =>
                     array(
-                        'country' => 'Свазиленд',
-                        'countryFull' => 'Королевство Свазиленд',
+                        'country' => 'Эсватини ', # стар., Свазиленд
+                        'countryFull' => 'Королевство Эсватини ', # стар., Королевство Свазиленд
                     ),
                 'en' =>
                     array(
                         'country' => 'Swaziland',
-                        'countryFull' => 'Swaziland',
+                        'country' => 'Eswatini', # old: Swaziland
+                        'countryFull' => 'Kingdom of Eswatini', # old: Kingdom of Swaziland
                     ),
             ),
         'TC' =>
