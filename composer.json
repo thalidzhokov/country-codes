@@ -18,7 +18,7 @@
     "country dial in codes"
   ],
   "require": {
-    "php": ">=5.6 <=8.4"
+    "php": "^5.6 || ^7.0 || ^8.0"
   },
   "autoload": {
     "classmap": [
