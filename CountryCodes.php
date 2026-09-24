@@ -250,9 +250,12 @@ class CountryCodes
             'XK',
         );
 
-        if (!empty($alpha2) && is_string($alpha2) && strlen($alpha2) === 2 && !empty(self::$countries[$alpha2]) && !in_array($alpha2, $excludedAlpha2)) {
+        if (!empty($alpha2) && is_string($alpha2)) {
             $alpha2 = strtoupper($alpha2);
-            $rtn = strtr($alpha2, self::$emojiMapping);
+
+            if (strlen($alpha2) === 2 && !empty(self::$countries[$alpha2]) && !in_array($alpha2, $excludedAlpha2)) {
+                $rtn = strtr($alpha2, self::$emojiMapping);
+            }
         }
 
         return $rtn;
