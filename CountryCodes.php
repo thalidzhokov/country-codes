@@ -4734,7 +4734,7 @@ class CountryCodes
             $continentsByLanguage[$language][$continentKey] = $continent;
         }
 
-        self::$_continentsByLanguages = $continentsByLanguage;
+        self::$_continentsByLanguages[$language] = $continentsByLanguage[$language];
 
         return self::$_continentsByLanguages[$language];
     }
@@ -4780,7 +4780,7 @@ class CountryCodes
             $countriesByLanguage[$language][$countryKey] = $country;
         }
 
-        self::$_countriesByLanguages = $countriesByLanguage;
+        self::$_countriesByLanguages[$language] = $countriesByLanguage[$language];
 
         return self::$_countriesByLanguages[$language];
     }
@@ -4887,9 +4887,7 @@ class CountryCodes
      */
     public static function get2($keyField = 'alpha2', $requestedFields = ['alpha3', 'country'])
     {
-        $language = !empty($language) && is_string($language)
-            ? $language
-            : self::$language;
+        $language = self::$language;
         $countries = !empty(self::$_countriesByLanguages[$language]) && is_array(self::$_countriesByLanguages[$language])
             ? self::$_countriesByLanguages[$language]
             : self::_countriesByLanguage($language);
@@ -4939,9 +4937,7 @@ class CountryCodes
      */
     public static function getByContinent($keyField = 'alpha2', $requestedField = 'country', $continentCode = '')
     {
-        $language = !empty($language) && is_string($language)
-            ? $language
-            : self::$language;
+        $language = self::$language;
         $countries = !empty(self::$_countriesByLanguages[$language]) && is_array(self::$_countriesByLanguages[$language])
             ? self::$_countriesByLanguages[$language]
             : self::_countriesByLanguage($language);
