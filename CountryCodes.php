@@ -161,7 +161,7 @@ class CountryCodes
      * @param string $language
      * @return array
      */
-    static function _continentsByLanguage($language = '')
+    private static function _continentsByLanguage($language = '')
     {
         $continentsByLanguage = array();
         $language = self::_language($language);
@@ -194,7 +194,7 @@ class CountryCodes
      * @param string $language
      * @return array
      */
-    static function _countriesByLanguage($language = '')
+    private static function _countriesByLanguage($language = '')
     {
         self::init();
         $language = self::_language($language);
@@ -243,12 +243,15 @@ class CountryCodes
     {
         self::init();
         $rtn = '';
+        // Unicode has no flag sequences for these codes
         $excludedAlpha2 = array(
             'AB',
-            'OS'
+            'OS',
+            'XK',
         );
 
         if (!empty($alpha2) && is_string($alpha2) && strlen($alpha2) === 2 && !empty(self::$countries[$alpha2]) && !in_array($alpha2, $excludedAlpha2)) {
+            $alpha2 = strtoupper($alpha2);
             $rtn = strtr($alpha2, self::$emojiMapping);
         }
 
@@ -264,6 +267,8 @@ class CountryCodes
         $rtn = '';
 
         if (!empty($alpha3) && is_string($alpha3) && strlen($alpha3) === 3) {
+
+            $alpha3 = strtoupper($alpha3);
 
             switch ($alpha3) {
                 case 'ENG':
@@ -427,6 +432,8 @@ class CountryCodes
             $requestedField = 'country';
         }
 
+        $continentCode = empty($continentCode) ? '' : strtoupper($continentCode);
+
         if ($continentCode !== '' && !in_array($continentCode, self::$_supportedContinents, true)) {
             return array();
         }
@@ -450,7 +457,7 @@ class CountryCodes
 
                 if ($continentCode) {
 
-                    if ($country['continentCode'] == $continentCode) {
+                    if ($country['continentCode'] === $continentCode) {
                         $result[] = $country[$requestedField];
                     }
                 } else {

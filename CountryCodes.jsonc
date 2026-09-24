@@ -601,7 +601,7 @@
         "alpha3": "CCK",
         "numeric": "166",
         "isd": "61",
-        "continentCode": "OC",
+        "continentCode": "AS",
         "ru": {
             "country": "Кокосовые острова",
             "countryFull": "Кокосовые (Килинг) острова"
@@ -678,12 +678,12 @@
         "isd": "225",
         "continentCode": "AF",
         "ru": {
-            "country": "Кот д'Ивуар",
-            "countryFull": "Республика Кот д'Ивуар"
+            "country": "Кот-д'Ивуар",
+            "countryFull": "Республика Кот-д'Ивуар"
         },
         "en": {
-            "country": "Cote d'Ivoire",
-            "countryFull": "Cote d'Ivoire"
+            "country": "Côte d'Ivoire",
+            "countryFull": "Côte d'Ivoire"
         }
     },
     "CK": {
@@ -766,7 +766,7 @@
         "alpha3": "CRI",
         "numeric": "188",
         "isd": "506",
-        "continentCode": "SA",
+        "continentCode": "NA",
         "ru": {
             "country": "Коста-Рика",
             "countryFull": "Республика Коста-Рика"
@@ -1084,7 +1084,7 @@
         "continentCode": "OC",
         "ru": {
             "country": "Фиджи",
-            "countryFull": "Республика островов Фиджи"
+            "countryFull": "Республика Фиджи"
         },
         "en": {
             "country": "Fiji",
@@ -1114,7 +1114,7 @@
         "continentCode": "OC",
         "ru": {
             "country": "Микронезия, Федеративные Штаты",
-            "countryFull": "Федеративные штаты Микронезии"
+            "countryFull": "Федеративные Штаты Микронезии"
         },
         "en": {
             "country": "Micronesia, Federated States of",
@@ -1381,7 +1381,7 @@
         "alpha3": "GTM",
         "numeric": "320",
         "isd": "502",
-        "continentCode": "SA",
+        "continentCode": "NA",
         "ru": {
             "country": "Гватемала",
             "countryFull": "Республика Гватемала"
@@ -1471,7 +1471,7 @@
         "alpha3": "HND",
         "numeric": "340",
         "isd": "504",
-        "continentCode": "SA",
+        "continentCode": "NA",
         "ru": {
             "country": "Гондурас",
             "countryFull": "Республика Гондурас"
@@ -1519,7 +1519,7 @@
         "continentCode": "EU",
         "ru": {
             "country": "Венгрия",
-            "countryFull": "Венгерская Республика"
+            "countryFull": "Венгрия"
         },
         "en": {
             "country": "Hungary",
@@ -1606,7 +1606,7 @@
         "alpha3": "IOT",
         "numeric": "086",
         "isd": "246",
-        "continentCode": "OC",
+        "continentCode": "AS",
         "ru": {
             "country": "Британская территория в Индийском океане",
             "countryFull": "Британская территория в Индийском океане"
@@ -2138,7 +2138,7 @@
         },
         "en": {
             "country": "Saint Martin",
-            "countryFull": "Saint Martin (French Part)"
+            "countryFull": "Saint Martin (French part)"
         }
     },
     "MG": {
@@ -2491,7 +2491,7 @@
         "alpha3": "NIC",
         "numeric": "558",
         "isd": "505",
-        "continentCode": "SA",
+        "continentCode": "NA",
         "ru": {
             "country": "Никарагуа",
             "countryFull": "Республика Никарагуа"
@@ -2539,7 +2539,7 @@
         "continentCode": "AS",
         "ru": {
             "country": "Непал",
-            "countryFull": "Королевство Непал"
+            "countryFull": "Федеративная Демократическая Республика Непал"
         },
         "en": {
             "country": "Nepal",
@@ -2569,7 +2569,7 @@
         "continentCode": "OC",
         "ru": {
             "country": "Ниуэ",
-            "countryFull": "Республика Ниуэ"
+            "countryFull": "Ниуэ"
         },
         "en": {
             "country": "Niue",
@@ -2626,7 +2626,7 @@
         "alpha3": "PAN",
         "numeric": "591",
         "isd": "507",
-        "continentCode": "SA",
+        "continentCode": "NA",
         "ru": {
             "country": "Панама",
             "countryFull": "Республика Панама"
@@ -2857,8 +2857,8 @@
             "countryFull": "Реюньон"
         },
         "en": {
-            "country": "Reunion",
-            "countryFull": "Reunion"
+            "country": "Réunion",
+            "countryFull": "Réunion"
         }
     },
     "RO": {
@@ -3018,12 +3018,12 @@
         "isd": "290",
         "continentCode": "AF",
         "ru": {
-            "country": "Святая Елена, Остров вознесения, Тристан-да-Кунья",
-            "countryFull": "Святая Елена, Остров вознесения, Тристан-да-Кунья"
+            "country": "Святая Елена, Остров Вознесения, Тристан-да-Кунья",
+            "countryFull": "Святая Елена, Остров Вознесения, Тристан-да-Кунья"
         },
         "en": {
-            "country": "Saint Helena, Ascension And Tristan Da Cunha",
-            "countryFull": "Saint Helena, Ascension And Tristan Da Cunha"
+            "country": "Saint Helena, Ascension and Tristan da Cunha",
+            "countryFull": "Saint Helena, Ascension and Tristan da Cunha"
         }
     },
     "SI": {
@@ -3048,8 +3048,8 @@
         "isd": "47",
         "continentCode": "EU",
         "ru": {
-            "country": "Шпицберген и Ян Майен",
-            "countryFull": "Шпицберген и Ян Майен"
+            "country": "Шпицберген и Ян-Майен",
+            "countryFull": "Шпицберген и Ян-Майен"
         },
         "en": {
             "country": "Svalbard and Jan Mayen",
@@ -3181,7 +3181,7 @@
         "alpha3": "SLV",
         "numeric": "222",
         "isd": "503",
-        "continentCode": "SA",
+        "continentCode": "NA",
         "ru": {
             "country": "Эль-Сальвадор",
             "countryFull": "Республика Эль-Сальвадор"

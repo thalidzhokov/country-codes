@@ -15,6 +15,9 @@ https://en.wikipedia.org/wiki/List_of_country_calling_codes
 8. __countryFull__ Country Full Name
 9. __emoji__ Emoji Flag http://unicode.org/emoji/charts/emoji-ordering.html#country-flag
 
+Names are available in English (`en`) and Russian (`ru`).
+The data is stored in _CountryCodes.jsonc_.
+
 ## Installation
 
 Install via Composer
@@ -34,11 +37,18 @@ require_once('CountryCodes.php');
 \CountryCodes::$language = 'ru';
 ```
 
+Methods `get()`, `get2()` and `getByContinent()` also take the language as the last argument.
+An unsupported language falls back to `en`.
+
 #### Method __get()__
 Get array __key => value__
 ```php
 \CountryCodes::get('alpha2', 'country');
+\CountryCodes::get('alpha2', 'country', 'ru');
 ```
+
+If `$keyField` is `null` or not a supported field, the result is a list without keys.
+If `$requestedField` is not supported, `country` is used.
 
 Return 
 ```
@@ -54,6 +64,30 @@ array (
   ...
 )
 ```
+
+#### Repeated keys
+If several countries share a key (e.g. `isd`), the value becomes an array of all their values
+```php
+\CountryCodes::get('isd', 'alpha2');
+```
+
+Return
+```
+array (
+  1 => 
+  array (
+    0 => 'CA',
+    1 => 'PR',
+    2 => 'UM',
+    3 => 'US',
+  ),
+  ...,
+  93 => 'AF',
+  ...
+)
+```
+
+The same applies to `get2()` and `getByContinent()`.
 
 #### Method __get2()__
 Get array with multiple values __key => \[value1, value2, ...]__ 
@@ -92,6 +126,9 @@ Get array __key => value__ by continent
 \CountryCodes::getByContinent('alpha3', 'countryFull', 'EU');
 ```
 
+Continent codes: `AF`, `AN`, `AS`, `EU`, `NA`, `OC`, `SA` (case-insensitive).
+An empty code returns all countries, an unknown code returns an empty array.
+
 Return
 ```
 array (
@@ -107,7 +144,8 @@ array (
 ```
 
 #### Method __getEmojiByAlpha2()__
-Get emoji flag code by alpha2
+Get emoji flag code by alpha2 as HTML entities.
+Returns an empty string for unknown codes and for `AB`, `OS`, `XK`: Unicode has no flags for them.
 ```php
 \CountryCodes::getEmojiByAlpha2('ZW');
 ```
@@ -117,11 +155,19 @@ Return
 ```
 
 #### Method __getEmojiByAlpha3()__
-Get emoji flag code by alpha3
+Get emoji flag code by alpha3.
+Also accepts `ENG`, `WLS` / `WAL`, `SCT` / `SCO` for England, Wales and Scotland flags.
 ```php
 \CountryCodes::getEmojiByAlpha3('ZMB');
 ```
 Return
 ```
 &#x1F1FF;&#x1F1F2;
+```
+
+## Tests
+```bash
+composer test
+# or
+php tests/functional.php
 ```
