@@ -4647,7 +4647,7 @@ class CountryCodes
     /**
      * @var array
      */
-    public static $emojiMapping = [
+    public static $emojiMapping = array(
         'A' => '&#x1F1E6;',
         'B' => '&#x1F1E7;',
         'C' => '&#x1F1E8;',
@@ -4674,7 +4674,7 @@ class CountryCodes
         'X' => '&#x1F1FD;',
         'Y' => '&#x1F1FE;',
         'Z' => '&#x1F1FF;',
-    ];
+    );
 
     /**
      * @var array
@@ -4792,10 +4792,10 @@ class CountryCodes
     public static function getEmojiByAlpha2($alpha2 = '')
     {
         $rtn = '';
-        $excludedAlpha2 = [
+        $excludedAlpha2 = array(
             'AB',
             'OS'
-        ];
+        );
 
         if (!empty($alpha2) && is_string($alpha2) && strlen($alpha2) === 2 && !empty(self::$countries[$alpha2]) && !in_array($alpha2, $excludedAlpha2)) {
             $rtn = strtr($alpha2, self::$emojiMapping);
@@ -4911,7 +4911,7 @@ class CountryCodes
      * @param string $language
      * @return array contained key => value pairs of the requested key and field
      */
-    public static function get2($keyField = 'alpha2', $requestedFields = ['alpha3', 'country'], $language = '')
+    public static function get2($keyField = 'alpha2', $requestedFields = array('alpha3', 'country'), $language = '')
     {
         $language = !empty($language) && is_string($language)
             ? $language
@@ -4933,7 +4933,7 @@ class CountryCodes
                 }
             }
         } else {
-            $requestedFields = ['alpha3', 'country'];
+            $requestedFields = array('alpha3', 'country');
         }
 
         $result = array();
@@ -4986,8 +4986,8 @@ class CountryCodes
             $continentCode = Null;
         }
 
-        $result = [];
-        $repeated = [];
+        $result = array();
+        $repeated = array();
 
         foreach ($countries as $countryKey => $country) {
 
