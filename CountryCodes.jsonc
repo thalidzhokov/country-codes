@@ -2,7 +2,7 @@
 //     'alpha2'  => ISO-3166-1 alpha-2  (string, 2 characters),    https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 //     'alpha3'  => ISO-3166-1 alpha-3  (string, 3 characters),    https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
 //     'numeric' => ISO-3166-1 numeric  (numeric, 3 digits),       https://en.wikipedia.org/wiki/ISO_3166-1_numeric
-//     'isd' => Internatiguonal Subscriber Dialing code (numeric), https://en.wikipedia.org/wiki/List_of_country_calling_codes
+//     'isd' => International Subscriber Dialing code (numeric), https://en.wikipedia.org/wiki/List_of_country_calling_codes
 //     Language code (string, 2 characters) => [
 //             'country'      => (string),
 //             'countryFull'  => (string)
@@ -525,7 +525,7 @@
         "alpha2": "BV",
         "alpha3": "BVT",
         "numeric": "074",
-        "isd": "61",
+        "isd": "47",
         "continentCode": "AN",
         "ru": {
             "country": "Остров Буве",
@@ -600,7 +600,7 @@
         "alpha2": "CC",
         "alpha3": "CCK",
         "numeric": "166",
-        "isd": "891",
+        "isd": "61",
         "continentCode": "OC",
         "ru": {
             "country": "Кокосовые острова",
@@ -634,7 +634,7 @@
         "continentCode": "AF",
         "ru": {
             "country": "ЦАР",
-            "countryFull": "Центральноафриканская Респу́блика"
+            "countryFull": "Центральноафриканская Республика"
         },
         "en": {
             "country": "CAR",
@@ -802,8 +802,8 @@
             "countryFull": "Республика Кабо-Верде"
         },
         "en": {
-            "country": "Cape Verde",
-            "countryFull": "Cape Verde"
+            "country": "Cabo Verde",
+            "countryFull": "Republic of Cabo Verde"
         }
     },
     "CW": {
@@ -862,7 +862,7 @@
             "countryFull": "Чешская Республика"
         },
         "en": {
-            "country": "Czech Republic",
+            "country": "Czechia",
             "countryFull": "Czech Republic"
         }
     },
@@ -1395,7 +1395,7 @@
         "alpha2": "GU",
         "alpha3": "GUM",
         "numeric": "316",
-        "isd": "1871",
+        "isd": "1671",
         "continentCode": "OC",
         "ru": {
             "country": "Гуам",
@@ -2058,12 +2058,12 @@
         "isd": "218",
         "continentCode": "AF",
         "ru": {
-            "country": "Ливийская Арабская Джамахирия",
-            "countryFull": "Социалистическая Народная Ливийская Арабская Джамахирия"
+            "country": "Ливия",
+            "countryFull": "Государство Ливия"
         },
         "en": {
-            "country": "Libyan Arab Jamahiriya",
-            "countryFull": "Libyan Arab Jamahiriya"
+            "country": "Libya",
+            "countryFull": "State of Libya"
         }
     },
     "MA": {
@@ -2209,11 +2209,11 @@
         "continentCode": "AS",
         "ru": {
             "country": "Мьянма",
-            "countryFull": "Союз Мьянма"
+            "countryFull": "Республика Союз Мьянма"
         },
         "en": {
-            "country": "Burma",
-            "countryFull": "Burma"
+            "country": "Myanmar",
+            "countryFull": "Republic of the Union of Myanmar"
         }
     },
     "MN": {
@@ -2745,7 +2745,7 @@
         "alpha2": "PN",
         "alpha3": "PCN",
         "numeric": "612",
-        "isd": "870",
+        "isd": "64",
         "continentCode": "OC",
         "ru": {
             "country": "Питкерн",
@@ -2969,7 +2969,7 @@
     "SD": {
         "alpha2": "SD",
         "alpha3": "SDN",
-        "numeric": "736",
+        "numeric": "729",
         "isd": "249",
         "continentCode": "AF",
         "ru": {
@@ -3228,8 +3228,8 @@
         "isd": "268",
         "continentCode": "AF",
         "ru": {
-            "country": "Эсватини ",
-            "countryFull": "Королевство Эсватини "
+            "country": "Эсватини",
+            "countryFull": "Королевство Эсватини"
         },
         "en": {
             "country": "Eswatini",
@@ -3412,8 +3412,8 @@
             "countryFull": "Турецкая Республика"
         },
         "en": {
-            "country": "Turkey",
-            "countryFull": "Turkey"
+            "country": "Türkiye",
+            "countryFull": "Republic of Türkiye"
         }
     },
     "TT": {
@@ -3454,7 +3454,7 @@
         "continentCode": "AS",
         "ru": {
             "country": "Тайвань",
-            "countryFull": "Китайская Респу́блика"
+            "countryFull": "Китайская Республика"
         },
         "en": {
             "country": "Taiwan",
@@ -3473,7 +3473,7 @@
         },
         "en": {
             "country": "Tanzania",
-            "countryFull": "United Republic Of Tanzania"
+            "countryFull": "United Republic of Tanzania"
         }
     },
     "UA": {
@@ -3630,7 +3630,7 @@
         "alpha2": "VI",
         "alpha3": "VIR",
         "numeric": "850",
-        "isd": "1430",
+        "isd": "1340",
         "continentCode": "NA",
         "ru": {
             "country": "Виргинские острова, США",

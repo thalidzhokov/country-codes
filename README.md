@@ -7,7 +7,7 @@ https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
 3. __numeric__ ISO-3166-1 numeric 
 https://en.wikipedia.org/wiki/ISO_3166-1_numeric
-4. __isd__ Internatiguonal Subscriber Dialing code 
+4. __isd__ International Subscriber Dialing code 
 https://en.wikipedia.org/wiki/List_of_country_calling_codes
 5. __continentCode__ Continent Code
 6. __continent__ Continent Name
@@ -117,7 +117,7 @@ Return
 ```
 
 #### Method __getEmojiByAlpha3()__
-Get emoji flag code by aplha3
+Get emoji flag code by alpha3
 ```php
 \CountryCodes::getEmojiByAlpha3('ZMB');
 ```
