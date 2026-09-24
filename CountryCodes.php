@@ -93,12 +93,12 @@ class CountryCodes
                 'ru' =>
                     array(
                         'country' => 'Афганистан',
-                        'countryFull' => 'Переходное Исламское Государство Афганистан',
+                        'countryFull' => 'Исламский Эмират Афганистан',
                     ),
                 'en' =>
                     array(
                         'country' => 'Afghanistan',
-                        'countryFull' => 'Afghanistan',
+                        'countryFull' => 'Islamic Emirate of Afghanistan',
                     ),
             ),
         'AG' =>
@@ -538,7 +538,7 @@ class CountryCodes
                 'alpha2' => 'BN',
                 'alpha3' => 'BRN',
                 'numeric' => '096',
-                'isd' => '672',
+                'isd' => '673',
                 'continentCode' => 'AS',
                 'ru' =>
                     array(
@@ -574,7 +574,7 @@ class CountryCodes
                 'alpha2' => 'BQ',
                 'alpha3' => 'BES',
                 'numeric' => '535',
-                'isd' => Null,
+                'isd' => '599',
                 'continentCode' => 'NA',
                 'ru' =>
                     array(
@@ -880,7 +880,7 @@ class CountryCodes
                 'alpha2' => 'CM',
                 'alpha3' => 'CMR',
                 'numeric' => '120',
-                'isd' => '231',
+                'isd' => '237',
                 'continentCode' => 'AF',
                 'ru' =>
                     array(
@@ -1294,7 +1294,7 @@ class CountryCodes
                 'alpha2' => 'FI',
                 'alpha3' => 'FIN',
                 'numeric' => '246',
-                'isd' => '238',
+                'isd' => '358',
                 'continentCode' => 'EU',
                 'ru' =>
                     array(
@@ -2630,13 +2630,13 @@ class CountryCodes
                 'continentCode' => 'EU',
                 'ru' =>
                     array(
-                        'country' => 'Македония',
-                        'countryFull' => 'Республика Македония',
+                        'country' => 'Северная Македония',
+                        'countryFull' => 'Республика Северная Македония',
                     ),
                 'en' =>
                     array(
-                        'country' => 'Macedonia',
-                        'countryFull' => 'The Former Yugoslav Republic Of Macedonia',
+                        'country' => 'North Macedonia',
+                        'countryFull' => 'Republic of North Macedonia',
                     ),
             ),
         'ML' =>
@@ -3148,7 +3148,7 @@ class CountryCodes
                 'alpha2' => 'OS',
                 'alpha3' => 'OST',
                 'numeric' => '896',
-                'isd' => Null,
+                'isd' => '7850',
                 'continentCode' => 'AS',
                 'ru' =>
                     array(
@@ -4458,6 +4458,24 @@ class CountryCodes
                         'countryFull' => 'Samoa',
                     ),
             ),
+        'XK' =>
+            array(
+                'alpha2' => 'XK',
+                'alpha3' => 'XKX',
+                'numeric' => '983',
+                'isd' => '383',
+                'continentCode' => 'EU',
+                'ru' =>
+                    array(
+                        'country' => 'Косово',
+                        'countryFull' => 'Республика Косово',
+                    ),
+                'en' =>
+                    array(
+                        'country' => 'Kosovo',
+                        'countryFull' => 'Republic of Kosovo',
+                    ),
+            ),
         'YE' =>
             array(
                 'alpha2' => 'YE',
@@ -4620,7 +4638,7 @@ class CountryCodes
             'en' => array('continent' => 'Oceania'),
         ),
         'SA' => array(
-            'code' => 'SA',
+            'continentCode' => 'SA',
             'ru' => array('continent' => 'Южная Америка'),
             'en' => array('continent' => 'South America'),
         ),
