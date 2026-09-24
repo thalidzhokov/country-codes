@@ -4844,6 +4844,30 @@ class CountryCodes
     }
 
     /**
+     * A repeated key keeps every value instead of overwriting the previous one.
+     *
+     * @param array $result
+     * @param array $repeated
+     * @param string $key
+     * @param mixed $value
+     */
+    private static function _addToResult(&$result, &$repeated, $key, $value)
+    {
+        if (!array_key_exists($key, $result)) {
+            $result[$key] = $value;
+
+            return;
+        }
+
+        if (empty($repeated[$key])) {
+            $result[$key] = array($result[$key]);
+            $repeated[$key] = true;
+        }
+
+        $result[$key][] = $value;
+    }
+
+    /**
      * @param string $keyField field for the array of countries, set it to null if you want array without named indices
      * @param string $requestedField name of the field to be fetched in value part of array
      * @param string $language
@@ -4867,11 +4891,12 @@ class CountryCodes
         }
 
         $result = array();
+        $repeated = array();
 
         foreach ($countries as $countryKey => $country) {
 
             if ($keyField) {
-                $result[$country[$keyField]] = $country[$requestedField];
+                self::_addToResult($result, $repeated, $country[$keyField], $country[$requestedField]);
             } else {
                 $result[] = $country[$requestedField];
             }
@@ -4912,6 +4937,7 @@ class CountryCodes
         }
 
         $result = array();
+        $repeated = array();
 
         foreach ($countries as $countryKey => $country) {
             $tmp = array();
@@ -4921,7 +4947,7 @@ class CountryCodes
             }
 
             if ($keyField) {
-                $result[$country[$keyField]] = $tmp;
+                self::_addToResult($result, $repeated, $country[$keyField], $tmp);
             } else {
                 $result[] = $tmp;
             }
@@ -4961,6 +4987,7 @@ class CountryCodes
         }
 
         $result = [];
+        $repeated = [];
 
         foreach ($countries as $countryKey => $country) {
 
@@ -4969,10 +4996,10 @@ class CountryCodes
                 if ($continentCode) {
 
                     if ($country['continentCode'] === $continentCode) {
-                        $result[$country[$keyField]] = $country[$requestedField];
+                        self::_addToResult($result, $repeated, $country[$keyField], $country[$requestedField]);
                     }
                 } else {
-                    $result[$country[$keyField]] = $country[$requestedField];
+                    self::_addToResult($result, $repeated, $country[$keyField], $country[$requestedField]);
                 }
             } else {
 
