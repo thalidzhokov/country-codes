@@ -427,8 +427,8 @@ class CountryCodes
             $requestedField = 'country';
         }
 
-        if (!in_array($continentCode, self::$_supportedContinents)) {
-            $continentCode = Null;
+        if ($continentCode !== '' && !in_array($continentCode, self::$_supportedContinents, true)) {
+            return array();
         }
 
         $result = array();
