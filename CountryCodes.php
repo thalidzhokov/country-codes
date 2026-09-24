@@ -4883,11 +4883,14 @@ class CountryCodes
     /**
      * @param string $keyField field for the array of countries, set it to null if you want array without named indices
      * @param array $requestedFields array of name of the fields to be fetched in value part of array
+     * @param string $language
      * @return array contained key => value pairs of the requested key and field
      */
-    public static function get2($keyField = 'alpha2', $requestedFields = ['alpha3', 'country'])
+    public static function get2($keyField = 'alpha2', $requestedFields = ['alpha3', 'country'], $language = '')
     {
-        $language = self::$language;
+        $language = !empty($language) && is_string($language)
+            ? $language
+            : self::$language;
         $countries = !empty(self::$_countriesByLanguages[$language]) && is_array(self::$_countriesByLanguages[$language])
             ? self::$_countriesByLanguages[$language]
             : self::_countriesByLanguage($language);
@@ -4931,13 +4934,16 @@ class CountryCodes
      * @param string $keyField field for the array of countries, set it to null if you want array without named indices
      * @param string $requestedField name of the field to be fetched in value part of array
      * @param string $continentCode code of continent to use as filter
+     * @param string $language
      * @return array contained key => value pairs of the requested key and field
      * Works exactly as get() above
      * But takes an extra param to enable filtering by continent
      */
-    public static function getByContinent($keyField = 'alpha2', $requestedField = 'country', $continentCode = '')
+    public static function getByContinent($keyField = 'alpha2', $requestedField = 'country', $continentCode = '', $language = '')
     {
-        $language = self::$language;
+        $language = !empty($language) && is_string($language)
+            ? $language
+            : self::$language;
         $countries = !empty(self::$_countriesByLanguages[$language]) && is_array(self::$_countriesByLanguages[$language])
             ? self::$_countriesByLanguages[$language]
             : self::_countriesByLanguage($language);
